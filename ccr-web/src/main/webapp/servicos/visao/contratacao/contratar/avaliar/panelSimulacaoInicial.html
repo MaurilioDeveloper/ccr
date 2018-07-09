@@ -1,0 +1,50 @@
+<div class="form-horizontal">
+	<div class="row-fluid">
+	  <div class="span7"><h1>Avaliar</h1></div>
+	  <div class="span5" align="right">		
+	  	<ul class="breadcrumb" align="right">
+			<li><span><b>Ag&ecirc;ncia Concessora: </b> <%= simular.agencia.idUnidade  %> - <%= simular.agencia.nomeUnidade %></span></li><br>
+		</ul>
+	  </div>
+	</div>
+	<div class="panel-group" id="divSimulacaoInicial">
+		<div class="panel panel-default">
+			<div class="panel-heading" id="simulacaoHeading">
+				<div class="row">
+					<h3 class="panel-title">
+						<span class="icon-user"> </span> Resultado Simula&ccedil;&atilde;o Inicial
+					</h3>
+				</div>
+			</div>
+			<div class="panel-body" id="simulacaoBody">
+				<div class="control-group">
+					<label class="control-label">Valor Contratado:</label>
+					<div class="controls medio resultado"><%= formatadores.formatarMoeda(simular.simulacao.valorContrato) %></div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Valor L&iacute;quido:</label>
+					<div class="controls medio resultado"><%= formatadores.formatarMoeda(simular.simulacao.valorLiquido) %></div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Prazo Contratado:</label>
+					<div class="controls medio resultado"> <%= simular.prazo  %></td></div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Taxa Juros:</label>
+					<div class="controls medio resultado"><%= formatadores.formatarTaxa(simular.simulacao.taxaJuros, 2) %>%</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Valor Presta&ccedil;&atilde;o:</label>
+					<div class="controls medio resultado"><%= formatadores.formatarMoeda(simular.simulacao.prestacao) %></div>
+				</div>
+				<div class="form-actions" align="center">
+					<button type="button" class="btn btn-primary"  disabled="disabled" id="btnSolicitarAvaliacaoCliente">Solicitar Avalia&ccedil;&atilde;o Cliente</button>
+					<button type="button" class="btn btn-primary" id="btnConsultarAvaliacaoCliente">Consultar Avalia&ccedil;&atilde;o Cliente</button>
+				</div>
+			</div>	
+		</div>
+	</div>
+</div>
+
+<div id="divAvaliacaoCliente" tabindex="-1"></div>
+

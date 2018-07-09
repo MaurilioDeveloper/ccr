@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="1.0" 
+	xmlns="http://java.sun.com/xml/ns/persistence/orm" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd ">
+	
+	<entity name="CCRTB038_HISTORICO_SITUACAO" class="br.gov.caixa.ccr.dominio.transicao.HistoricoSituacaoTO">
+		 <named-native-query name="HistoricoSituacao.inserir" result-class="br.gov.caixa.ccr.dominio.transicao.HistoricoSituacaoTO">
+			<query>
+				INSERT INTO CCR.CCRTB038_HISTORICO_SITUACAO
+					(NU_HISTORICO_SITUACAO, NU_CONTRATO, NU_SITUACAO, NU_TIPO_SITUACAO, DT_SITUACAO_CONTRATO, CO_USUARIO)
+				VALUES
+					((SELECT NVL(MAX(NU_HISTORICO_SITUACAO), 0) + 1 FROM CCR.CCRTB038_HISTORICO_SITUACAO),
+				 	 :contratoId, :situacao, :tipoSituacao, SYSDATE, :matricula)
+			</query>			
+		</named-native-query>
+	</entity>
+</entity-mappings>

@@ -1,0 +1,206 @@
+<link href="/ccr-web/layout/css/jquery-ui-custom.css" rel="stylesheet">
+
+<!-- Conteudo -->
+<div>
+	<ul class="breadcrumb">
+		<li><a href="index.html">In&iacute;cio</a> <span class="divider">&gt;</span></li>
+		<li>Contrato <span class="divider">&gt;</span></li>
+		<li class="active">Simular Cr&eacute;dito Consignado</li>
+	</ul>
+
+	<ul class="breadcrumb" align="right">
+		<li><span><b>Ag&ecirc;ncia Concessora:</b> <%= this.unidade.attributes.idUnidade  %> - <%= this.unidade.attributes.nomeUnidade %></span></li>
+	</ul>
+	
+	<h1>Simular</h1>
+</div>
+
+<br/>
+
+<div id="div_form_filtro_simulacao">
+	      
+	<form class="form-horizontal" id="formFiltro">
+		<fieldset>
+		    
+		    <div class="control-group">
+		    	<label class="control-label">Identificador:</label>
+				<div class="controls">
+		            <label class="radio inline">
+		                <input class="radio" type="radio" name="identificador" id="radioCpf" value="1" checked />CPF
+		            </label>
+		            <label class="radio inline">
+		                <input class="radio" type="radio" name="identificador" id="radioCnpj" value="2" />CNPJ
+		            </label>
+		            <label class="radio inline">
+		                <input class="radio" type="radio" name="identificador" id="radioCodigoConvenio" value="3" />Convênio
+		            </label>
+		            <label class="radio inline">
+		                <input class="radio" type="radio" name="identificador" id="radioNomeConvenio" value="4" />Nome Convênio
+		            </label>
+				</div>
+			</div>
+		    
+    		    <div id="div_cpf"  class="control-group">
+	                <label class="control-label" for="numeroCpf" id="label_numeroCpf"><span class="obrigatorio">*</span>CPF:</label>
+	                <div class="controls" style="width:10">
+	                    <input type="text" id="numeroCpf" class="input-medium cpf" validators="required,cpf" />
+	                    	
+	                    <a class="btn btn-primary" id="btnConsultarCpf"><i class="icon icon-search icon-white"></i>&nbsp;Consultar</a>                    
+	                </div>
+	            </div>
+	            <div id="div_cnpj" class="hide control-group">
+	                <label class="control-label" for="numeroCnpj" id="label_numeroCnpj"><span class="obrigatorio">*</span>CNPJ:</label>
+	                <div class="controls">
+	                    <input type="text" id="numeroCnpj" class="input-medium cnpj" validators="required,cnpj" />
+	                    	
+	                   	<a class="btn btn-primary" id="btnConsultarConvenio"><i class="icon icon-search icon-white"></i>&nbsp;Consultar</a>                                        	
+	                </div>
+	            </div>
+	            
+	            <div id="div_codigo_convenio" class="hide control-group">
+	                <label class="control-label" for="codigoConvenio" id="label_codigoConvenio"><span class="obrigatorio">*</span>Código Convênio:</label>
+	                <div class="controls">
+	       				<input type="text" class="input-small numero" name="codigoConvenio" id="codigoConvenio" value="" maxlength="5" validators="required,id"/>
+	                
+	                   	<a class="btn btn-primary" id="btnConsultarConvenio"><i class="icon icon-search icon-white"></i>&nbsp;Consultar</a>                                        	                    
+	                </div>
+	            </div>
+
+	            <div id="div_nome_convenio" class="hide control-group">
+	                <label class="control-label" for="nomeConvenio" id="label_nomeConvenio"><span class="obrigatorio">*</span>Nome Convênio:</label>
+	                <div class="controls">
+	                  	<input name="nomeConvenio" id="nomeConvenio" type="text" class="input-xlarge " value="" autocomplete="off" validators="required" />
+	                	
+	                   	<a class="btn btn-primary" id="btnConsultarConvenio"><i class="icon icon-search icon-white"></i>&nbsp;Consultar</a>                                        	                    
+	                </div>
+	            </div>
+		</fieldset>
+	</form>
+	
+	<div id="panel_dados_cliente"></div>
+	<div id="panel_lista_convenio"></div>
+	<div id="panel_lista_prazo"></div>
+	
+	<div id="panel_form_simulacao" class="panel panel-default hide" >
+	    <div class="panel-heading" >			
+	      		<label>Dados Simula&ccedil;&atilde;o</label>
+	   	</div>
+	   	<div id="div_form_simulacao">
+	   		<form class="form-horizontal" id="formSimular">
+	   			
+				<div id="div_data_nascimento" >
+				  	<label class="control-label">
+				  		<span class="obrigatorio">*</span> Data Nascimento:
+			  		</label>
+				    <div class="controls">
+					   	<div id="divInputDataNascimento" class="input-append data"> 
+							<input type="text" name="dataNascimento" id="frmDataNascimento" value="" data-format="dd/MM/yyyy"
+								   size="16" class="input-small data" validators="data,dataMenor,required" />
+							<span id="spanIconDataNascimento" class="add-on">
+			                	<i id="iIconDataNascimento" data-time-icon="icon-time" data-date-icon="icon-calendar" class="icon-calendar"></i>
+			                </span>
+							<span class="help-inline"></span>
+						</div>
+					</div>
+				</div>			
+  			<div class="control-group">
+		    	<label class="control-label">Valor:</label>
+				<div class="controls">
+		            <label class="radio inline">
+		                <input class="radio" type="radio" name="identificadorValor" id="radioValorLiquido" value="1" checked />Valor L&iacute;quido
+		            </label>
+		            <label class="radio inline">
+		                <input class="radio" type="radio" name="identificadorValor" id="radioValorPrestacao" value="2" />Valor Presta&ccedil;&atilde;o
+		            </label>
+		            
+				</div>
+			</div>
+				<div id="div_valor_liquido" >
+			
+	   			<div class="control-group">
+				  	<label class="control-label">
+				  		<span class="obrigatorio">*</span>Valor L&iacute;quido:
+			  		</label>
+				    <div class="controls">
+					   	<div class="input-prepend input-append">
+					       	<span class="add-on">R$</span>
+					       	<input type="text" name="valorLiquido" id="frmValorLiquido" value="" class="input-medium moeda text-right " maxlength="16" validators="required" />		       	
+					   	</div>
+						<span class="help-inline"></span>
+					</div>
+				</div>
+				</div>
+				<div id="div_valor_prestacao" class="hide" >
+	
+		   			<div class="control-group">
+					  	<label class="control-label">
+					  		<span class="obrigatorio">*</span>Valor Presta&ccedil;&atilde;o:
+				  		</label>
+					    <div class="controls">
+						   	<div class="input-prepend input-append">
+						       	<span class="add-on">R$</span>
+						       	<input type="text" name="valorPrestacao" id="frmValorPrestacao" value="" class="input-medium moeda text-right" maxlength="16" validators="required" />		       	
+						   	</div>
+							<span class="help-inline"></span>
+						</div>
+					</div>
+				</div>
+	
+				<div class="control-group">
+				  	<label class="control-label">
+				  		<span class="obrigatorio">*</span> Prazo:
+			  		</label>
+				    <div class="controls">
+					   	<div class="input-prepend input-append">
+					       	<input type="text" name="prazo" id="frmPrazo" value="" class="input-small numero text-right" maxlength="3" validators="required" />
+					   	</div>
+						<span class="help-inline"></span> meses
+					</div>
+				</div>
+	
+				<div class="control-group">
+				  	<label class="control-label">
+				  		<span class="obrigatorio">*</span> Taxa Juros:
+			  		</label>
+				    <div class="controls">
+					   	<div class="input-prepend input-append">			       	
+					       	<input type="text" name="taxaJuros" id="frmTaxaJuros" value="" class="input-small" maxlength="9" validators="required" />
+					   		<!-- Descomentar  
+					   		<input type="text" name="taxaJuros" id="frmTaxaJuros" value="" class="input-small indice5" maxlength="9" validators="required" /> -->
+					       	<span class="add-on">%</span>		       	
+					   	</div>
+						<span class="help-inline"></span>
+					</div>
+				</div>
+				
+				<div class="control-group">
+				  	<label class="control-label">
+				  		<span class="obrigatorio">*</span> Data de Contrata&ccedil;&atilde;o:
+			  		</label>
+				    <div class="controls">
+					   	<div id="divInputDataContratacao" class="input-append data"> 
+							<input type="text" name="dataContratacao" id="frmDataContratacao" value="" data-format="dd/MM/yyyy"
+								   size="16" class="input-small data" validators="required,data,dataMenor" />
+							<span id="spanIconDataContratacao" class="add-on">
+			                	<i id="iIconDataContratacao" data-time-icon="icon-time" data-date-icon="icon-calendar" class="icon-calendar"></i>
+			                </span>
+							<span class="help-inline"></span>
+						</div>
+					</div>
+				</div>			
+	   		</form>
+		</div>
+	</div>
+
+	<div class="form-actions hide" id="formActionSimular" align="center">
+	    <a class="btn btn-primary" id="btnSimular">&nbsp;Simular</a>                    
+	    <a class="btn btn-sair" id="btnSair">&nbsp;Sair</a>                    
+	</div>
+	
+	<div id="panel_result_simulacao"></div>
+	
+	<div class="form-actions" id="formActionSair" align="center">
+	    <a class="btn btn-sair" id="btnSair2">&nbsp;Sair</a>                    
+	</div>
+	
+</div>

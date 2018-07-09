@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="CCR-PU">
+		<non-jta-data-source>java:/jdbc/Db2SiccrDS</non-jta-data-source>
+
+		<!-- named queries for all classes -->
+		<mapping-file>META-INF/sql/Combo.xml</mapping-file>
+		<mapping-file>META-INF/sql/TaxaIOF.xml</mapping-file>
+		<mapping-file>META-INF/sql/TaxaJuro.xml</mapping-file>
+		<mapping-file>META-INF/sql/TaxaSeguro.xml</mapping-file>
+		<mapping-file>META-INF/sql/Convenio.xml</mapping-file>
+		<mapping-file>META-INF/sql/ParametroOperacao.xml</mapping-file>
+		<mapping-file>META-INF/sql/ConvenioCanal.xml</mapping-file>
+		<mapping-file>META-INF/sql/IcoUnidade.xml</mapping-file>
+		<mapping-file>META-INF/sql/Autoriza.xml</mapping-file>
+		<mapping-file>META-INF/sql/Simula.xml</mapping-file>
+		<mapping-file>META-INF/sql/HistoricoSituacaoContrato.xml</mapping-file>
+		<mapping-file>META-INF/sql/Log.xml</mapping-file>
+
+		<exclude-unlisted-classes>false</exclude-unlisted-classes>
+
+		<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect" />
+			<property name="hibernate.default_schema" value="CCR" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="hibernate.connection.isolation" value="1" />
+			<property name="hibernate.connection.autocommit" value="false" />
+			<!-- <property name="hibernate.hbm2ddl.auto" value="create" /> -->
+		</properties>
+	</persistence-unit>
+</persistence>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="SIFEC-CCR">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/ear-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/application" tag="defaultRootSource"/>
+        <dependent-module archiveName="ccr-ejb.jar" deploy-path="/" handle="module:/resource/ccr-ejb/ccr-ejb">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ccr-web.war" deploy-path="/" handle="module:/resource/ccr-web/ccr-web">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="freemarker-2.3.23.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/freemarker/freemarker/2.3.23/freemarker-2.3.23.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="validation-api-1.0.0.GA.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/javax/validation/validation-api/1.0.0.GA/validation-api-1.0.0.GA.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="hibernate-jpa-2.0-api-1.0.1.Final.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/hibernate/javax/persistence/hibernate-jpa-2.0-api/1.0.1.Final/hibernate-jpa-2.0-api-1.0.1.Final.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dozer-5.5.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/net/sf/dozer/dozer/5.5.1/dozer-5.5.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-beanutils-1.9.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/commons-beanutils/commons-beanutils/1.9.1/commons-beanutils-1.9.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-collections-3.2.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="slf4j-api-1.7.5.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/slf4j/slf4j-api/1.7.5/slf4j-api-1.7.5.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="jcl-over-slf4j-1.7.5.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/slf4j/jcl-over-slf4j/1.7.5/jcl-over-slf4j-1.7.5.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="arqref-core-3.6.0.2.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/br/gov/caixa/arqref/arqref-core/3.6.0.2/arqref-core-3.6.0.2.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="gson-2.2.4.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/com/google/code/gson/gson/2.2.4/gson-2.2.4.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-lang3-3.4.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/apache/commons/commons-lang3/3.4/commons-lang3-3.4.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="hibernate-3.0.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/hibernate/hibernate/3.0/hibernate-3.0.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="shrinkwrap-api-1.0.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/shrinkwrap/shrinkwrap-api/1.0.1/shrinkwrap-api-1.0.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-codec-1.4.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/commons-codec/commons-codec/1.4/commons-codec-1.4.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="arqref-services-3.9.0-SNAPSHOT.jar" deploy-path="/lib" handle="module:/resource/arqref-services/arqref-services">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="hibernate-validator-4.2.0.Final.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/hibernate/hibernate-validator/4.2.0.Final/hibernate-validator-4.2.0.Final.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="hibernate-jpamodelgen-1.2.0.Final.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/hibernate/hibernate-jpamodelgen/1.2.0.Final/hibernate-jpamodelgen-1.2.0.Final.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="hibernate-validator-annotation-processor-4.2.0.Final.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/hibernate/hibernate-validator-annotation-processor/4.2.0.Final/hibernate-validator-annotation-processor-4.2.0.Final.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="arqref-web-3.1.0.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/br/gov/caixa/arqref/arqref-web/3.1.0.1/arqref-web-3.1.0.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>

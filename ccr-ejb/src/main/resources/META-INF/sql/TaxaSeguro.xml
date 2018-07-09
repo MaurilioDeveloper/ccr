@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="1.0"
+    xmlns="http://java.sun.com/xml/ns/persistence/orm"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd ">
+    
+    <entity name="CCRTB007_TAXA_SEGURO" class="br.gov.caixa.ccr.dominio.transicao.TaxaSeguroTO">
+        <named-query name="TaxaSeguro.listar">
+            <query>
+                SELECT T
+                  FROM br.gov.caixa.ccr.dominio.transicao.TaxaSeguroTO T
+                 ORDER BY T.inicioVigencia DESC, T.fimVigencia DESC, T.taxa, T.idade, T.prazo
+            </query>                        
+        </named-query>
+        <named-query name="TaxaSeguro.listarPorInicioVigencia">
+            <query>
+                SELECT T
+                  FROM br.gov.caixa.ccr.dominio.transicao.TaxaSeguroTO T
+                  WHERE :pInicioVigencia &lt;= T.inicioVigencia 
+                 ORDER BY T.inicioVigencia DESC, T.fimVigencia DESC, T.taxa, T.idade, T.prazo
+            </query>                        
+        </named-query>
+        <named-query name="TaxaSeguro.listarPorFinalVigencia">
+            <query>
+                SELECT T
+                  FROM br.gov.caixa.ccr.dominio.transicao.TaxaSeguroTO T
+                  WHERE :pFimVigencia &gt;= T.fimVigencia
+                 ORDER BY T.inicioVigencia DESC, T.fimVigencia DESC, T.taxa, T.idade, T.prazo
+            </query>                        
+        </named-query>
+        <named-query name="TaxaSeguro.listarPorInicioFinalVigencia"> 
+            <query>
+                SELECT T
+                  FROM br.gov.caixa.ccr.dominio.transicao.TaxaSeguroTO T
+                  WHERE :pInicioVigencia &lt;= T.inicioVigencia
+                  AND :pFimVigencia &gt;= T.fimVigencia
+                 ORDER BY T.inicioVigencia DESC, T.fimVigencia DESC, T.taxa, T.idade, T.prazo
+            </query>                        
+        </named-query>
+        
+        <named-query name="TaxaSeguro.findVigente" >
+            <query>
+                SELECT T
+                  FROM br.gov.caixa.ccr.dominio.transicao.TaxaSeguroTO T
+                 WHERE SYSDATE >= DT_INICIO_VIGENCIA
+                   AND COALESCE(DT_FIM_VIGENCIA, SYSDATE) >= SYSDATE
+                   AND PZ_TAXA_SEGURO = :pPrazo
+                   AND NU_IDADE = :pIdade
+            </query>
+        </named-query>
+        <named-native-query name="TaxaSeguro.verificaVigenciaValida" result-class="br.gov.caixa.ccr.dominio.transicao.TaxaSeguroTO">
+            <query>
+                SELECT * FROM (
+                    SELECT PZ_TAXA_SEGURO, NU_IDADE, DT_INICIO_VIGENCIA,
+                           PC_TAXA_SEGURO, DT_FIM_VIGENCIA, CO_USUARIO_INCLUSAO, TS_INCLUSAO_TAXA,
+                           CO_USUARIO_FINALIZACAO, TS_INCLUSAO_FIM_VIGENCIA_TAXA
+                      FROM CCR.CCRTB007_TAXA_SEGURO                                     
+                     WHERE DT_INICIO_VIGENCIA &lt;&gt; :pInicioVigenciaChave
+                       AND PZ_TAXA_SEGURO &gt;= :pPrazoMin AND PZ_TAXA_SEGURO &lt;= :pPrazoMax
+                       AND NU_IDADE &gt;= :pIdadeMin AND NU_IDADE &lt;= :pIdadeMax
+                       AND ((DT_INICIO_VIGENCIA &gt;= :pInicioVigencia AND DT_INICIO_VIGENCIA &lt;= :pFimVigencia) OR   
+                            (DT_FIM_VIGENCIA &gt;= :pInicioVigencia AND DT_FIM_VIGENCIA &lt;= :pFimVigencia))
+                 )
+                 WHERE ROWNUM &lt;= 1
+            </query>
+        </named-native-query>
+        <named-native-query name="TaxaSeguro.verificaVigenciaValidaSemFim" result-class="br.gov.caixa.ccr.dominio.transicao.TaxaSeguroTO">
+            <query>
+                SELECT * FROM (
+                    SELECT PZ_TAXA_SEGURO, NU_IDADE, DT_INICIO_VIGENCIA,
+                           PC_TAXA_SEGURO, DT_FIM_VIGENCIA, CO_USUARIO_INCLUSAO, TS_INCLUSAO_TAXA,
+                           CO_USUARIO_FINALIZACAO, TS_INCLUSAO_FIM_VIGENCIA_TAXA
+                      FROM CCR.CCRTB007_TAXA_SEGURO                                     
+                     WHERE DT_INICIO_VIGENCIA &lt;&gt; :pInicioVigenciaChave
+                       AND PZ_TAXA_SEGURO &gt;= :pPrazoMin AND PZ_TAXA_SEGURO &lt;= :pPrazoMax
+                       AND NU_IDADE &gt;= :pIdadeMin AND NU_IDADE &lt;= :pIdadeMax                   
+                       AND DT_INICIO_VIGENCIA &gt;= :pInicioVigencia
+                 )
+                 WHERE ROWNUM &lt;= 1
+            </query>
+        </named-native-query>
+        <named-native-query name="TaxaSeguro.verificaVigenciaValidaInc" result-class="br.gov.caixa.ccr.dominio.transicao.TaxaSeguroTO">
+            <query>
+                SELECT * FROM (
+                    SELECT PZ_TAXA_SEGURO, NU_IDADE, DT_INICIO_VIGENCIA,
+                           PC_TAXA_SEGURO, DT_FIM_VIGENCIA, CO_USUARIO_INCLUSAO, TS_INCLUSAO_TAXA,
+                           CO_USUARIO_FINALIZACAO, TS_INCLUSAO_FIM_VIGENCIA_TAXA
+                      FROM CCR.CCRTB007_TAXA_SEGURO                                     
+                     WHERE PZ_TAXA_SEGURO &gt;= :pPrazoMin AND PZ_TAXA_SEGURO &lt;= :pPrazoMax
+                       AND NU_IDADE &gt;= :pIdadeMin AND NU_IDADE &lt;= :pIdadeMax                   
+                       AND ((DT_INICIO_VIGENCIA &gt;= :pInicioVigencia AND DT_INICIO_VIGENCIA &lt;= :pFimVigencia) OR   
+                            (DT_FIM_VIGENCIA &gt;= :pInicioVigencia AND DT_FIM_VIGENCIA &lt;= :pFimVigencia))
+                 )
+                 WHERE ROWNUM &lt;= 1
+            </query>
+        </named-native-query>
+        <named-native-query name="TaxaSeguro.verificaVigenciaValidaIncSemFim" result-class="br.gov.caixa.ccr.dominio.transicao.TaxaSeguroTO">
+            <query>
+                SELECT * FROM (
+                    SELECT PZ_TAXA_SEGURO, NU_IDADE, DT_INICIO_VIGENCIA,
+                           PC_TAXA_SEGURO, DT_FIM_VIGENCIA, CO_USUARIO_INCLUSAO, TS_INCLUSAO_TAXA,
+                           CO_USUARIO_FINALIZACAO, TS_INCLUSAO_FIM_VIGENCIA_TAXA
+                      FROM CCR.CCRTB007_TAXA_SEGURO                                     
+                     WHERE PZ_TAXA_SEGURO &gt;= :pPrazoMin AND PZ_TAXA_SEGURO &lt;= :pPrazoMax
+                       AND NU_IDADE &gt;= :pIdadeMin AND NU_IDADE &lt;= :pIdadeMax                   
+                       AND DT_INICIO_VIGENCIA &gt;= :pInicioVigencia
+                 )
+                 WHERE ROWNUM &lt;= 1
+            </query>
+        </named-native-query>
+        <named-native-query name="TaxaSeguro.incluir" result-class="br.gov.caixa.ccr.dominio.transicao.TaxaSeguroTO">
+            <query>
+                INSERT INTO CCR.CCRTB007_TAXA_SEGURO
+                       (PZ_TAXA_SEGURO, NU_IDADE, DT_INICIO_VIGENCIA, PC_TAXA_SEGURO, DT_FIM_VIGENCIA,
+                        CO_USUARIO_INCLUSAO, TS_INCLUSAO_TAXA, CO_USUARIO_FINALIZACAO, TS_INCLUSAO_FIM_VIGENCIA_TAXA)
+                VALUES (:pPrazo, :pIdade, :pInicioVigencia, :pTaxa, :pFimVigencia,
+                        :pCoUsuarioInclusao, :pTsInclusao, :pCoUsuarioFinalizacao, :pTsInclusaoFimVigencia)
+            </query>                        
+        </named-native-query>
+        <named-native-query name="TaxaSeguro.excluirRange" result-class="br.gov.caixa.ccr.dominio.transicao.TaxaSeguroTO">
+            <query>
+                DELETE FROM CCR.CCRTB007_TAXA_SEGURO
+                 WHERE PZ_TAXA_SEGURO &gt;= :pPrazoMin AND PZ_TAXA_SEGURO &lt;= :pPrazoMax
+                   AND NU_IDADE &gt;= :pIdadeMin AND NU_IDADE &lt;= :pIdadeMax
+                   AND DT_INICIO_VIGENCIA = :pInicioVigencia
+                   
+            </query>
+        </named-native-query>
+        <named-native-query name="TaxaSeguro.atualizarVigencia" result-class="br.gov.caixa.ccr.dominio.transicao.TaxaSeguroTO">
+            <query>
+                UPDATE CCR.CCRTB007_TAXA_SEGURO                 
+                   SET DT_FIM_VIGENCIA = :pFimVigencia,
+                          CO_USUARIO_FINALIZACAO = :pCoUsuarioFinalizacao,
+                          TS_INCLUSAO_FIM_VIGENCIA_TAXA = :pTsInclusaoFimVigencia
+                 WHERE PZ_TAXA_SEGURO = :pPrazo
+                   AND NU_IDADE = :pIdade                                    
+                   AND DT_INICIO_VIGENCIA = (SELECT MAX(DT_INICIO_VIGENCIA) FROM CCR.CCRTB007_TAXA_SEGURO
+                                                 WHERE PZ_TAXA_SEGURO = :pPrazo AND NU_IDADE = :pIdade)
+                   AND DT_FIM_VIGENCIA IS NULL         
+            </query>
+        </named-native-query>
+        <named-native-query name="TaxaSeguro.atualizar" result-class="br.gov.caixa.ccr.dominio.transicao.TaxaSeguroTO">
+            <query>
+                UPDATE CCR.CCRTB007_TAXA_SEGURO                 
+                   SET PC_TAXA_SEGURO = :pTaxa
+                 WHERE DT_INICIO_VIGENCIA = :pInicioVigenciaAnterior
+                   AND PZ_TAXA_SEGURO &gt;= :pPrazoMin AND PZ_TAXA_SEGURO &lt;= :pPrazoMax
+                   AND NU_IDADE &gt;= :pIdadeMin AND NU_IDADE &lt;= :pIdadeMax
+            </query>
+        </named-native-query>
+        <named-native-query name="TaxaSeguro.atualizarPrazoIdadeDeleteMaior" result-class="br.gov.caixa.ccr.dominio.transicao.TaxaSeguroTO">
+            <query>
+                DELETE FROM CCR.CCRTB007_TAXA_SEGURO
+                 WHERE PZ_TAXA_SEGURO = :pPrazo
+                   AND DT_INICIO_VIGENCIA = :pInicioVigencia
+                   AND NU_IDADE &lt;= :pIdade 
+            </query>
+        </named-native-query>  
+        <named-native-query name="TaxaSeguro.atualizarPrazoIdadeDeleteMenor" result-class="br.gov.caixa.ccr.dominio.transicao.TaxaSeguroTO">
+            <query>
+                DELETE FROM CCR.CCRTB007_TAXA_SEGURO
+                 WHERE PZ_TAXA_SEGURO = :pPrazo
+                   AND DT_INICIO_VIGENCIA = :pInicioVigencia
+                   AND NU_IDADE &gt;= :pIdade                                   
+            </query>
+        </named-native-query>       
+        <named-native-query name="TaxaSeguro.atualizarIdadeDelete" result-class="br.gov.caixa.ccr.dominio.transicao.TaxaSeguroTO">
+            <query>
+                DELETE FROM CCR.CCRTB007_TAXA_SEGURO
+                 WHERE PZ_TAXA_SEGURO = :pPrazo
+                   AND NU_IDADE = :pIdade
+                   AND DT_INICIO_VIGENCIA = :pInicioVigencia   
+            </query>
+        </named-native-query>
+        <named-native-query name="TaxaSeguro.atualizarFimVigencia" result-class="br.gov.caixa.ccr.dominio.transicao.TaxaSeguroTO">
+            <query>
+                UPDATE CCR.CCRTB007_TAXA_SEGURO                 
+                   SET DT_FIM_VIGENCIA = :pFimVigencia,
+                          CO_USUARIO_FINALIZACAO = :pCoUsuarioFinalizacao,
+                          TS_INCLUSAO_FIM_VIGENCIA_TAXA = :pTsInclusaoFimVigencia
+                 WHERE DT_INICIO_VIGENCIA = :pInicioVigencia
+                   AND PZ_TAXA_SEGURO &gt;= :pPrazoMin AND PZ_TAXA_SEGURO &lt;= :pPrazoMax
+                   AND NU_IDADE &gt;= :pIdadeMin AND NU_IDADE &lt;= :pIdadeMax         
+            </query>
+        </named-native-query>
+        
+        <named-native-query name="TaxaSeguro.fecharVigenciaAberta" result-class="br.gov.caixa.ccr.dominio.transicao.TaxaIOFTO">
+			<query>
+				UPDATE CCR.CCRTB007_TAXA_SEGURO
+				   SET DT_FIM_VIGENCIA = :pFimVigencia,
+				   	   CO_USUARIO_FINALIZACAO = :pCoUsuarioFinalizacao, 
+				   	   TS_INCLUSAO_FIM_VIGENCIA_TAXA = :pTsInclusaoFimVigencia
+				 WHERE PZ_TAXA_SEGURO = (SELECT MAX(PZ_TAXA_SEGURO) FROM CCR.CCRTB007_TAXA_SEGURO WHERE DT_FIM_VIGENCIA IS NULL)
+				 AND DT_INICIO_VIGENCIA = (SELECT MAX(DT_INICIO_VIGENCIA) FROM CCR.CCRTB007_TAXA_SEGURO WHERE DT_FIM_VIGENCIA IS NULL)
+			</query>			
+		</named-native-query>	
+    </entity>
+</entity-mappings>

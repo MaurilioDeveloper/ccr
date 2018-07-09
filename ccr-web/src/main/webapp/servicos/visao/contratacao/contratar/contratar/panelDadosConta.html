@@ -1,0 +1,98 @@
+<div class="panel panel-default">
+    <div class="panel-heading" role="tab">			
+     		<h3 class="panel-title">
+			<span class="icon-user"> </span> Conta
+		</h3>
+	</div>
+   	<div class="panel-body">
+		<div class="control-group">
+			<label class="control-label"><span class="obrigatorio">*</span>Conta:</label>
+			<div class="controls">
+            	<select id="contasCorrentes" name="contasCorrentes"  class="span3" validators="required"></select>	
+			</div>
+		</div>
+	</div>
+</div>
+<div class="form-actions" align="center">
+    <button type="button" class="btn btn-primary hide" id="btnImprimirContrato">Imprimir Contrato</button>
+	<button type="button" class="btn btn-primary hide" id="btnContratar">Contratar</button>
+</div>
+
+
+
+<!-- MODAL CONTRATAR -->
+<div id="divModalImprimir" class="modal hide fade" aria-hidden="true" aria-labelledby="myModalLabel" data-backdrop="static" role="dialog" tabindex="-1">
+	<div class="modal-header">
+	    <h3>Imprimir</h3>
+	</div>
+	<div class="modal-body">
+		<form class="form-horizontal" >
+			<div class="control-group">
+				<label class="control-label">N&uacute;mero Contrato:</label>
+				<div class="controls medio resultado"><label id="numContrato"/></div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Data:</label>
+				<div class="controls medio resultado"><label id="dataLiberacao"><%= dados.simulacao.attributes.camposComuns.data %></label></div>
+			</div>
+			<div class="control-group">			
+				<label class="control-label">CPF:</label>
+				<div class="controls medio resultado"><label id="cpfCliente"><%= dados.cpf %></label></div>
+				
+			</div>
+			<div class="control-group">
+				<label class="control-label">Nome:</label>
+				<div class="controls medio resultado"><label id="nomeCliente"><%= dados.nomeCliente %></label></div>
+			</div>
+			<div class="control-group">
+				<label class="control-label"><span class="obrigatorio">*</span>Local:</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="inputImprimiLocal" validators="required" maxlength="35"/>
+				</div>	
+			</div>
+			<div class="control-group">
+				<label class="control-label"><span id="spanImprimiGerenteResp" class="obrigatorio"></span>Gerente Respons&aacute;vel:</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="inputImprimiGerenteResp"  maxlength="70"/>
+				</div>	
+			</div>
+			<div class="control-group">
+				<label class="control-label"><span id="spanImprimiCPFGerenteResp"  class="obrigatorio"></span>CPF Gerente:</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge cpf"   id="inputImprimiCPFGerente"/>
+				</div>	
+			</div>		
+			<div class="control-group">
+				<label class="control-label"><span id="spanImprimiTestemunha1"  class="obrigatorio"></span>Testemunha 1:</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="inputImprimiTestemunha1" maxlength="70"/>
+				</div>	
+			</div>
+			<div class="control-group">
+				<label class="control-label"><span id="spanImprimiCPFTestemunha1"  class="obrigatorio"></span>CPF Testemunha 1:</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge cpf"  id="inputImprimiCPFTestemunha1"/>
+				</div>	
+			</div>
+			<div class="control-group">
+				<label class="control-label"><span id="spanImprimiTestemunha2"  class="obrigatorio"></span>Testemunha 2:</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge"  id="inputImprimiTestemunha2" maxlength="70"/>
+				</div>	
+			</div>
+			<div class="control-group">
+				<label class="control-label"><span id="spanImprimiCPFTestemunha2"  class="obrigatorio"></span>CPF Testemunha 2:</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge cpf" id="inputImprimiCPFTestemunha2" />
+				</div>	
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<div align="center">		
+			<a class="btn btn-primary" id="btnImprimir"><i class="icon"></i>Imprimir</a>
+		    <a class="btn" id="btnFecharImpressao">Fechar</a>
+		</div>
+  	</div>
+</div>
+

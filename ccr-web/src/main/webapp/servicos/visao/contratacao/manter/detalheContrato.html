@@ -1,0 +1,292 @@
+<fieldset>
+	<form class="form-horizontal" id="formDetalheContrato">
+		<div class="row-fluid">
+		  <div class="span7"><h1>Detalhar</h1></div>
+		  <div class="span5" align="right">		
+		  	<ul class="breadcrumb" align="right">
+				<li><span><b>Ag&ecirc;ncia Concessora:</b> <%= agencia %></span></li><br>
+				<li><span><b>N&uacute;mero Contrato:</b> <%=contrato.nuContrato %></span></li>
+			</ul>
+		  </div>
+		</div>
+		<div class="panel-group" id="divDadosCliente">
+			<div class="panel panel-default">
+				<div class="panel-heading" id="dadosClienteHeading">
+					<div class="row">
+						<h3 class="panel-title">
+							<span class="icon-user"> </span> Dados Cliente
+						</h3>
+					</div>
+				</div>
+				<div class="panel-body" id="dadosClienteBody">
+					<div class="control-group">
+						<label class="control-label">Convenente:</label>
+						<div class="controls medio resultado"><%= formatadores.formatarCNPJ(contrato.convenioTO.cnpjConvenente) %></div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">Conv&ecirc;nio:</label>
+						<div class="controls medio resultado"><%=contrato.convenioTO.id %> - <%=contrato.convenioTO.nome %></div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">CNPJ:</label>
+						<div class="controls medio resultado"><%= formatadores.formatarCNPJ(contrato.nuCnpjFontePagadora) %></td></div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">Nome:</label>
+						<div class="controls medio resultado"><%=contrato.nomeCliente %></div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">CPF:</label>
+						<div class="controls medio resultado"><%=formatadores.formatarCPF(contrato.nuCpf)%></div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">Matr&iacute;cula:</label>
+						<div class="controls medio resultado"><%=contrato.coMatriculaCliente %></div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">Conta:</label>
+						<div class="controls medio resultado"><%=formatadores.formatarNumeroContaCompleto(contrato.nuContaCredito+contrato.nuDvContaCredito)%></div>
+					</div>
+				</div>	
+			</div>
+		</div>
+		<div class="panel-group" id="divDadosContrato">
+			<div class="panel panel-default">
+				<div class="panel-heading" id="dadosContratoHeading">
+					<div class="row">
+						<h3 class="panel-title">
+							<span class="icon-user"/>Dados Contrato
+						</h3>
+					</div>
+				</div>
+				<div class="panel-body" style="width: 98%" id="dadosContratoBody"> 
+					<table class="table table-bordered table-striped responsive-utilities">
+						<thead>
+					      <tr>
+					        <th colspan="2">Valores</th>
+					      </tr>
+					    </thead>
+						<tr>
+							<td width="50%">Valor Contrato</td>
+							<td><%= formatadores.formatarMoeda(contrato.vrContrato) %></td>
+						</tr>
+						<tr>
+							<td>Valor Total Contrato</td>
+							<td><%=formatadores.formatarMoeda(contrato.vrTotalContrato) %></td>
+						</tr>
+						<tr>
+							<td>Valor L&iacute;quido</td>
+							<td><%= formatadores.formatarMoeda(contrato.vrLiquidoContrato) %></td>
+						</tr>
+						<tr>
+							<td>Valor Presta&ccedil;&atilde;o</td>
+							<td><%= formatadores.formatarMoeda(contrato.vrPrestacao) %></td>
+						</tr>
+						<tr>
+							<td>Valor IOF</td>
+							<td><%= formatadores.formatarMoeda(contrato.vrIof) %></td>
+						</tr>
+						<tr>
+							<td>Valor Juros Acerto</td>
+							<td><%= formatadores.formatarMoeda(contrato.vrJuroAcerto) %></td>
+						</tr>
+						<tr>
+							<td>Valor Seguro Prestamista</td>
+							<td><%= formatadores.formatarMoeda(contrato.vrSeguroPrestamista) %></td>
+						</tr>
+					</table>
+					<table class="table table-bordered table-striped responsive-utilities">
+						<thead>
+					      <tr>
+					        <th colspan="2">Datas e Prazos</th>
+					      </tr>
+					    </thead>
+						<tr>
+							<td width="50%">Data Libera&ccedil;&atilde;o Cr&eacute;dito</td>
+							<td><%= formatTimeStamp(contrato.dtLiberacaoCredito, 'dd/MM/yyyy')%></td>
+						</tr>
+						<tr>
+							<td>Data Base C&aacute;lculo 1&ordf; Presta&ccedil;&atilde;o</td>
+							<td><%= formatTimeStamp(contrato.dtBaseCalculo, 'dd/MM/yyyy')%></td>
+						</tr>
+						<tr>
+							<td>Quantidade Dias Juros Acerto</td>
+							<td><%= contrato.qtDiaJuroAcerto %></td>
+						</tr>
+						<tr>
+							<td>Data Vencimento Contrato</td>
+							<td><%= formatTimeStamp(contrato.dtVencimento, 'dd/MM/yyyy')%></td>
+						</tr>
+						<tr>
+							<td>Prazo Contrato</td>
+							<td><%=contrato.pzContrato%></td>
+						</tr>
+					</table>
+					<table class="table table-bordered table-striped responsive-utilities">
+						<thead>
+					      <tr>
+					        <th colspan="2">Taxas</th>
+					      </tr>
+					    </thead>
+						<tr>
+							<td width="50%">Taxas Juros</td>
+							<td><%= formatadores.formatarTaxa(contrato.pcTaxaSeguro,2) %> %</td>
+						</tr>
+						<tr class="btn-toggle-popupcet">
+							<td class="btn-link ">CET Mensal</td>
+							<td class="btn-link "><%= formatadores.formatarTaxa(contrato.pcCetMensal,2) %></td>
+						</tr>
+						<tr class="btn-toggle-popupcet">
+							<td class="btn-link">CET Anual</td>
+							<td class="btn-link"><%= formatadores.formatarTaxa(contrato.pcCetAnual,2) %></td>
+						</tr>
+					</table>					
+				</div>	
+			</div>	
+		</div>
+		<div class="panel-group" id="divHistorico">
+			<div class="panel panel-default">
+				<div class="panel-heading" id="historicoHeading">
+					<div class="row">
+						<h3 class="panel-title">
+							<span class="icon-user"/>Hist&oacute;rico
+						</h3>
+					</div>
+				</div>
+				<div class="panel-body" style="width: 98%" id="historicoBody"> 
+					<table class="table table-bordered table-striped responsive-utilities">
+						<thead>
+					      <tr>
+					        <th>Data</th>
+					        <th>Situa&ccedil;&atilde;o</th>
+					        <th>Usu&aacute;rio</th>
+					      </tr>
+					    </thead>
+					    <% $.each(autorizacoes, function() { %>
+						<tr>
+							<td><%= formatTimeStamp(this.dtSituacao, 'dd/MM/yyyy hh:mm:ss')%></td>		
+							<% if (this.codigoSituacao == 'N') { %>
+								<td id="contratoNegado" sc="<%= this.nuSituacaoContrato %>" class="btn-link <%= this.nuSituacaoContrato %>"><%= this.descSituacao %></td>
+							<% } else { %>
+								<td><%= this.descSituacao %></td>
+							<% } %>
+							<td><%= this.usuario %></td>
+						</tr>
+						<% }); %>	
+					</table>
+				</div>					
+			</div>
+		</div>
+		<% if (contrato.avaliacaoCliente != null) { %>
+		<div class="panel-group" id="divAvaliacaoCliente">
+			<div class="panel panel-default">
+				<div class="panel-heading" id="avaliacaoClienteHeading">
+					<div class="row">
+						<h3 class="panel-title">
+							<span class="icon-user" />Avalia&ccedil;&atilde;o Cliente
+						</h3>
+					</div>
+				</div>
+				<div class="panel-body" id="avaliacaoClienteBody" hidden="true">
+					<div class="control-group">
+						<label class="control-label">C&oacute;digo:</label>
+						<div class="controls medio resultado"><%=
+							contrato.avaliacaoCliente.nuAvaliacao %></div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">Produto:</label>
+						<div class="controls medio resultado"><%=
+							contrato.avaliacaoCliente.noProduto %></div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">Resultado:</label>
+						<div class="controls medio resultado"><%=
+							contrato.avaliacaoCliente.noResultado %></div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">Valor Dispon&iacute;vel:</label>
+						<div class="controls medio resultado"><%=formatadores.formatarMoeda(contrato.avaliacaoCliente.vrMaximoEmprestimo)
+							%></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<% } %>
+		<% if (contrato.avaliacaoOperacao != null) { %>
+		<div class="panel-group" id="divAvaliacaoOperacao">
+			<div class="panel panel-default">
+				<div class="panel-heading" id="avaliacaoOperacaoHeading">
+					<div class="row">
+						<h3 class="panel-title">
+							<span class="icon-user"/>Avalia&ccedil;&atilde;o Opera&ccedil;&atilde;o
+						</h3>
+					</div>
+				</div>
+				<div class="panel-body" id="avaliacaoOperacaoBody" hidden="true">
+					<div class="control-group">
+						<label class="control-label">C&oacute;digo:</label>
+						<div class="controls medio resultado"><%= contrato.avaliacaoOperacao.nuAvaliacao %></div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">Data In&iacute;cio Validade:</label>
+						<div class="controls medio resultado"><%= formatTimeStamp(contrato.avaliacaoOperacao.dtInicoAvaliacao, 'dd/MM/yyyy')%></div>
+					</div>	
+					<div class="control-group">
+						<label class="control-label">Data Fim Validade:</label>
+						<div class="controls medio resultado"><%= formatTimeStamp(contrato.avaliacaoOperacao.dtFimAvaliacao, 'dd/MM/yyyy')%></div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">Prazo:</label>
+						<div class="controls medio resultado"><%= contrato.avaliacaoOperacao.nuPrazoMxmoEmprestimo %></div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">Rating:</label>
+						<div class="controls medio resultado"><%= contrato.avaliacaoOperacao.nuRatingAvaliacao %></div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">Valor M&aacute;ximo Presta&ccedil;&atilde;o:</label>
+						<div class="controls medio resultado"><%= formatadores.formatarMoeda(contrato.avaliacaoOperacao.vrMaximoPrestacao) %></div>
+					</div>
+					<div class="control-group hide" id="divBloaqueadaAlcada">
+						<label class="control-label">Bloqueada Al&ccedil;ada:</label>
+						<div class="controls medio resultado">Sim</div>
+					</div>
+				</div>				
+			</div>
+		</div>
+		<% } %>
+	</form>
+	<div class="form-actions" align="center">
+		<a href="#" id="btnVoltar" class="btn btnVoltar">Voltar</a>
+	</div>
+</fieldset>
+
+<!-- Modal de Justificativa de (“Autorização Gerencial Negada” ou “Autorização Conformidade Negada”)  -->
+<div id="divFormulario" class="modal hide fade" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" data-backdrop="static"
+ tabindex="-1">
+	<div class="modal-header">
+		<div align="center">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			<h3 style="color: #1c60ab" class="title" id="divTituloForm">Justificativa</h3>
+		</div>
+	</div>
+	<div class="modal-body">
+		<form class="form-horizontal" id="formJustificativaContrato">
+			<div id="justificativaContrato" class="control-group" align="center">
+				<textarea  
+					  class="span5" cols="80" rows="6" id="justificativa" maxlength="100" disabled="true"><%= contrato.justificativa %></textarea>
+			</div>
+		</form>
+	</div>
+	<!-- BOTOES DE ACAO -->
+	<div class="modal-footer">
+		<div align="center" id="divAcoesJustificativaContrato">
+			<a class="btn" id="btnVoltarModal">Voltar</a>
+		</div>
+	</div>
+
+</div>
+
+<div id="divModalCET" class="modal2 hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-body" id="divModalCETBody"/>
+</div>

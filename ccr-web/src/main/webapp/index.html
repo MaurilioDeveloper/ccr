@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<title>SICCR - Sistema de Controle de Cr&eacute;dito</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- Estilo CSS -->
+<link href="layout/css/bootstrap.css" rel="stylesheet">
+<link href="layout/css/bootstrap-responsive.css" rel="stylesheet">
+<link href="layout/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+<link href="layout/css/jquery.dataTables.css" rel="stylesheet">
+<link href="layout/css/DT_bootstrap.css" rel="stylesheet">
+<link href="layout/css/fuelux.wizard.css" rel="stylesheet">
+<link href="layout/css/chosen.css" rel="stylesheet">
+<link href="layout/css/style.css" rel="stylesheet">
+<link href="css/fuelux.wizard.ccr.css" rel="stylesheet">
+<link href="css/estilo.css" rel="stylesheet">
+
+<!-- bootstrap 3.2.0 -->
+<link href="layout/bootstrap-3.2.0/css/bootstrap.css" rel="stylesheet">
+
+<!-- HTML5 shim, elementos HTML 5 para suporte ao IE6-8 -->
+<!--[if lt IE 9]>
+      <script src="layout/js/html5shiv.js"></script>
+    <![endif]-->
+
+<!-- Fav e icones touch mobile -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="layout/img/ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="layout/img/ico/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="layout/img/ico/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="layout/img/ico/apple-touch-icon-57-precomposed.png">
+<link rel="shortcut icon" href="layout/img/ico/favicon.png">
+</head>
+
+<ul id="atalhos">
+	<li><a href="#container" accesskey="c" title="Ir para conteúdo, pressione {Alt+c}">Ir para conteúdo [1]</a></li>
+	<li><a href="#nav" accesskey="m" title="Ir para conteúdo, pressione {Alt+m}">Ir para menu principal[2]</a></li>
+	<li><a href="#navbar-search" accesskey="p"
+		title="Ir para conteúdo, pressione {Alt+p}">Ir para pesquisa [3]</a></li>
+</ul>
+
+<header id="header" class="navbar navbar-inverse navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container-fluid">
+			<button type="button" class="btn btn-navbar" data-toggle="collapse"
+				data-target=".nav-collapse">
+				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+
+			<a href="#" class="brand links-menu">SICCR</a>
+			<div class="nav-collapse collapse hide">
+				<ul class="nav">
+					<li class="divider-vertical"></li>
+					<li><a href="../ccr-web/index.html" class="links-menu"><i class="icon-home icon-white"></i> In&iacute;cio</a></li>
+	
+					<li class="divider-vertical"></li>
+					
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<i class="icon-th-list icon-white"></i> Administra&ccedil;&atilde;o <b class="caret"></b>
+						</a>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+							<li><a id="consultarAuditoria" class="links-menu" href="#">Consultar Auditoria</a></li>
+							<li><a id="gerenciadorProcesso" class="links-menu" href="#">Gerenciador de Processo</a></li>
+							<li><a id="consultarLog" class="links-menu" href="#">Consultar Log</a></li>
+							<li><a id="manterConvenente" class="links-menu" href="#">Manter Conv&ecirc;nio</a></li>
+							
+							<li class="dropdown-submenu">
+								<a href="#" class="links-menu">Manter Taxa</a>
+								<ul class="dropdown-menu">								
+									<li><a id="manterTaxaIOF" class="links-menu" href="#">Taxa IOF</a></li>
+									<li><a id="manterTaxaJuros" class="links-menu" href="#">Taxa Juros</a></li>
+									<li><a id="manterTaxaSeguro" class="links-menu" href="#">Taxa Seguro</a></li>
+								</ul>
+							</li>							
+						</ul>
+					</li>					
+					
+					<li class="divider-vertical"></li>
+					
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<i class="icon-barcode icon-white"></i> Contrato <b class="caret"></b>
+						</a>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+							<li><a id="autorizarContrato" class="links-menu" href="#">Autorizar</a></li>
+							<!-- li><a id="consultarSituacaoContrato" class="links-menu" href="#">Consultar Situa&ccedil;&atilde;o</a></li -->
+							<li><a id="simularCreditoConsignado" class="links-menu" href="#">Contratar</a></li>
+							
+							<!-- li class="dropdown-submenu">
+								<a href="#" class="links-menu">Estorno</a>
+								<ul class="dropdown-menu">	
+									<li><a id="historicoEstorno" class="links-menu" href="#">Consultar Hist&oacute;rico</a></li>
+									<li><a id="estornoCreditoConsignado" class="links-menu" href="#">Efetivar Estorno</a></li>			
+								</ul>
+							</li-->							
+							
+						</ul>
+					</li>
+					
+					<li class="divider-vertical"></li>
+					<li><a href="#" class="links-menu" id="simularAberto"><i class="icon-tasks icon-white"></i> Simula&ccedil;&atilde;o Aberta</a></li>
+					
+					<li class="divider-vertical"></li>
+										
+				</ul>
+			</div>
+			<div class="brand-right">
+				<a class="logocaixa" href="#">CAIXA ECON&Ocirc;MICA FEDERAL</a>
+			</div>
+			<ul class="nav pull-right">
+				<li class="divider-vertical"></li>
+				<li class="dropdown">
+					<a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-user icon-white"></i> <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><span id="usuario"></span> <span id="matricula"></span></li>
+						<li class="divider"></li>
+						<li><a href="/ccr-web/AppServlet"><i class="icon-off"></i> Sair</a></li>
+					</ul>
+				</li>
+				<li class="divider-vertical"></li>
+			</ul>
+
+
+		</div>
+	</div>
+</header>
+
+<!-- Container de mensagens -->
+<div id="messageContainer" class="container-fluid msg-fixed-top"></div>
+
+<!-- Conteudo -->
+<div id="container" class="container-fluid">
+
+</div>
+<!-- Fim conteudo -->
+
+<!-- Inicio modal com as versoes -->
+<div id="modal"></div>
+<!-- Fim modal com as versoes -->
+
+<!-- Rodape -->
+<footer id="footer" class="navbar-fixed-bottom">
+	<div class="container-fluid">
+		<p>
+			CAIXA/CEDESBR | <a id="linkModalVersoes" href="#" data-toggle="modal">Versão 1.0.0</a>
+		</p>
+	</div>
+</footer>
+<!-- Fim rodape -->
+
+<div id="ajaxStatus" class="fade hide">
+	<img src='layout/img/loading.gif' />
+	<p id="ajaxStatusMessage"></p>
+</div>
+
+<!-- javascript -->
+<script src="layout/js/jquery.js"></script>
+<script src="layout/js/bootstrap.js"></script>
+<script src="layout/js/underscore-min.js"></script>
+<script src="layout/js/backbone-min.js"></script>
+<script src="layout/js/jquery.i18n.properties-min-1.0.9.js"></script>
+<script src="layout/js/bootstrap-datetimepicker.min.js"></script>
+<script src="layout/js/jquery.dataTables.js"></script>
+<script src="layout/js/DT_bootstrap.js"></script>
+<script src="layout/js/jquery.alphanum.js"></script>
+<script src="layout/js/jquery.price-format.min.js"></script>
+<script src="layout/js/jquery.maskedinput.min.js"></script>
+<script src="layout/js/mask-conf.js"></script>
+<script src="layout/js/jqBootstrapValidation.js"></script>
+<script src="layout/js/jquery-ui.min.js"></script>
+<script src="layout/js/fuelux.wizard.js"></script>
+<script src="layout/js/jquery-barcode.js"></script>
+<script src="layout/js/chart.js"></script>
+<script src="layout/js/chosen.jquery.js"></script>
+
+<script src="resources/js/comp/prototype.js"></script>
+<script src="resources/js/comp/ajax-status.js"></script>
+<script src="resources/js/comp/bundle.js"></script>
+<script src="resources/js/comp/message.js"></script>
+<script src="resources/js/comp/growl-message.js"></script>
+<script src="resources/js/comp/navigator.js"></script>
+<script src="resources/js/comp/error.js"></script>
+<script src="resources/js/comp/broker.js"></script>
+<script src="resources/js/comp/validator.js"></script>
+<script src="resources/js/comp/ui.js"></script>
+<script src="resources/js/comp/data.js"></script>
+<script src="resources/js/comp/accounting.js"></script>
+<script src="resources/js/comp/ui-controls.js"></script>
+<script src="resources/js/comp/controller.js"></script>
+<script src="resources/js/comp/userProfile.js"></script>
+
+<script type="text/javascript" src="../ccr-web/resources/js/mask-conf.js"></script>
+<script type="text/javascript" src="../ccr-web/resources/js/lib/jquery.fileDownload.js"></script>
+<script type="text/javascript" src="../ccr-web/resources/js/backboneComponents/utils.js"></script> 
+
+<script type="text/javascript" src="js/backbone-relational.js"></script>
+
+<script type="text/javascript" src="../ccr-web/js/util/date.js"></script>
+<script type="text/javascript" src="../ccr-web/js/util/carregar.js"></script>
+<script type="text/javascript" src="../ccr-web/js/util/mascaras.js"></script>
+<script type="text/javascript" src="../ccr-web/js/util/formatadores.js"></script>
+<script type="text/javascript" src="../ccr-web/js/util/validadores/DataValidador.js"></script>
+<script type="text/javascript" src="../ccr-web/js/util/validadores/FormCompostoValidador.js"></script>
+<script type="text/javascript" src="../ccr-web/js/util/validadores/NumeroValidador.js"></script>
+<script type="text/javascript" src="../ccr-web/js/util/formatadores/StringFormatador.js"></script>
+<script type="text/javascript" src="../ccr-web/js/util/formatadores/ContaFormatador.js"></script>
+<script type="text/javascript" src="../ccr-web/js/util/modelo/usuario.js"></script>
+<script type="text/javascript" src="../ccr-web/js/fuelux.wizard.ccr.js"></script>
+
+<script type="text/javascript" src="../ccr-web/require/lib/require.js"></script>
+<script type="text/javascript" src="../ccr-web/require/main.js"></script>
+
+<script src="resources/js/global-services.js"></script>
+<script src="resources/js/global.js"></script>
+<script src="resources/js/comboUtils.js"></script>
+<script src="js/util/date.js"></script>
+
+<script>
+	loadCCR.start();
+
+	$.ajaxSetup({		
+		cache : false // Disable caching of AJAX responses
+	});
+
+	$(document).ajaxComplete(function(event, xhr, settings) {
+		if (xhr.responseText.indexOf('|## TELA LOGIN SICCR ##|') > -1)
+			location.href = '../ccr-web/errorExpirado.html';
+	});
+
+	$(document).ready(function() {
+		$('#ajaxStatus').on('hidden', function() {
+			$('.modal-backdrop').each(function(b) {
+				this.remove();
+			});
+		});
+	});
+	
+	//Carrega o arquivo de inicialização
+	requireCCR(['app'], function(App){
+		console.log('main - init');
+
+		$caixa.userProfileGroups.loadgroups();
+		$caixa.userProfile.load('usuario', 'matricula');
+		
+		//Inicialização do sistema
+	   	App.initialize();
+		
+	   	loadCCR.stop();
+	   	
+		console.log('main - end');
+	});
+	
+</script>
+<script src="layout/js/scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="1.0" 
+	xmlns="http://java.sun.com/xml/ns/persistence/orm" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd ">
+	
+	<entity name="CCRTB047_CONVENIO_SR" class="br.gov.caixa.ccr.dominio.transicao.ConvenioSrTO">
+		<named-query name="ConvenioSrTO.consultarAbrangencia">
+			<query>
+				SELECT T
+				  FROM br.gov.caixa.ccr.dominio.transicao.ConvenioSrTO T
+			</query>
+		</named-query>
+		
+		<named-query name="ConvenioSrTO.consultarAbrangenciaPorID">
+			<query>
+				SELECT T
+				  FROM br.gov.caixa.ccr.dominio.transicao.ConvenioSrTO T
+				  WHERE T.id LIKE :pId 
+			</query>
+		</named-query>
+					
+	</entity>
+</entity-mappings>

@@ -1,0 +1,42 @@
+<div class="form-horizontal">
+	<div class="panel-group" id="divAvaliacaoCliente">
+		<div class="panel panel-default">
+			<div class="panel-heading" id="avaliacaoHeading">
+				<div class="row">
+					<h3 class="panel-title">
+						<span class="icon-user"> </span> Avalia&ccedil;&atilde;o Cliente
+					</h3>
+				</div>
+			</div>
+			<div class="panel-body" id="avaliacaoBody">
+				<div class="control-group">
+					<label class="control-label">C&oacute;digo:</label>
+					<div class="controls medio resultado"><%=avaliacao.codigoAvaliacao%></div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Resultado:</label>
+					<div class="controls medio resultado"><%=avaliacao.situacao%></div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Rating:</label>
+					<div class="controls medio resultado"><%=avaliacao.rating%></td></div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Validade:</label>
+					<div class="controls medio resultado"><%= formatadores.formatarData(avaliacao.dataFimValidade)%></div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Valor CPM:</label>
+					<div class="controls medio resultado"><%= formatadores.formatarMoeda(avaliacao.valorLimiteCPM)%></div>
+				</div>
+			</div>	
+		</div>
+	</div>
+	<div class="form-actions" align="center">
+			<button type="button" class="btn btn-primary hidden" id="btnDesbloquar">Desbloquear</button>
+	</div>
+</div>
+
+<div id="divResultadoSimulacao" tabindex="-1"></div>
+<div id="divPanelAvaliacaOperacao" tabindex="-1"></div>
+

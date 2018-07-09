@@ -1,0 +1,48 @@
+<!-- Conteudo -->
+<div id="cabecalho">
+	<ul class="breadcrumb">
+		<li><a href="index.html">In&iacute;cio</a> <span class="divider">&gt;</span></li>
+		<li class="active">Agendador Envio Contrato SIAPX</li>
+	</ul>
+
+	<h1>Agendador Envio Contrato SIAPX</h1>
+	<br />
+</div>
+<form class="form-horizontal" name="formAgendadorContrato" id="formAgendadorContrato">
+	<fieldset class="label-large">
+		<legend>Informar parâmetros</legend>
+
+		<div class="control-group horaSolicitar">
+			<label class="control-label">Hora de solicitar (Envia
+				Contrato SIAPX):</label>
+			<div class="controls">
+				<div class="input-append time" id="inicio">
+					<input type="text" id="horaInicio"
+						class="input-small hora-min" data-format="hh:mm" validators="required,horaCompleta"
+						placeholder="In&iacute;cio" value="<%= dadosProcesso.horaInicio %>" /> <span
+						class="add-on"> <i data-time-icon="icon-time" class="icon-time"
+						data-date-icon="icon-calendar"></i>
+					</span>
+				</div>
+				<div class="input-append time">
+					<input type="text" id="horaFim"
+						class="input-small hora-min" data-format="hh:mm" placeholder="Fim"
+						validators="required,horaCompleta"
+						value="<%= dadosProcesso.horaFim %>" /> <span class="add-on"> <i
+						data-time-icon="icon-time" data-date-icon="icon-calendar" class="icon-time"></i>
+					</span>
+				</div>
+				<div class="input-append intervalo">
+                    <label class="control-label" style="width: 140px;margin-left: 10px;">Intervalo (em minutos): </label>
+                    <input type="number" id="intervaloSIAPX" class="input-small" min="1" max="59" class="span2" placeholder="" value="<%= dadosProcesso.intervalo %>"/>
+                </div>
+			</div>
+		</div>
+
+	</fieldset>
+</form>
+<div class="form-actions">
+	<button id="btnSalvar" type="button" class="btn btn-primary ">Salvar</button>
+	<button id="btnLimparForm" type="button" class="btn">Limpar</button>
+	<button id="btnVoltar" type="button" class="btn">Voltar</button>
+</div>

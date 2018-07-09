@@ -1,0 +1,37 @@
+<% if (pages > 1) { %>
+<div class="row-fluid">
+	<div class="span6 pull-left">
+		<% if (total > 1) { %>
+			Total de <%= total %> registros
+		<% } else { %>
+			Total de <%= total %> registro
+		<% } %>
+	</div>
+	<div class="span6 pull-rigth text-right">
+		<ul>
+			<% if (prev) { %>
+				<li><a class='first'>&laquo;</a></li>
+				<li><a class='previous'>&lsaquo;</a></li>
+			<% } else { %>
+				<li class="disabled"><a>&laquo;</a></li>
+				<li class="disabled"><a >&lsaquo;</a></li>
+			<% } %>
+
+			<% _.each(range, function(pg) { %>
+				<% if (pg != page) { %>
+					<li><a class="page" data-page="<%= pg %>"><%= pg %></a></li>
+				<% } else { %>
+					<li class="active"><a><%= pg %></a></li>
+				<% } %>
+			<% }) %>
+
+			<% if (next) { %>
+				<li><a class="next">&rsaquo;</a></li>
+				<li><a class="last">&raquo;</a></li>
+			<% } else { %>
+				<li class="disabled"><a>&rsaquo;</a></li>
+				<li class="disabled"><a>&raquo;</a></li>
+			<% } %>
+		</ul>
+	</div>
+<% } %>

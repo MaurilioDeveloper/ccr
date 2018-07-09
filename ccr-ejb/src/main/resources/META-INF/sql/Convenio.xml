@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="1.0" 
+	xmlns="http://java.sun.com/xml/ns/persistence/orm" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd ">
+	
+	<entity name="CCRTB001_CONVENIO" class="br.gov.caixa.ccr.dominio.transicao.ConvenioTO">
+		<named-query name="Convenio.consultarAll">
+			<query>
+				SELECT T
+				  FROM br.gov.caixa.ccr.dominio.transicao.ConvenioTO T
+			</query>
+		</named-query>
+		
+		
+		<named-query name="Convenio.consultarPorCNPJ">
+			<query>
+				SELECT T
+				  FROM br.gov.caixa.ccr.dominio.transicao.ConvenioTO T
+				 WHERE T.cnpjConvenente = :pCNPJ
+				 order by 01 asc  
+			</query>
+		</named-query> 
+		
+		<named-query name="Convenio.consultarPorNome">
+			<query>
+				SELECT T
+				  FROM br.gov.caixa.ccr.dominio.transicao.ConvenioTO T
+				 WHERE T.nome LIKE :pNome
+				 order by 01 asc 
+			</query>
+		</named-query>
+		
+		<named-query name="Convenio.consultarPorId">
+			<query>
+				SELECT T
+				  FROM br.gov.caixa.ccr.dominio.transicao.ConvenioTO T
+				 WHERE T.id LIKE :pId
+				 order by 01 asc 
+			</query>
+		</named-query>
+		
+		<named-query name="Convenio.consultarPorSituacao">
+			<query>
+				SELECT T
+				  FROM br.gov.caixa.ccr.dominio.transicao.ConvenioTO T
+				 WHERE T.situacao = :pSituacao
+				 order by 01 asc 
+			</query>
+		</named-query>
+		
+		
+		
+		
+		
+		
+		<named-query name="Convenio.consultarPorNomeAndID">
+			<query>
+				SELECT T
+				  FROM br.gov.caixa.ccr.dominio.transicao.ConvenioTO T
+				 WHERE T.nome LIKE :pNome AND T.id = :pId
+				 order by 01 asc
+			</query>
+		</named-query>
+		
+		<named-query name="Convenio.consultarPorSituaçãoAndID">
+			<query>
+				SELECT T
+				  FROM br.gov.caixa.ccr.dominio.transicao.ConvenioTO T
+				   WHERE T.situacao = :pSituacao AND T.id LIKE :pId
+				   order by 01 asc 
+			</query>
+		</named-query>
+		
+ 		<named-query name="Convenio.consultarPorSituacaoAndNome"> 
+			<query>
+				SELECT T
+				  FROM br.gov.caixa.ccr.dominio.transicao.ConvenioTO T
+ 				 WHERE T.situacao = :pSituacao AND T.nome LIKE :pNome
+ 				 order by 01 asc 
+			</query>
+		</named-query>
+		
+ 		<named-query name="Convenio.consultarPorSituacaoAndNomeAndID"> 
+			<query>
+				SELECT T
+				  FROM br.gov.caixa.ccr.dominio.transicao.ConvenioTO T
+				 WHERE T.situacao = :pSituacao AND T.nome LIKE :pNome AND T.id = :pId
+				 order by 01 asc
+			</query>
+		</named-query>
+		
+		
+		
+		
+		<named-query name="Convenio.consultarPorSR">
+			<query>
+				SELECT T
+				  FROM br.gov.caixa.ccr.dominio.transicao.ConvenioTO T
+				 WHERE ( T.numSprnaResponsavel = :pSR OR T.numSprnaCobranca = :pSR)
+				 order by 01 asc 
+			</query>
+		</named-query>
+		
+		<named-query name="Convenio.consultarPorAgencia">
+			<query>
+				SELECT T
+				  FROM br.gov.caixa.ccr.dominio.transicao.ConvenioTO T
+				 WHERE (T.numPvCobranca = :pAgencia OR T.numPvResponsavel = :pAgencia ) 
+				 order by 01 asc 
+			</query>
+		</named-query>
+		
+		<named-query name="Convenio.consultarPorAgenciaAndSR">
+			<query>
+				SELECT T
+				FROM br.gov.caixa.ccr.dominio.transicao.ConvenioTO T 
+				WHERE (T.numPvCobranca = :pAgencia OR T.numPvResponsavel = :pAgencia ) AND 
+				( T.numSprnaResponsavel = :pSR OR T.numSprnaCobranca = :pSR)  
+
+<!-- 				SELECT T -->
+<!-- 				  FROM br.gov.caixa.ccr.dominio.transicao.ConvenioTO T -->
+<!-- 				 WHERE T.numAgenciaContaCredito = :pAgencia AND T.numSprnaResponsavel = :pSR -->
+<!-- 				 order by 01 asc   -->
+			</query>
+		</named-query>
+		
+		
+					
+	</entity>
+</entity-mappings>

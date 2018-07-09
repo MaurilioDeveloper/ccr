@@ -1,0 +1,10 @@
+[
+	{"id" : "1", "nome" : "Solteiro(a)"},
+	{"id" : "3", "nome" : "Divorciado(a)"},
+	{"id" : "4", "nome" : "Separado(a)"},
+	{"id" : "5", "nome" : "Viúvo(a)"},
+	{"id" : "6", "nome" : "Com união estável"},
+	{"id" : "7", "nome" : "Casado(a) com Comunhão Total de Bens"},
+	{"id" : "8", "nome" : "Casado(a) sem Comunhão de Bens"},
+	{"id" : "9", "nome" : "Casado(a) com Comunhão Parcial de Bens"}
+]

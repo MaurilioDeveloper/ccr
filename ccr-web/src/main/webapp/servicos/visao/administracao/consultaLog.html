@@ -1,0 +1,53 @@
+<!-- Conteudo -->
+<div id="cabecalho">
+	<ul class="breadcrumb">
+		<li><a href="index.html">In&iacute;cio</a> <span class="divider">&gt;</span></li>
+		<li>Administra&ccedil;&atilde;o <span class="divider">&gt;</span></li>
+		<li class="active">Consulta Log</li>
+	</ul>	
+	<h1>Consulta Log</h1>
+	<br />
+</div>
+<div id="divFiltro" class="">
+	<fieldset>
+	<legend>&nbsp;Filtro</legend>
+	<form class="form-horizontal" id="formFiltro">
+		<div class="control-group" >
+			<label class="control-label"><span class="obrigatorio">*</span> Per&iacute;odo:</label>
+			<div class="controls">
+				<div class="input-append data"> 
+					<input type="text" name="dataInicio" id="dataInicio" value="" data-format="dd/MM/yyyy" 
+						   size="16" class="input-small data" validators="required,data,dataMenor" />
+					<span id="spanIconDataVigencia" class="add-on">
+	                	<i id="iIconDataVigencia" data-time-icon="icon-time" data-date-icon="icon-calendar" class="icon-calendar"></i>
+	                </span>
+	            </div>
+	            &nbsp;&agrave;&nbsp;
+	            <div class="input-append data">					
+					<input type="text" name="dataFim" id="dataFim" value="" data-format="dd/MM/yyyy" 
+						   size="16" class="input-small data"  validators="data,dataMenor" />
+					<span id="spanIconDataVigencia" class="add-on">
+	                	<i id="iIconDataVigencia" data-time-icon="icon-time" data-date-icon="icon-calendar" class="icon-calendar"></i>
+	                </span>
+				</div> 
+				<span class="help-inline"></span>
+			</div>
+		</div>
+		<div class="control-group" >
+			<label class="control-label"><span class="obrigatorio">*</span> Transa&ccedil;&atilde;o:</label>
+			<div class="controls">
+				<div class="input-append"> 
+					<select name="transacao" id="transacao" validators="required"></select>
+				</div> 
+				<span class="help-inline"></span>
+			</div>
+		</div>
+		<!-- BOTOES DE ACAO -->
+		<div id="" class="form-actions">
+			<a class="btn btn-primary" id="btnConsultar"><i class="icon icon-search icon-white"></i>&nbsp;Consultar</a>
+			<a class="btn" id="btnLimparForm"><i class="icon"></i>Limpar</a>
+		</div>
+	</form>	
+	</fieldset>
+</div>
+<div id="divLista"></div>

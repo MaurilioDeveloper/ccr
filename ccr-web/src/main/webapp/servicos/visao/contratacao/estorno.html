@@ -1,0 +1,56 @@
+<!-- Conteudo -->
+<div id="cabecalhoEstorno">
+<ul class="breadcrumb">
+	<li><a href="index.html">In&iacute;cio</a> <span class="divider">&gt;</span></li>
+	<li>Servi&ccedil;os <span class="divider">&gt;</span></li>
+	<li>Controle de Cr&eacute;dito <span class="divider">&gt;</span></li>
+	<li class="active">Estorno Contrato</li>
+</ul>
+
+<h1>Estorno Contrato</h1>
+<br />
+</div>
+
+<div id="filtroContrEstorno"></div>
+<div id="listaContrEstorno"></div>
+
+<div id="divJustEstorno" class="modal hide fade" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" data-backdrop="static" tabindex="-1">
+	<fieldset>
+	<legend>&nbsp;Estorno do contrato</legend>
+	<form class="form-horizontal" id="formJustificativaEstorno">
+		<div class="control-group" >
+			<label class="control-label">N&ordm; Contrato:</label>
+			<div class="controls resultado">02.0002.183-0000001/12</div>
+		</div>
+    	<div class="control-group" >
+			<label class="control-label">Nome Cliente:</label>
+			<div class="controls resultado">FULANDO DA SILVA COSTA</div>
+		</div>
+		<div class="control-group" >
+			<label class="control-label">Data Libera&ccedil;&atilde;o:</label>
+			<div class="controls resultado">10/01/2015</div>
+		</div>
+		<div class="control-group" >
+			<label class="control-label">Valor (R$):</label>
+			<div class="controls resultado">25.000,00</div>
+		</div>
+		<div id="" class="control-group">
+			<label class="control-label"><span class="obrigatorio">*</span> Justificativa:</label>
+			<div class="controls">
+				<div id="" class="input-append"> 
+					<select name="sltJustEstornoDataPREV" id="sltJustEstornoDataPREV" >
+						<option value="">Selecione</option>
+					</select>
+				</div> 
+				<span class="help-inline"></span>
+			</div>
+		</div>
+	</form>
+	
+	<!-- BOTOES DE ACAO -->
+	<div id="" class="form-actions">
+		<a class="btn btn-primary" id="btnConfirmar"><i class="icon"></i>Confirmar</a>
+		<a class="btn" id="btnCancelar"><i class="icon"></i>Cancelar</a>
+	</div>
+	</fieldset>
+</div>

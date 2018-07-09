@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>br.gov.caixa.ccr</groupId>
+	<version>${ccr.version}</version>
+	<packaging>pom</packaging>
+	<name>ccr application</name>
+
+
+	<modules>
+		<module>ccr-ejb</module>
+		<module>ccr-web</module>
+		<module>ccr-ear</module>
+	</modules>
+	
+	<repositories>
+		<repository>
+	       <snapshots>
+	           <enabled>false</enabled>
+	       </snapshots>
+	       <id>caixa-libs</id>
+	       <name>Caixa Repository</name>
+	       <url>http://nexus.sirius.tivit.com.br/nexus/content/repositories/caixa-libs/</url>
+	   </repository>
+	   <repository>
+	       <snapshots>
+	           <enabled>false</enabled>
+	       </snapshots>
+	       <id>central</id>
+	       <name>Central Repository</name>
+	       <url>http://nexus.sirius.tivit.com.br/nexus/content/repositories/central/</url>
+	   </repository>
+	   <repository>
+	       <snapshots>
+	           <enabled>true</enabled>
+	       </snapshots>
+	       <id>caixa-libs-snapshots</id>
+	       <name>Central Repository</name>
+	       <url>http://nexus.sirius.tivit.com.br/nexus/content/repositories/caixa-libs-snapshots/</url>
+	   </repository>
+	</repositories>
+	
+	<pluginRepositories>
+		<pluginRepository>
+   			<releases>
+           		<updatePolicy>never</updatePolicy>
+       		</releases>
+       		<snapshots>
+           		<enabled>false</enabled>
+       		</snapshots>
+       		<id>caixa-lib</id>
+       		<name>Caixa Repository</name>
+       		<url>http://nexus.sirius.tivit.com.br/nexus/content/repositories/caixa-libs/</url>
+   		</pluginRepository>
+   		<pluginRepository>
+       		<releases>
+           		<updatePolicy>never</updatePolicy>
+       		</releases>
+       		<snapshots>
+           		<enabled>false</enabled>
+       		</snapshots>
+       		<id>central</id>
+       		<name>Central Repository</name>
+       		<url>http://nexus.sirius.tivit.com.br/nexus/content/repositories/central/</url>
+   		</pluginRepository>
+	</pluginRepositories>
+
+	<properties>
+
+		<ccr.version>1.1.0-SNAPSHOT</ccr.version>
+		<!-- Explicitly declaring the source encoding eliminates the following 
+			message: -->
+
+		<!-- Componentes FEC -->
+		<arqref-core.version>3.6.0.2</arqref-core.version>
+		<arqref-services.version>3.9.0-SNAPSHOT</arqref-services.version>
+		<arqref-web.version>3.1.0.1</arqref-web.version>
+
+		<!-- Libs IBM -->
+		<jmqi.version>7.5.0.4-p750-004-140807</jmqi.version>
+		<msg-cliente-jms-detail.version>1.0</msg-cliente-jms-detail.version>
+
+		<!-- Componentes CAIXA -->
+		<framework-caixa.version>2.0.1</framework-caixa.version>
+
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<servlet.version>3.0-alpha-1</servlet.version>
+
+		<!-- JBoss dependency versions -->
+		<jboss.as.plugin.version>7.3.Final</jboss.as.plugin.version>
+
+		<!-- Define the version of JBoss' Java EE 6 APIs and Tools we want to import. -->
+		<jboss.bom.version>1.0.4.Final</jboss.bom.version>
+		<compiler.plugin.version>2.3.2</compiler.plugin.version>
+		<surefire.plugin.version>2.4.3</surefire.plugin.version>
+		<war.plugin.version>2.1.1</war.plugin.version>
+		<ear.plugin.version>2.6</ear.plugin.version>
+		<ejb.plugin.version>2.3</ejb.plugin.version>
+
+		<failsafe.plugin.version>2.20</failsafe.plugin.version>
+		<shrinkwrap.resolvers.version>3.0.0-beta-2</shrinkwrap.resolvers.version>
+		<arquillian.bom.version>1.1.13.Final</arquillian.bom.version>
+		
+		<!-- maven-compiler-plugin -->
+		<maven.compiler.target>1.7</maven.compiler.target>
+		<maven.compiler.source>1.7</maven.compiler.source>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+
+
+			<!-- Define the version of the EJB jar so that we don't need to repeat 
+				ourselves in every module -->
+			<dependency>
+				<groupId>br.gov.caixa.ccr</groupId>
+				<artifactId>ccr-ejb</artifactId>
+				<version>${ccr.version}</version>
+				<type>ejb</type>
+			</dependency>
+
+			<!-- Define the version of the WAR so that we don't need to repeat ourselves 
+				in every module -->
+			<dependency>
+				<groupId>br.gov.caixa.ccr</groupId>
+				<artifactId>ccr-web</artifactId>
+				<version>${ccr.version}</version>
+				<type>war</type>
+				<scope>compile</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.jboss.shrinkwrap.resolver</groupId>
+				<artifactId>shrinkwrap-resolver-bom</artifactId>
+				<version>${shrinkwrap.resolvers.version}</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+
+			<!-- JBoss distributes a complete set of Java EE 6 APIs including a Bill 
+				of Materials (BOM). A BOM specifies the versions of a "stack" (or a collection) 
+				of artifacts. We use this here so that we always get the correct versions 
+				of artifacts. Here we use the jboss-javaee-6.0-with-tools stack (you can 
+				read this as the JBoss stack of the Java EE 6 APIs, with some extras tools 
+				for your project, such as ' for testing) and the jboss-javaee-6.0-with-hibernate 
+				stack you can read this as the JBoss stack of the Java EE 6 APIs, with extras 
+				from the Hibernate family of projects) -->
+			<dependency>
+				<groupId>org.jboss.bom</groupId>
+				<artifactId>jboss-javaee-6.0-with-tools</artifactId>
+				<version>${jboss.bom.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.jboss.bom</groupId>
+				<artifactId>jboss-javaee-6.0-with-hibernate</artifactId>
+				<version>${jboss.bom.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<!-- Compiler plugin enforces Java 1.7 compatibility and activates annotation 
+					processors -->
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${compiler.plugin.version}</version>
+					<configuration>
+						<source>${maven.compiler.source}</source>
+						<target>${maven.compiler.target}</target>
+					</configuration>
+				</plugin>
+				<!-- The JBoss AS plugin deploys your ear to a local JBoss AS container -->
+				<!-- Due to Maven's lack of intelligence with EARs we need to configure 
+					the jboss-as maven plugin to skip deployment for all modules. We then enable 
+					it specifically in the ear module. -->
+				<plugin>
+					<groupId>org.jboss.as.plugins</groupId>
+					<artifactId>jboss-as-maven-plugin</artifactId>
+					<version>${jboss.as.plugin.version}</version>
+					<inherited>true</inherited>
+					<configuration>
+						<skip>true</skip>
+					</configuration>
+				</plugin>
+				<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-release-plugin</artifactId> 
+					<version>2.2.2</version> <configuration> <tagBase>http://bsbsrvsvncaixa/caixa/emprestimo/sifec/tags/fontes</tagBase> 
+					</configuration> </plugin> -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>2.6</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>fsw-tivit</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<repositories>
+				<repository>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+					<id>caixa-libs</id>
+					<name>Caixa Repository</name>
+					<url>http://nexus.sirius.tivit.com.br/nexus/content/repositories/caixa-libs/</url>
+				</repository>
+				<repository>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+					<id>caixa-libs-snapshots</id>
+					<name>Caixa Repository Snapshots</name>
+					<url>http://nexus.sirius.tivit.com.br/nexus/content/repositories/caixa-libs-snapshots/</url>
+				</repository>
+				<repository>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+					<id>central</id>
+					<name>Central Repository</name>
+					<url>http://nexus.sirius.tivit.com.br/nexus/content/repositories/central/</url>
+				</repository>
+			</repositories>
+			<pluginRepositories>
+				<pluginRepository>
+					<releases>
+						<updatePolicy>never</updatePolicy>
+					</releases>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+					<id>caixa-lib</id>
+					<name>Caixa Repository</name>
+					<url>http://nexus.sirius.tivit.com.br/nexus/content/repositories/caixa-libs/</url>
+				</pluginRepository>
+				<pluginRepository>
+					<releases>
+						<updatePolicy>never</updatePolicy>
+					</releases>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+					<id>central</id>
+					<name>Central Repository</name>
+					<url>http://nexus.sirius.tivit.com.br/nexus/content/repositories/central/</url>
+				</pluginRepository>
+			</pluginRepositories>
+		</profile>
+	</profiles>
+
+	<artifactId>ccr</artifactId>
+	
+	<distributionManagement>
+		<repository>
+			<id>caixa-libs-dist</id>
+			<name>Caixa Repository</name>
+			<url>http://nexus.sirius.tivit.com.br/nexus/content/repositories/caixa-libs/</url>
+		</repository>
+		<snapshotRepository>
+			<id>caixa-libs-snapshots-dist</id>
+			<name>Central Repository</name>
+			<url>http://nexus.sirius.tivit.com.br/nexus/content/repositories/caixa-libs-snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement> 
+
+	
+</project>

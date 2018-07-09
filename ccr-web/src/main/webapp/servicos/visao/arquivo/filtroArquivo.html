@@ -1,0 +1,72 @@
+<!-- Conteudo -->
+<div id="cabecalho">
+	<ul class="breadcrumb">
+		<li><a href="index.html">In&iacute;cio</a> <span class="divider">&gt;</span></li>
+		<li>Administra&ccedil;&atilde;o <span class="divider">&gt;</span></li>
+		<li class="active">Consultar Aquivo</li>
+	</ul>
+	
+	<h1>Arquivos</h1>
+	<br />
+</div>
+<div id="divFiltro" class="">
+	<fieldset>
+	<form class="form-horizontal" id="formFiltro">
+		<div class="control-group" >
+			<label class="control-label"><span class="obrigatorio"></span> Identificador:</label>
+			<div class="controls"> 
+					<label class="radio"><b>Contrato</b> 
+						<input type="radio" name="rdoIdentificador" id="identificador" value="" class="input-medium identificador" checked/>
+					</label>
+			</div>
+		</div>
+		<div class="control-group" >
+			<label class="control-label"> Per&iacute;odo Remessa:</label>
+			<div class="controls">
+				<div class="input-append data"> 
+					<input type="text" name="dataInicio" id="dataInicio" value="" data-format="dd/MM/yyyy" 
+						   size="16" class="input-small data" validators="dataMaior" />
+					<span id="spanIconDataVigencia" class="add-on">
+	                	<i id="iIconDataVigencia" data-time-icon="icon-time" data-date-icon="icon-calendar" class="icon-calendar"></i>
+	                </span>
+	            </div>
+	            &nbsp;&agrave;&nbsp;
+	            <div class="input-append data">					
+					<input type="text" name="dataFim" id="dataFim" value="" data-format="dd/MM/yyyy" 
+						   size="16" class="input-small data" validators="data,dataMenor" />
+					<span id="spanIconDataVigencia" class="add-on">
+	                	<i id="iIconDataVigencia" data-time-icon="icon-time" data-date-icon="icon-calendar" class="icon-calendar"></i>
+	                </span>
+				</div> 
+				<span class="help-inline"></span>
+			</div>
+		</div>
+		<div class="control-group" >
+			<label class="control-label">Situa&ccedil;&atilde;o Retorno:</label>
+			<div class="controls">
+				<div class="input-append"> 
+					<select name="situacao" id="select_situacao" validators="required"></select>
+				</div> 
+				<span class="help-inline"></span>
+			</div>
+		</div>
+		<div class="control-group" >
+			<label class="control-label"><span class="obrigatorio"></span> Contrato SICCR com erro:</label>
+			<div class="controls">
+				<div class="input-append"> 
+					<input type="text" name="contratoErro" id="input_contrato" value="" class="input-medium contratoErro numero" validators="" maxlength="16"/>
+				</div> 
+				<span class="help-inline"></span>
+			</div>
+		</div>
+		<!-- BOTOES DE ACAO -->
+		<div id="" class="form-actions">
+			<a class="btn btn-primary" id="btnConsultarArquivo"><i class="icon icon-search icon-white"></i>&nbsp;Consultar</a>
+			<a class="btn" id="btnLimparForm"><i class="icon"></i>Limpar</a>
+			<a class="btn" id="btnSair"><i class="icon"></i>Sair</a>
+		</div>
+	</form>	
+	</fieldset>
+</div>
+
+<div id="divListaArquivos"></div>

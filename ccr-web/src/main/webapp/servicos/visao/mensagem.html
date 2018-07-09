@@ -1,0 +1,23 @@
+<div id="template_alerta_confirma">
+	<div id="divGlobalMsgCCR" class="modal hide fade" aria-hidden="true" aria-labelledby="myModalLabel" data-backdrop="static" role="dialog" tabindex="-1">
+		<fieldset>
+			<legend style="margin-bottom: 0px">&nbsp;Mensagem de <span id="spnTipoMsgCCR"></span></legend>
+			<div>
+				<div class="modal-body"id="divDetalheMsgCCR"></div>
+				<div id="divAcoesMsgCCR_Alerta" class="modal-footer hide">
+					<a class="btn btn-primary" id="btnOKMsgCCR">OK</a>
+				</div>
+				<div id="divAcoesMsgCCR_Confirma" class="modal-footer hide">
+					<a class="btn" id="btnCancelarMsgCCR">Cancelar</a>
+					<a class="btn btn-primary" id="btnConfirmaMsgCCR" >Confirmar</a>
+				</div>
+			</div>		
+		</fieldset>
+	</div>
+</div>
+<div id="template_info_erro">
+	<div class="<%= classe %>">	  
+	  <button type="button" class="close" data-dismiss="alert">&times;</button>
+	  <div><%= mensagem %></div>	  
+	</div>
+</div>

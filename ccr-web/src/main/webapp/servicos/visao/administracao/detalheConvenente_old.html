@@ -1,0 +1,345 @@
+<!-- <script src="../ccr-web/layout/bootstrap-3.2.0/js/bootstrap.js"></script> -->
+<div id="divDetalhesConvenente">
+<fieldset>
+<legend>Consultar Conv&ecirc;nio</legend>
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default" id="panelDadosConvenente">
+    <div class="panel-heading" role="tab" id="headingOne">			
+       <a aria-expanded="true" data-toggle="collapse" data-parent="#accordion"  id="collapse1Link" style="cursor: pointer;">Dados Convenente</a>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse"   aria-labelledby="headingOne" style="height: auto; display: none;">
+      <div class="panel-body" >
+		<form class="form-horizontal">
+		<table class="table table-striped lineSmall" >
+		  <tbody>
+		    <tr>
+		      <td style="padding: 2px; border-top: 0px;width: 50%">
+				<label class="control-label">Convenente:</label>
+				<div class="controls resultado"><%= formatadores.formatarCNPJ(convenio.cnpjConvenente) %></div>
+		      </td>
+		      <td></td>
+		    </tr>
+		    <tr>
+		      <td style="padding: 2px; border-top: 0px">
+		      	<label class="control-label">Nome:</label>
+		      	<div class="controls resultado"><%= sicli.razaoSocial.razaoSocial %></div>
+		      </td>
+		      <td class="tableLineSmall">
+		      	<label class="control-label">Cidade:</label>
+				<div class="controls resultado"><%= sicli.enderecoNacional[0].nomeMunicipio %></div>	    
+		      </td>
+		    </tr>
+		    <tr>
+		      <td style="padding: 2px; border-top: 0px">
+		      	<label class="control-label">Endere&ccedil;o:</label>
+		      	<div class="controls resultado"><%= sicli.enderecoNacional[0].logradouro %></div>
+		      </td>
+		      <td style="padding: 2px; border-top: 0px">
+		      	<label class="control-label">UF:</label>
+				<div class="controls resultado"><%= sicli.enderecoNacional[0].uf %></div>	
+			 </td>	 
+		    </tr>
+		    <tr>
+		      <td style="padding: 2px; border-top: 0px">
+		      	<label class="control-label">N&uacute;mero:</label>
+		      	<div class="controls resultado"><%= sicli.enderecoNacional[0].numero %></div>
+		      </td>
+		      <td style="padding: 2px; border-top: 0px">
+				<label class="control-label">CEP:</label>
+				<div class="controls resultado">
+<!-- 					<%= formatadores.right('00000' + convenio.convenente.cep, 5) +'-'+ formatadores.right('000' + convenio.convenente.complementoCep, 3) %> -->
+					<!-- %= convenio.convenente.cep% -->
+	- 					<%= formatadores.right('00000' + sicli.enderecoNacional[0].cep, 5) +'-'+ formatadores.right('000' + sicli.enderecoNacional[0].cep, 3)%> 
+				</div>		
+			 </td>	 
+		    </tr>
+		    <tr>
+		      <td style="padding: 2px; border-top: 0px">
+		      	<label class="control-label">Complemento:</label>
+		      		<div class="controls resultado"><%= sicli.enderecoNacional[0].complemento %></div>
+		      </td>
+		      <td style="padding: 2px; border-top: 0px">
+				<label class="control-label">Setor Empresa:</label>
+				<div class="controls resultado"></div>	
+			 </td>	 
+		    </tr>
+		  </tbody>
+		</table>		
+		</form>
+	</div>
+   </div>
+ </div>  
+ <div class="panel panel-default" id="panelDadosConvenio">
+    <div class="panel-heading" role="tab" id="headingTwo">
+    	<!-- href="#collapseTwo"  -->
+        <a aria-expanded="true" data-toggle="collapse" data-parent="#accordion" id="collapse2Link" style="cursor: pointer;">Dados Conv&ecirc;nio</a>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo" style="height: auto; display: none;">
+      <div class="panel-body" >
+		<form class="form-horizontal">
+		<table class="table table-sm table-striped">
+		  <tbody>
+		    <tr>
+		      <td style="padding: 2px; border-top: 0px; width: 50%">
+				<label class="control-label">Conv&ecirc;nio:</label>
+				<div class="controls resultado"><%= convenio.id + ' - ' + convenio.codDvConvenio + '   ' + convenio.nome %></div>   
+		      </td>
+		      <td style="padding: 2px; border-top: 0px"></td>
+		    </tr>
+		    <tr>
+		      <td style="padding: 2px; border-top: 0px">
+				<label class="control-label">Grupo Taxa:</label>
+				<div class="controls resultado"><%= convenio.grupo.id + ' - ' + convenio.grupo.nome %></div>
+		      </td>
+		      <td style="padding: 2px; border-top: 0px">
+				<label class="control-label">Grupo Averba&ccedil;&atilde;o:</label>
+				<div class="controls resultado"><%= convenio.grupoAverbacao.id + ' - ' + convenio.grupoAverbacao.nome %></div>	            
+		      </td>
+		    </tr>
+		    <tr>
+		      <td style="padding: 2px; border-top: 0px">
+				<label class="control-label">Situa&ccedil;&atilde;o:</label>
+				<div class="controls resultado"><%= convenio.situacao.descricao %></div>       
+		      </td>
+		      <td style="padding: 2px; border-top: 0px">
+				<label class="control-label">C&oacute;digo do &Oacute;rg&atilde;o:</label>
+				<div class="controls resultado"><%= convenio.codigoOrgao %></div>	 
+			 </td>	 
+		    </tr>
+		    <tr >
+		      <td style="padding: 2px; border-top: 0px" >
+		       		<label class="control-label">SR. Respons&aacute;vel:</label>
+					<div class="controls resultado"><%= convenio.numSprnaResponsavel %></div>	
+			  </td>
+		      <td style="padding: 2px; border-top: 0px">
+					<label class="control-label">Ag&ecirc;ncia Respons&aacute;vel:</label>
+					<div class="controls resultado"><%= convenio.numPvResponsavel %></div>	
+			 </td>	 
+		    </tr>
+		    <tr>
+		      <td style="padding: 2px; border-top: 0px">
+		      		<label class="control-label">SR. Cobran&ccedil;a:</label>
+					<div class="controls resultado"><%= convenio.numSprnaCobranca %></div>	
+		      </td>
+		      <td style="padding: 2px; border-top: 0px">
+					<label class="control-label">Ag&ecirc;ncia Cobran&ccedil;a:</label>
+				<div class="controls resultado"><%= convenio.numPvCobranca %></div>		
+			 </td>	 
+		    </tr>
+		    <tr>
+		      <td style="padding: 2px; border-top: 0px">
+		      		<label class="control-label">Qtd. Empregados:</label>
+					<div class="controls resultado"><%= convenio.qtEmpregado %></div>			
+		      </td>
+		      <td style="padding: 2px; border-top: 0px">
+					<label class="control-label">Prazo Emiss&atilde;o:</label>
+					<div class="controls resultado"><%= convenio.przEmissaoExtrato %> &nbsp;&nbsp;&nbsp;&nbsp;dias (7 a 55)</div>
+			 </td>	 
+		    </tr>
+		    <tr>
+		      <td style="padding: 2px; border-top: 0px">
+		      
+		      <label class="control-label">Conta Corrente:</label>
+				<div class=" controls resultado">
+					<%= convenio.contaCorrente %>
+				</div>		
+		      
+		      </td>
+		      <td style="padding: 2px; border-top: 0px">
+				<label class="control-label">Prazo M&aacute;ximo Autorizac&atilde;o:</label>
+				<div class="controls resultado"><%= convenio.qtDiaAguardarAutorizacao %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dias </div>								
+			 
+			 </td>	 
+		    </tr>
+		     
+		    <tr>
+		      <td style="padding: 2px; border-top: 0px">
+				<label class="control-label">Abrang&ecirc;ncia:</label>&nbsp;
+				<div class="input-append data"> 
+		           	<label class="radio inline" >
+		            	<input class="radio" type="radio" name="abrangencia" id="radioAbrangencia_1" value="1"  disabled="disabled" />Nacional
+		            </label>					
+		           	<label class="radio inline" >
+		                <input class="radio" type="radio" name="abrangencia" id="radioAbrangencia_2" value="2"  disabled="disabled"/>UF
+		            </label>					
+		           	<label class="radio inline" >
+		                <input class="radio" type="radio" name="abrangencia" id="radioAbrangencia_3" value="3"  disabled="disabled"/>SR
+		            </label>
+	            </div>	
+		      </td>
+		      <td style="padding: 2px; border-top: 0px">
+		      
+		      		<label class="control-label">Dia Cr&eacute;dito Sal&aacute;rio:</label>
+				<div class="controls resultado"><%= convenio.diaCreditoSal %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1 &agrave; 28)</div>
+				
+			 </td>	 
+		    </tr>
+		    <tr>
+		      <td style="padding: 2px; border-top: 0px">
+		      	<label class="control-label">&nbsp</label>
+		      		  <div class="controls resultado">
+				     <select multiple id="abrangenciaList" size="5" class="form-control span1" disabled="disabled" name="ufList" />
+		            </div>
+		      </td>
+		      <td style="padding: 2px; border-top: 0px">
+					<div class="control-group" id="divCNPJText" style="display: block; background-color: #efefef" >
+					       			<label class="control-label">CNPJ Vinculado:</label>&nbsp;
+ 
+									<select multiple id="CNPJList" size="5" disabled="disabled"  class="form-control span2" name="CNPJList" validators="required"/>
+							</div>
+			  </td>	 
+		    </tr>		    		    
+		  </tbody>
+		</table>
+		</form>
+	</div>
+   </div>
+ </div>
+<div class="panel panel-default" id="panelCanais">
+   <div class="panel-heading" role="tab" id="headingThree">
+  	 <!--  href="#collapse3" -->
+       <a aria-expanded="true" data-toggle="collapse" data-parent="#accordion"  id="collapse3Link" style="cursor: pointer;">Canais</a>
+   </div>
+   <div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree" style="height: auto;display: none">
+   		<table class="table table-striped">
+		<thead>
+			<tr>
+				<th class="span4" style="text-align: left; width: 10%; padding-left: 18px;">Canal</th>
+				<th style="text-align: left; width: 27%">Condi&ccedil;&otilde;es Contrata&ccedil;&atilde;o</th>
+				<th style="text-align: left;width: 27%">Condi&ccedil;&otilde;es Renova&ccedil;&atilde;o</th>
+				<th style="text-align: left; width: 27%">Demais Condi&ccedil;&otilde;es</th>
+			</tr>
+		</thead>
+	 </table>	
+   <% _.each(convenio.canais, function (_this) { %>
+	 <div class="panel panel-default"> 
+	 	<div class="panel-body">
+		 <table class="table table-striped">
+			<tbody>
+				<tr>
+					<td style="padding: 2px; border-top: 0px;width:10%"><%=_this.canal.nome%></td>		  
+			      	<td style="padding: 2px; border-top: 0px;width:27%">
+			      		<div>			
+							<label class="control-label" style="font-weight: bold; float:left; ">Permite Contrata&ccedil;&atilde;o:&nbsp;</label>
+				           	<div class="controls">
+				           		<label class="radio inline"> 
+					            	<input class="radio" type="radio" name="permiteContratacao_<%=_this.canal.id%>" id="radioPermiteContratacao_<%=_this.canal.id%>_S" value="S" disabled="disabled" />Sim
+					            </label>							
+					           	<label class="radio inline">
+ 					            	<input class="radio" type="radio" name="permiteContratacao_<%=_this.canal.id%>" id="radioPermiteContratacao_<%=_this.canal.id%>_N" value="N"  disabled="disabled"/>N&atilde;o
+					            </label>
+					         </div> 
+				         </div>	
+			      	</td>
+					<td style="padding: 2px; border-top: 0px;width: 27%">
+						<label class="control-label" style="font-weight: bold; float: left">Permite Renova&ccedil;&atilde;o:&nbsp;</label>
+						<div class="controls">
+							<label class="radio inline">
+							   	<input class="radio" type="radio" name="permiteRenovacao_<%=_this.canal.id%>" id="radioPermiteRenovacao_<%=_this.canal.id%>_S" value="S"  disabled="disabled" />Sim
+							</label>							
+							<label class="radio inline">
+							   	<input class="radio" type="radio" name="permiteRenovacao_<%=_this.canal.id%>" id="radioPermiteRenovacao_<%=_this.canal.id%>_N" value="N" disabled="disabled" />N&atilde;o
+							</label>
+						</div>	
+					</td>
+					<td style="padding: 2px; border-top: 0px;width: 27%">
+						<label class="control-label" style="font-weight: bold; float: left;">Garantia Condi&ccedil;&otilde;es:&nbsp;</label>
+						<div class="controls"><%=_this.qtdDiaGarantiaCondicao%><span style="margin-left: 2px;">dia(s)</span></div>
+					</td>	
+				</tr>
+				<tr>
+					<td style="padding: 2px; border-top: 0px"></td>
+					<!-- VER CAMPOS -->
+					<td style="padding: 2px; border-top: 0px">
+					    <label class="control-label" style="font-weight: bold; float: left;">Exige Autoriza&ccedil;&atilde;o Margem:&nbsp;</label>
+						<div class="controls">
+							<label class="radio inline" >
+							   	<input class="radio" type="radio" name="exigeAutorizacaoContratacao_<%=_this.canal.id%>" id="radioExigeAutorizacaoContratacao_<%=_this.canal.id%>_S" value="S"   disabled="disabled" />Sim
+							</label>							
+							<label class="radio inline" >
+							   	<input class="radio" type="radio" name="exigeAutorizacaoContratacao_<%=_this.canal.id%>" id="radioExigeAutorizacaoContratacao_<%=_this.canal.id%>_N" value="N"  disabled="disabled" />N&atilde;o
+							</label>
+						</div>	
+					</td>
+					<td style="padding: 2px; border-top: 0px">
+						<label class="control-label" style="font-weight: bold; float: left">Exige Autoriza&ccedil;&atilde;o Margem:&nbsp;</label>
+						<label class="radio inline">
+						   	<input class="radio" type="radio" name="exigeAutorizacaoRenovacao_<%=_this.canal.id%>" id="radioExigeAutorizacaoRenovacao_<%=_this.canal.id%>_S" value="S"  disabled="disabled" />Sim
+						</label>							
+						<label class="radio inline">
+						   	<input class="radio" type="radio" name="exigeAutorizacaoRenovacao_<%=_this.canal.id%>" id="radioExigeAutorizacaoRenovacao_<%=_this.canal.id%>_N" value="N"  disabled="disabled"/>N&atilde;o
+						</label>
+					</td>
+					<td style="padding: 2px; border-top: 0px">
+						<label class="control-label" style="font-weight: bold; float: left;">Exige Anu&ecirc;ncia:&nbsp;</label>
+						<div class="controls">
+							<label class="radio inline">
+							   	<input class="radio" type="radio" name="exigeAnuencia_<%=_this.canal.id%>" id="radioExigeAnuencia_<%=_this.canal.id%>_S" value="S"  disabled="disabled" />Sim
+							</label>							
+							<label class="radio inline">
+							   	<input class="radio" type="radio" name="exigeAnuencia_<%=_this.canal.id%>" id="radioExigeAnuencia_<%=_this.canal.id%>_N" value="N"  disabled="disabled"/>N&atilde;o
+							</label>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td style="padding: 2px; border-top: 0px"></td>
+					<td style="padding: 2px; border-top: 0px">
+						<label class="control-label" style="font-weight: bold; float: left;">Prazo M&iacute;nimo:&nbsp;</label>
+						<div class="controls"><%=_this.przMinimoContratacao%><span style="margin-left: 2px;">dia(s)</span></div>
+					</td>
+					<td style="padding: 2px; border-top: 0px">
+						<label class="control-label" style="font-weight: bold; float: left;">Prazo M&iacute;nimo:&nbsp;</label>
+						<div class="controls"><%=_this.przMinimoRenovacao%><span style="margin-left: 2px;">dia(s)</span></div>
+					</td>
+					<td style="padding: 2px; border-top: 0px"></td>
+				</tr>
+				<tr>
+					<td style="padding: 2px; border-top: 0px"></td>
+					<td style="padding: 2px; border-top: 0px">
+						<label class="control-label" style="font-weight: bold; float: left;" >Prazo M&aacute;ximo:&nbsp;</label>
+						<div class="controls"><%=_this.przMaximoContratacao%><span style="margin-left: 2px;">dia(s)</span></div>
+					</td>
+					<td style="padding: 2px; border-top: 0px">
+						<label class="control-label" style="font-weight: bold; float: left;">Prazo M&aacute;ximo:&nbsp;</label>
+						<div class="controls"><%=_this.przMaximoRenovacao%><span style="margin-left: 2px;">dia(s)</span></div>
+					</td>
+					<td style="padding: 2px; border-top: 0px"></td>
+				</tr>	
+				<tr>
+					<td style="padding: 2px; border-top: 0px"></td>
+					<td style="padding: 2px; border-top: 0px">
+						<label class="control-label" style="font-weight: bold;float: left;">Faixa Juros Padr&atilde;o:&nbsp;</label>
+						<div class="controls resultado"><%=_this.indFaixaJuroContratacao%></div>
+					</td>
+					<td style="padding: 2px; border-top: 0px">
+						<label class="control-label" style="font-weight: bold; float: left;">Faixa Juros Padr&atilde;o:&nbsp;</label>
+						<div class="controls resultado"><%=_this.indFaixaJuroRenovacao%></div>
+					</td>
+					<td style="padding: 2px; border-top: 0px">
+						<label class="control-label" style="font-weight: bold; float:left; padding: 5px 10px;">Situa&ccedil;&atilde;o:</label>
+						<div class="controls resultado" style="display: inline-block;">
+							<label class="radio inline">
+								<input type="radio" name="situacaoConvenioCanal<%=_this.canal.id%>" id="radioSituacaoConvenioCanal_<%=_this.canal.id%>_S" value="S" disabled="disabled"  />Ativo
+							</label> 
+							<label class="radio inline">
+								<input type="radio" name="situacaoConvenioCanal<%=_this.canal.id%>" id="radioSituacaoConvenioCanal_<%=_this.canal.id%>_N" value="N"  disabled="disabled" />Inativo
+							</label>
+						</div>
+					</td>
+				</tr>	
+			</tbody>
+		 </table>
+		</div>   
+   <% }); %>
+   </div>
+</div>
+</div>  
+</fieldset>
+
+<!-- BOTOES DE ACAO -->
+<div id="divAcoesDetalheConvenente" class="form-actions" align="right">
+	<a class="btn" id="btnVoltar" onclick="<%= 'DashboardControleCCR.voltarCovenioIniDashboardControleCCR();' %>"><i class="icon"></i>Voltar</a>
+</div>
+
+</div>

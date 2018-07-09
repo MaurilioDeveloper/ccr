@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="1.0" 
+	xmlns="http://java.sun.com/xml/ns/persistence/orm" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd ">
+	
+	<entity name="CCRTB013_CONTRATO" class="br.gov.caixa.ccr.dominio.transicao.ContratoTO">
+		<named-query name="Contrato.buscaPorId">
+			<query>
+				SELECT t
+				FROM br.gov.caixa.ccr.dominio.transicao.ContratoTO t
+				WHERE t.nuContrato = :pNuContrato
+			</query>			
+		</named-query>
+		<named-query name="Contrato.buscaEnvioSiapx">
+			<query>
+				SELECT t
+				FROM br.gov.caixa.ccr.dominio.transicao.ContratoTO t
+				INNER JOIN T.situacao s
+				WHERE t.nuContratoAplicacao = :pNuContratoAplicacao
+				AND s.id = :pNuSituacao
+				AND s.tipo = 2
+			</query>			
+		</named-query>
+		<named-query name="Contrato.buscaContratoPorConvenio">
+			<query>	
+				SELECT t
+				FROM br.gov.caixa.ccr.dominio.transicao.ContratoTO t
+				WHERE t.convenioTO.id = :nuConvenio
+			</query>
+		</named-query>
+		<named-query name="Contrato.buscaContratoPorConvenioECanal">
+			<query>	
+				SELECT t
+				FROM br.gov.caixa.ccr.dominio.transicao.ContratoTO t
+				WHERE t.convenioTO.id = :nuConvenio
+				AND t.canalAtendimento.id = :nuCanal
+			</query>
+		</named-query>
+		<named-native-query name="Contrato.atualizaStatusSiapx" result-class="br.gov.caixa.ccr.dominio.transicao.ContratoTO">
+			<query>
+				 UPDATE CCR.CCRTB013_CONTRATO                 
+                   SET NU_CONTRATO_APLICACAO = :nuContratoAplicacao,
+                   SET NU_SITUACAO = :numSituacao,
+                   NU_TIPO_SITUACAO = :numTipoSituacao,
+                   TS_ULTIMA_SITUACAO = SYSDATE
+                 WHERE NU_CONTRATO = :contratoId
+			</query>			
+		</named-native-query>
+		 <named-native-query name="Contrato.atualizaStatus" result-class="br.gov.caixa.ccr.dominio.transicao.ContratoTO">
+			<query>
+				 UPDATE CCR.CCRTB013_CONTRATO                 
+                   SET NU_SITUACAO = :numSituacao,
+                          NU_TIPO_SITUACAO = :numTipoSituacao,
+                          TS_ULTIMA_SITUACAO = SYSDATE
+                 WHERE NU_CONTRATO = :contratoId
+			</query>			
+		</named-native-query>
+		<named-native-query name="Contrato.atualizaNrAvaliacaCliente" result-class="br.gov.caixa.ccr.dominio.transicao.ContratoTO">
+			<query>
+				 UPDATE CCR.CCRTB013_CONTRATO                 
+                   SET NU_AVALIACAO_CLIENTE = :numAvaliacaoCliente
+                 WHERE NU_CONTRATO = :contratoId
+			</query>			
+		</named-native-query>
+		<named-native-query name="Contrato.atualizaNrAvaliacaClienteOperacao" result-class="br.gov.caixa.ccr.dominio.transicao.ContratoTO">
+			<query>
+				 UPDATE CCR.CCRTB013_CONTRATO                 
+                   SET NU_AVALIACAO_CLIENTE = :numAvaliacaoCliente, NU_AVALIACAO = :numAvaliacaoOperacao 
+                 WHERE NU_CONTRATO = :contratoId
+			</query>			
+		</named-native-query>
+		<named-native-query name="Contrato.atualizaNrAvaliacaOperacao" result-class="br.gov.caixa.ccr.dominio.transicao.ContratoTO">
+			<query>
+				 UPDATE CCR.CCRTB013_CONTRATO                 
+                   SET NU_AVALIACAO = :numAvaliacaoOperacao
+                 WHERE NU_CONTRATO = :contratoId
+			</query>			
+		</named-native-query>
+	</entity>
+</entity-mappings>

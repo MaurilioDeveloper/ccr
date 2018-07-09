@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="1.0" 
+	xmlns="http://java.sun.com/xml/ns/persistence/orm" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd ">
+	
+	<entity name="CCRTB050_AUTORIZACAO_CONTRATO" class="br.gov.caixa.ccr.dominio.transicao.AutorizacaoTO">
+		
+		<named-query name="Autoriza.buscarPorTipoAprovacao" >
+			<query>
+				SELECT T
+				  FROM br.gov.caixa.ccr.dominio.transicao.AutorizacaoTO T
+				 WHERE T.icTipoAutorizacao = :icTipoAutorizacao 
+				 order by tsAutorizacao desc  
+			</query>	
+		</named-query>
+		<named-query name="Autoriza.buscarPorTipoAprovacaoMatricula" >
+			<query>
+				SELECT T
+				  FROM br.gov.caixa.ccr.dominio.transicao.AutorizacaoTO T
+				 WHERE T.icTipoAutorizacao = :icTipoAutorizacao 
+				 AND T.nuContrato = :nuContrato
+				 order by tsAutorizacao desc  
+			</query>	
+		</named-query>
+		<named-query name="Autoriza.buscarPorTipoAprovacaoContrato" >
+			<query>
+				SELECT T
+				  FROM br.gov.caixa.ccr.dominio.transicao.AutorizacaoTO T
+				 WHERE T.icTipoAutorizacao = :icTipoAutorizacao 
+				 AND T.nuContrato = :idContrato
+				 order by tsAutorizacao desc  
+			</query>	
+		</named-query>
+		<named-query name="Autoriza.buscaAutorizacaoPorSituacao" >
+			<query>
+				SELECT T
+				 FROM br.gov.caixa.ccr.dominio.transicao.AutorizacaoTO T
+				 INNER JOIN T.situacaoContrato S
+				 WHERE T.icSituacaoAutorizacao = :icSituacaoAutorizacao 
+				 AND T.nuContrato = :nuContrato
+				 AND S.id = :nuSituacaoContrato 
+			</query>	
+		</named-query>
+		<named-native-query name="Autoriza.incluir" result-class="br.gov.caixa.ccr.dominio.transicao.AutorizacaoTO">
+			<query>
+				INSERT INTO CCR.CCRTB050_AUTORIZACAO_CONTRATO
+					(NU_SEQ_AUTORIZACAO, CO_AUTORIZACAO, DE_JUSTIFICATIVA, IC_SITUACAO_AUTORIZACAO, IC_TIPO_AUTORIZACAO, NU_CONTRATO, TS_AUTORIZACAO)
+				VALUES
+					((SELECT NVL(MAX(NU_SEQ_AUTORIZACAO), 0) + 1 FROM CCR.CCRTB050_AUTORIZACAO_CONTRATO),
+				 	 :coAutorizacao, :deJustificativa, :icSituacaoAutorizacao, :icTipoAutorizacao, :nuContrato, SYSDATE)
+			</query>			
+		</named-native-query>
+	</entity>
+</entity-mappings>

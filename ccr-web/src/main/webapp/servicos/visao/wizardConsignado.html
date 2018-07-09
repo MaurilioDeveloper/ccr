@@ -1,0 +1,45 @@
+<link href="../ccr-web/layout/css/fuelux.wizard.css" rel="stylesheet">
+<form class="form-horizontal">
+	<div class="row-fluid">
+		<div id="fuelux-wizard" class="wizard-vertical wizard">
+			<div class="span3 wizard-style">
+				<ul class="wizard-steps">
+					<li data-target="#step1" data-step="1" id="aDadosCliente" class="active"><span class="step">1</span> <span
+						class="title">Simular</span></li>					
+					<li data-target="#step2" data-step="2" id="aSimulacao"><span class="step">2</span> <span
+						class="title">Avaliar</span></li>
+					<li data-target="#step3" data-step="3" id="aAvaliacaoRisco"><span class="step">3</span>
+						<span class="title">Contratar</span></li>
+					<li data-target="#step4" data-step="4" id="aDadosComplementares"><span class="step">4</span> <span
+						class="title">Autorizar</span></li>				
+				</ul>
+				<div class="wizard-progress-container">
+					<div class="progress progress-striped">
+						<div class="bar" style="width: 0%"></div>
+					</div>
+				</div>
+			</div>
+			<div class="span9 conteiner-step" >
+				<div class="step-content">
+					<div class="step-pane" id="step1"></div>
+					<div class="step-pane" id="step2"></div>
+					<div class="step-pane" id="step3"></div>
+					<div class="step-pane" id="step4"></div>					
+				</div>
+				<div class="form-actions" align="center">
+					<button type="button" class="btn" id="btnVoltar">Voltar</button>
+					<button type="button" class="btn btn-primary" id="btnAvancar">Avan&ccedil;ar</button>
+					<a class="btn hide"  id="btnVisualizarImprimir">
+						<i class="icon-print"></i>
+						Visualizar Impressão
+					</a>
+					<a class="btn hide"  id="btnVisualizarSeguroImprimir">
+						<i class="icon-print"></i>
+						Visualizar Seguro Prestamista Impressão
+					</a>
+					<a href="./" class="btn btnCancelar" id="btnSair">Sair</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>

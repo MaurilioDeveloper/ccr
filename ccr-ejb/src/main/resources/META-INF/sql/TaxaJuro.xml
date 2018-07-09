@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="1.0" 
+	xmlns="http://java.sun.com/xml/ns/persistence/orm" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd ">
+	
+	<entity name="CCRTB005_TAXA_JURO_GRUPO" class="br.gov.caixa.ccr.dominio.transicao.TaxaJuroGrupoTO">
+		<named-query name="TaxaJuroGrupo.listar">
+			<query>
+				SELECT T
+				  FROM br.gov.caixa.ccr.dominio.transicao.TaxaJuroGrupoTO T
+				 WHERE T.grupo.id = :pCodigoGrupo
+				 ORDER BY T.inicioVigencia DESC, T.tipo, T.prazo, 
+				          T.pcMinimo, T.pcMaximo, T.pcMaximo
+			</query>						
+		</named-query>
+		<named-query name="TaxaJuroGrupo.listarTodas">
+			<query>
+				SELECT T
+				FROM br.gov.caixa.ccr.dominio.transicao.TaxaJuroGrupoTO T
+				ORDER BY T.inicioVigencia DESC, T.prazo,
+				T.pcMinimo, T.pcMaximo, T.pcMaximo
+			</query>
+		</named-query>
+		<named-query name="TaxaJuroGrupo.findVigente" >
+			<query>
+			   SELECT T
+				FROM br.gov.caixa.ccr.dominio.transicao.TaxaJuroGrupoTO T
+				 WHERE SYSDATE >= DT_INICIO_VIGENCIA
+				   AND COALESCE(DT_FIM_VIGENCIA, SYSDATE) >= SYSDATE
+				   AND NU_GRUPO = :pCodigo
+				   AND PZ_TAXA_GRUPO = :pPrazo
+			</query>
+		</named-query>
+		<named-native-query name="TaxaJuroGrupo.verificaVigenciaValida" result-class="br.gov.caixa.ccr.dominio.transicao.TaxaJuroGrupoTO">
+			<query>
+			    SELECT NU_GRUPO, PZ_TAXA_GRUPO, DT_INICIO_VIGENCIA, IC_UTILIZACAO_TAXA, 
+			    	   PC_TAXA_MINIMA, PC_TAXA_MEDIA, PC_TAXA_MAXIMA, DT_FIM_VIGENCIA,
+			    	   CO_USUARIO_INCLUSAO, TS_INCLUSAO_TAXA, 
+			    	   CO_USUARIO_FINALIZACAO, TS_INCLUSAO_FIM_VIGENCIA_TAXA
+			      FROM CCR.CCRTB005_TAXA_JURO_GRUPO                                     
+				 WHERE NU_GRUPO = :pCodigo
+				   AND IC_UTILIZACAO_TAXA = :pTipo
+				   AND DT_INICIO_VIGENCIA &lt;&gt; :pInicioVigenciaChave
+				   AND PZ_TAXA_GRUPO &gt;= :pPrazoMin
+				   AND PZ_TAXA_GRUPO &lt;= :pPrazoMax                   
+				   AND ((DT_INICIO_VIGENCIA &gt;= :pInicioVigencia AND DT_INICIO_VIGENCIA &lt;= :pFimVigencia) OR   
+				    	(DT_FIM_VIGENCIA &gt;= :pInicioVigencia AND DT_FIM_VIGENCIA &lt;= :pFimVigencia))
+			</query>
+		</named-native-query>
+		<named-native-query name="TaxaJuroGrupo.verificaVigenciaValidaSemFim" result-class="br.gov.caixa.ccr.dominio.transicao.TaxaJuroGrupoTO">
+			<query>
+			    SELECT NU_GRUPO, PZ_TAXA_GRUPO, DT_INICIO_VIGENCIA, IC_UTILIZACAO_TAXA, 
+			    	   PC_TAXA_MINIMA, PC_TAXA_MEDIA, PC_TAXA_MAXIMA, DT_FIM_VIGENCIA,
+			    	   CO_USUARIO_INCLUSAO, TS_INCLUSAO_TAXA, 
+			    	   CO_USUARIO_FINALIZACAO, TS_INCLUSAO_FIM_VIGENCIA_TAXA 
+			      FROM CCR.CCRTB005_TAXA_JURO_GRUPO                                     
+				 WHERE NU_GRUPO = :pCodigo
+				   AND IC_UTILIZACAO_TAXA = :pTipo
+				   AND DT_INICIO_VIGENCIA &lt;&gt; :pInicioVigenciaChave
+				   AND PZ_TAXA_GRUPO &gt;= :pPrazoMin
+				   AND PZ_TAXA_GRUPO &lt;= :pPrazoMax                   
+				   AND DT_INICIO_VIGENCIA &gt;= :pInicioVigencia
+				   AND DT_FIM_VIGENCIA IS NULL
+			</query>
+		</named-native-query>
+		<named-native-query name="TaxaJuroGrupo.verificaVigenciaValidaInc" result-class="br.gov.caixa.ccr.dominio.transicao.TaxaJuroGrupoTO">
+			<query>
+			    SELECT NU_GRUPO, PZ_TAXA_GRUPO, DT_INICIO_VIGENCIA, IC_UTILIZACAO_TAXA, 
+			    	   PC_TAXA_MINIMA, PC_TAXA_MEDIA, PC_TAXA_MAXIMA, DT_FIM_VIGENCIA,
+			    	   CO_USUARIO_INCLUSAO, TS_INCLUSAO_TAXA, 
+			    	   CO_USUARIO_FINALIZACAO, TS_INCLUSAO_FIM_VIGENCIA_TAXA 
+			      FROM CCR.CCRTB005_TAXA_JURO_GRUPO                                     
+				 WHERE NU_GRUPO = :pCodigo
+				   AND IC_UTILIZACAO_TAXA = :pTipo
+				   AND PZ_TAXA_GRUPO &gt;= :pPrazoMin
+				   AND PZ_TAXA_GRUPO &lt;= :pPrazoMax                   
+				   AND ((DT_INICIO_VIGENCIA &gt;= :pInicioVigencia AND DT_INICIO_VIGENCIA &lt;= :pFimVigencia) OR   
+				    	(DT_FIM_VIGENCIA &gt;= :pInicioVigencia AND DT_FIM_VIGENCIA &lt;= :pFimVigencia))
+			</query>
+		</named-native-query>
+		<named-native-query name="TaxaJuroGrupo.verificaVigenciaValidaIncSemFim" result-class="br.gov.caixa.ccr.dominio.transicao.TaxaJuroGrupoTO">
+			<query>
+			    SELECT NU_GRUPO, PZ_TAXA_GRUPO, DT_INICIO_VIGENCIA, IC_UTILIZACAO_TAXA, 
+			    	   PC_TAXA_MINIMA, PC_TAXA_MEDIA, PC_TAXA_MAXIMA, DT_FIM_VIGENCIA,
+			    	   CO_USUARIO_INCLUSAO, TS_INCLUSAO_TAXA, 
+			    	   CO_USUARIO_FINALIZACAO, TS_INCLUSAO_FIM_VIGENCIA_TAXA 
+			      FROM CCR.CCRTB005_TAXA_JURO_GRUPO                                     
+				 WHERE NU_GRUPO = :pCodigo
+				   AND IC_UTILIZACAO_TAXA = :pTipo
+				   AND PZ_TAXA_GRUPO &gt;= :pPrazoMin
+				   AND PZ_TAXA_GRUPO &lt;= :pPrazoMax                   
+				   AND DT_INICIO_VIGENCIA &gt;= :pInicioVigencia
+			</query>
+		</named-native-query>
+		<named-native-query name="TaxaJuroGrupo.incluir" result-class="br.gov.caixa.ccr.dominio.transicao.TaxaJuroGrupoTO">
+			<query>
+				INSERT INTO CCR.CCRTB005_TAXA_JURO_GRUPO
+					   (NU_GRUPO, PZ_TAXA_GRUPO, DT_INICIO_VIGENCIA, IC_UTILIZACAO_TAXA, PC_TAXA_MINIMA, PC_TAXA_MEDIA, PC_TAXA_MAXIMA, 
+					    DT_FIM_VIGENCIA, CO_USUARIO_INCLUSAO, TS_INCLUSAO_TAXA, CO_USUARIO_FINALIZACAO, TS_INCLUSAO_FIM_VIGENCIA_TAXA)
+				VALUES (:pCodigo, :pPrazo, :pInicioVigencia, :pTipo, :pPcMinimo, :pPcMedio, 
+						:pPcMaximo, :pFimVigencia, :pCoUsuarioInclusao, :pTsInclusao, :pCoUsuarioFinalizacao, :pTsInclusaoFimVigencia)
+			</query>						
+		</named-native-query>
+		<named-native-query name="TaxaJuroGrupo.excluirRange" result-class="br.gov.caixa.ccr.dominio.transicao.TaxaJuroGrupoTO">
+			<query>
+				DELETE FROM CCR.CCRTB005_TAXA_JURO_GRUPO
+				 WHERE NU_GRUPO = :pCodigo
+				   AND PZ_TAXA_GRUPO &gt;= :pPrazoMin
+				   AND PZ_TAXA_GRUPO &lt;= :pPrazoMax
+				   AND DT_INICIO_VIGENCIA = :pInicioVigencia
+				   AND IC_UTILIZACAO_TAXA = :pTipo
+				   
+			</query>
+		</named-native-query>
+		<named-native-query name="TaxaJuroGrupo.atualizarVigencia" result-class="br.gov.caixa.ccr.dominio.transicao.TaxaJuroGrupoTO">
+			<query>
+				UPDATE CCR.CCRTB005_TAXA_JURO_GRUPO                 
+				   SET DT_FIM_VIGENCIA = :pFimVigencia,
+				   	   CO_USUARIO_FINALIZACAO = :pCoUsuarioFinalizacao, 
+				   	   TS_INCLUSAO_FIM_VIGENCIA_TAXA = :pTsInclusaoFimVigencia
+				 WHERE NU_GRUPO = :pCodigo
+				   AND PZ_TAXA_GRUPO = :pPrazo
+				   AND IC_UTILIZACAO_TAXA = :pTipo                                    
+				   AND DT_INICIO_VIGENCIA = (SELECT MAX(DT_INICIO_VIGENCIA) 
+				   						       FROM CCR.CCRTB005_TAXA_JURO_GRUPO 
+				   						       	WHERE NU_GRUPO = :pCodigo 
+				   						       		AND PZ_TAXA_GRUPO = :pPrazo
+				   						       		AND IC_UTILIZACAO_TAXA = :pTipo)
+				   AND DT_FIM_VIGENCIA IS NULL        
+			</query>
+		</named-native-query>
+		<named-native-query name="TaxaJuroGrupo.atualizarVigenciaDelete" result-class="br.gov.caixa.ccr.dominio.transicao.TaxaJuroGrupoTO">
+			<query>
+				DELETE FROM CCR.CCRTB005_TAXA_JURO_GRUPO
+				WHERE NU_GRUPO = :pCodigo
+				   AND PZ_TAXA_GRUPO = :pPrazo 
+				   AND IC_UTILIZACAO_TAXA = :pTipo                                   
+				   AND DT_INICIO_VIGENCIA = (SELECT MAX(DT_INICIO_VIGENCIA) 
+				   						       FROM CCR.CCRTB005_TAXA_JURO_GRUPO 
+				   						       	WHERE NU_GRUPO = :pCodigo 
+				   						       	AND PZ_TAXA_GRUPO = :pPrazo
+				   						       	AND IC_UTILIZACAO_TAXA = :pTipo)
+				   AND DT_FIM_VIGENCIA IS NULL        
+			</query>
+		</named-native-query>
+		<named-native-query name="TaxaJuroGrupo.atualizar" result-class="br.gov.caixa.ccr.dominio.transicao.TaxaJuroGrupoTO">
+			<query>
+				UPDATE CCR.CCRTB005_TAXA_JURO_GRUPO                 
+				   SET PC_TAXA_MINIMA = :pPcMinimo, 
+				   	   PC_TAXA_MEDIA = :pPcMedio, 
+				   	   PC_TAXA_MAXIMA = :pPcMaximo
+				 WHERE NU_GRUPO = :pCodigo
+				   AND IC_UTILIZACAO_TAXA = :pTipo
+				   AND DT_INICIO_VIGENCIA = :pInicioVigenciaAnterior
+				   AND PZ_TAXA_GRUPO &gt;= :pPrazoMin AND PZ_TAXA_GRUPO &lt;= :pPrazoMax                                       
+				            
+			</query>
+		</named-native-query>
+		<named-native-query name="TaxaJuroGrupo.atualizarFimVigencia" result-class="br.gov.caixa.ccr.dominio.transicao.TaxaJuroGrupoTO">
+			<query>
+				UPDATE CCR.CCRTB005_TAXA_JURO_GRUPO                 
+				   SET DT_FIM_VIGENCIA = :pFimVigencia,
+				   	   CO_USUARIO_FINALIZACAO = :pCoUsuarioFinalizacao, 
+				   	   TS_INCLUSAO_FIM_VIGENCIA_TAXA = :pTsInclusaoFimVigencia
+				 WHERE NU_GRUPO = :pCodigo
+				   AND IC_UTILIZACAO_TAXA = :pTipo
+				   AND DT_INICIO_VIGENCIA = :pInicioVigencia
+				   AND PZ_TAXA_GRUPO &gt;= :pPrazoMin AND PZ_TAXA_GRUPO &lt;= :pPrazoMax         
+			</query>
+		</named-native-query>
+	</entity>
+	
+	<entity name="CCRTB006_TAXA_JURO_CONVENIO" class="br.gov.caixa.ccr.dominio.transicao.TaxaJuroConvenioTO">
+		<named-query name="TaxaJuroConvenio.listar">
+			<query>
+				SELECT T
+				  FROM br.gov.caixa.ccr.dominio.transicao.TaxaJuroConvenioTO T
+				 WHERE T.convenio.id = :pCodigoConvenio
+				 ORDER BY T.inicioVigencia DESC, T.prazo, 
+				          T.pcMinimo, T.pcMaximo, T.pcMaximo
+			</query>			
+		</named-query>
+		<named-query name="TaxaJuroConvenio.findVigente" >
+			<query>
+			   SELECT T
+				  FROM br.gov.caixa.ccr.dominio.transicao.TaxaJuroConvenioTO T
+				 WHERE SYSDATE >= DT_INICIO_VIGENCIA
+				   AND COALESCE(DT_FIM_VIGENCIA, SYSDATE) >= SYSDATE
+				   AND NU_CONVENIO = :pCodigo
+				   AND PZ_TAXA_CONVENIO = :pPrazo
+			</query>
+		</named-query>
+		<named-native-query name="TaxaJuroConvenio.verificaVigenciaValida" result-class="br.gov.caixa.ccr.dominio.transicao.TaxaJuroConvenioTO">
+			<query>
+			    SELECT NU_CONVENIO, PZ_TAXA_CONVENIO, DT_INICIO_VIGENCIA, IC_UTILIZACAO_TAXA, 
+			    	   PC_TAXA_MINIMA, PC_TAXA_MEDIA, PC_TAXA_MAXIMA, DT_FIM_VIGENCIA,
+			    	   CO_USUARIO_INCLUSAO, TS_INCLUSAO_TAXA, 
+			    	   CO_USUARIO_FINALIZACAO, TS_INCLUSAO_FIM_VIGENCIA_TAXA
+			      FROM CCR.CCRTB006_TAXA_JURO_CONVENIO                                     
+				 WHERE NU_CONVENIO = :pCodigo
+				   AND IC_UTILIZACAO_TAXA = :pTipo
+				   AND DT_INICIO_VIGENCIA &lt;&gt; :pInicioVigenciaChave
+				   AND PZ_TAXA_CONVENIO &gt;= :pPrazoMin
+				   AND PZ_TAXA_CONVENIO &lt;= :pPrazoMax                   
+				   AND ((DT_INICIO_VIGENCIA &gt;= :pInicioVigencia AND DT_INICIO_VIGENCIA &lt;= :pFimVigencia) OR   
+				    	(DT_FIM_VIGENCIA &gt;= :pInicioVigencia AND DT_FIM_VIGENCIA &lt;= :pFimVigencia))
+			</query>
+		</named-native-query>
+		<named-native-query name="TaxaJuroConvenio.verificaVigenciaValidaSemFim" result-class="br.gov.caixa.ccr.dominio.transicao.TaxaJuroConvenioTO">
+			<query>
+			    SELECT NU_CONVENIO, PZ_TAXA_CONVENIO, DT_INICIO_VIGENCIA, IC_UTILIZACAO_TAXA, 
+			    	   PC_TAXA_MINIMA, PC_TAXA_MEDIA, PC_TAXA_MAXIMA, DT_FIM_VIGENCIA,
+			    	   CO_USUARIO_INCLUSAO, TS_INCLUSAO_TAXA, 
+			    	   CO_USUARIO_FINALIZACAO, TS_INCLUSAO_FIM_VIGENCIA_TAXA 
+			      FROM CCR.CCRTB006_TAXA_JURO_CONVENIO                                     
+				 WHERE NU_CONVENIO = :pCodigo
+				   AND IC_UTILIZACAO_TAXA = :pTipo
+				   AND DT_INICIO_VIGENCIA &lt;&gt; :pInicioVigenciaChave
+				   AND PZ_TAXA_CONVENIO &gt;= :pPrazoMin
+				   AND PZ_TAXA_CONVENIO &lt;= :pPrazoMax                   
+				   AND DT_INICIO_VIGENCIA &gt;= :pInicioVigencia
+				   AND DT_FIM_VIGENCIA IS NULL
+			</query>
+		</named-native-query>
+		<named-native-query name="TaxaJuroConvenio.verificaVigenciaValidaInc" result-class="br.gov.caixa.ccr.dominio.transicao.TaxaJuroConvenioTO">
+			<query>
+			    SELECT NU_CONVENIO, PZ_TAXA_CONVENIO, DT_INICIO_VIGENCIA, IC_UTILIZACAO_TAXA, 
+			    	   PC_TAXA_MINIMA, PC_TAXA_MEDIA, PC_TAXA_MAXIMA, DT_FIM_VIGENCIA,
+			    	   CO_USUARIO_INCLUSAO, TS_INCLUSAO_TAXA, 
+			    	   CO_USUARIO_FINALIZACAO, TS_INCLUSAO_FIM_VIGENCIA_TAXA 
+			      FROM CCR.CCRTB006_TAXA_JURO_CONVENIO                                     
+				 WHERE NU_CONVENIO = :pCodigo
+				   AND IC_UTILIZACAO_TAXA = :pTipo
+				   AND PZ_TAXA_CONVENIO &gt;= :pPrazoMin
+				   AND PZ_TAXA_CONVENIO &lt;= :pPrazoMax                   
+				   AND ((DT_INICIO_VIGENCIA &gt;= :pInicioVigencia AND DT_INICIO_VIGENCIA &lt;= :pFimVigencia) OR   
+				    	(DT_FIM_VIGENCIA &gt;= :pInicioVigencia AND DT_FIM_VIGENCIA &lt;= :pFimVigencia))
+			</query>
+		</named-native-query>
+		<named-native-query name="TaxaJuroConvenio.verificaVigenciaValidaIncSemFim" result-class="br.gov.caixa.ccr.dominio.transicao.TaxaJuroConvenioTO">
+			<query>
+			    SELECT NU_CONVENIO, PZ_TAXA_CONVENIO, DT_INICIO_VIGENCIA, IC_UTILIZACAO_TAXA, 
+			    	   PC_TAXA_MINIMA, PC_TAXA_MEDIA, PC_TAXA_MAXIMA, DT_FIM_VIGENCIA,
+			    	   CO_USUARIO_INCLUSAO, TS_INCLUSAO_TAXA, 
+			    	   CO_USUARIO_FINALIZACAO, TS_INCLUSAO_FIM_VIGENCIA_TAXA 
+			      FROM CCR.CCRTB006_TAXA_JURO_CONVENIO                                     
+				 WHERE NU_CONVENIO = :pCodigo
+				   AND IC_UTILIZACAO_TAXA = :pTipo
+				   AND PZ_TAXA_CONVENIO &gt;= :pPrazoMin
+				   AND PZ_TAXA_CONVENIO &lt;= :pPrazoMax                   
+				   AND DT_INICIO_VIGENCIA &gt;= :pInicioVigencia
+			</query>
+		</named-native-query>
+		<named-native-query name="TaxaJuroConvenio.incluir" result-class="br.gov.caixa.ccr.dominio.transicao.TaxaJuroConvenioTO">
+			<query>
+				INSERT INTO CCR.CCRTB006_TAXA_JURO_CONVENIO
+					   (NU_CONVENIO, PZ_TAXA_CONVENIO, DT_INICIO_VIGENCIA, IC_UTILIZACAO_TAXA, PC_TAXA_MINIMA, PC_TAXA_MEDIA, PC_TAXA_MAXIMA, 
+					    DT_FIM_VIGENCIA, CO_USUARIO_INCLUSAO, TS_INCLUSAO_TAXA, CO_USUARIO_FINALIZACAO, TS_INCLUSAO_FIM_VIGENCIA_TAXA)
+				VALUES (:pCodigo, :pPrazo, :pInicioVigencia, :pTipo, :pPcMinimo, :pPcMedio, 
+						:pPcMaximo, :pFimVigencia, :pCoUsuarioInclusao, :pTsInclusao, :pCoUsuarioFinalizacao, :pTsInclusaoFimVigencia)
+			</query>						
+		</named-native-query>
+		<named-native-query name="TaxaJuroConvenio.excluirRange" result-class="br.gov.caixa.ccr.dominio.transicao.TaxaJuroConvenioTO">
+			<query>
+				DELETE FROM CCR.CCRTB006_TAXA_JURO_CONVENIO
+				 WHERE NU_CONVENIO = :pCodigo
+				   AND PZ_TAXA_CONVENIO &gt;= :pPrazoMin
+				   AND PZ_TAXA_CONVENIO &lt;= :pPrazoMax
+				   AND DT_INICIO_VIGENCIA = :pInicioVigencia
+				   AND IC_UTILIZACAO_TAXA = :pTipo
+			</query>
+		</named-native-query>
+		<named-native-query name="TaxaJuroConvenio.atualizarVigencia" result-class="br.gov.caixa.ccr.dominio.transicao.TaxaJuroConvenioTO">
+			<query>
+				UPDATE CCR.CCRTB006_TAXA_JURO_CONVENIO           
+				   SET DT_FIM_VIGENCIA = :pFimVigencia,
+				   	   CO_USUARIO_FINALIZACAO = :pCoUsuarioFinalizacao, 
+				   	   TS_INCLUSAO_FIM_VIGENCIA_TAXA = :pTsInclusaoFimVigencia
+				 WHERE NU_CONVENIO = :pCodigo
+				   AND IC_UTILIZACAO_TAXA = :pTipo
+				   AND PZ_TAXA_CONVENIO = :pPrazo                                    
+				   AND DT_INICIO_VIGENCIA = (SELECT MAX(DT_INICIO_VIGENCIA) 
+				   						       FROM CCR.CCRTB006_TAXA_JURO_CONVENIO WHERE NU_CONVENIO = :pCodigo AND PZ_TAXA_CONVENIO = :pPrazo)
+				   AND DT_FIM_VIGENCIA IS NULL         
+			</query>
+		</named-native-query>
+		<named-native-query name="TaxaJuroConvenio.atualizarVigenciaDelete" result-class="br.gov.caixa.ccr.dominio.transicao.TaxaJuroConvenioTO">
+			<query>
+				DELETE FROM CCR.CCRTB006_TAXA_JURO_CONVENIO
+				 WHERE NU_CONVENIO = :pCodigo
+				   AND PZ_TAXA_CONVENIO = :pPrazo                                    
+				   AND DT_INICIO_VIGENCIA = (SELECT MAX(DT_INICIO_VIGENCIA) 
+				   						       FROM CCR.CCRTB006_TAXA_JURO_CONVENIO WHERE NU_CONVENIO = :pCodigo AND PZ_TAXA_CONVENIO = :pPrazo)
+				   AND DT_FIM_VIGENCIA IS NULL         
+			</query>
+		</named-native-query>
+		<named-native-query name="TaxaJuroConvenio.atualizar" result-class="br.gov.caixa.ccr.dominio.transicao.TaxaJuroConvenioTO">
+			<query>
+				UPDATE CCR.CCRTB006_TAXA_JURO_CONVENIO                 
+				   SET PC_TAXA_MINIMA = :pPcMinimo, 
+				   	   PC_TAXA_MEDIA = :pPcMedio, 
+				   	   PC_TAXA_MAXIMA = :pPcMaximo				   	   
+				 WHERE NU_CONVENIO = :pCodigo
+				   AND IC_UTILIZACAO_TAXA = :pTipo
+				   AND DT_INICIO_VIGENCIA = :pInicioVigenciaAnterior
+				   AND PZ_TAXA_CONVENIO &gt;= :pPrazoMin AND PZ_TAXA_CONVENIO &lt;= :pPrazoMax
+			</query>
+		</named-native-query>
+		<named-native-query name="TaxaJuroConvenio.atualizarFimVigencia" result-class="br.gov.caixa.ccr.dominio.transicao.TaxaJuroConvenioTO">
+			<query>
+				UPDATE CCR.CCRTB006_TAXA_JURO_CONVENIO                 
+				   SET DT_FIM_VIGENCIA = :pFimVigencia,
+				   	   CO_USUARIO_FINALIZACAO = :pCoUsuarioFinalizacao, 
+				   	   TS_INCLUSAO_FIM_VIGENCIA_TAXA = :pTsInclusaoFimVigencia
+				 WHERE NU_CONVENIO = :pCodigo
+				   AND IC_UTILIZACAO_TAXA = :pTipo
+				   AND DT_INICIO_VIGENCIA = :pInicioVigencia
+				   AND PZ_TAXA_CONVENIO &gt;= :pPrazoMin AND PZ_TAXA_CONVENIO &lt;= :pPrazoMax         
+			</query>
+		</named-native-query>
+	</entity>
+</entity-mappings>

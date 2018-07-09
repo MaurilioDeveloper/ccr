@@ -1,0 +1,27 @@
+<form class="form-horizontal" id="formIncAltDocumento">
+	<div>
+		<div class="control-group">
+			<label class="control-label">Tipo Documento:</label>
+			<div class="controls resultado"><%= documento.tipoDocumento%>
+			<span class="help-inline"></span>
+			<span class="help-inline"></span>
+			<input type="checkbox" name="checkCCBIncAlt" id="checkCCBIncAlt" 
+				style="margin-top: 0px" <%= documento.icModeloTestemunha=='Sim'? 'checked="checked"' : '' %> />			
+				
+			<span style="font-weight: bold;font-size: 12px;width: 200px !important;">CCB</span> 
+			
+			</div>
+			
+		</div>
+		<div class="control-group">
+			<label class="control-label">Nome Modelo Documento:</label>
+			<div class="controls resultado"><%=documento.nomeModeloDocumento%></div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">Inicio Vigência:</label>
+			<div class="controls resultado"><%=formatadores.formatarData(documento.inicioVigencia)%></div>
+		</div>
+	</div>
+</form>
+
+<div></div>

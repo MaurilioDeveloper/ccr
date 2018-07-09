@@ -1,0 +1,157 @@
+<!-- Conteudo -->
+<div id="cabecalho">
+	<ul class="breadcrumb">
+		<li><a href="index.html">In&iacute;cio</a> <span class="divider">&gt;</span></li>
+		<li>Administra&ccedil;&atilde;o <span class="divider">&gt;</span></li>
+		<li class="active">Consulta Auditoria</li>
+	</ul>
+	
+	<h1>Auditoria</h1>
+	<br />
+</div>
+<div id="divFiltro" class="">
+	<fieldset>
+	<form class="form-horizontal" id="formFiltroAuditoria">
+		<div class="control-group">
+		   	<label class="control-label">Identificador:</label>
+			<div class="controls">
+			
+				<label class="radio inline" style="margin-right: 15px">
+		               <input class="radio" type="radio" name="rdoIdentificador" id="radioContrato" value="1" />Contrato
+		           </label>
+		           
+				<label class="radio inline" style="margin-right: 15px">
+		               <input class="radio" type="radio" name="rdoIdentificador" id="radioCPF" value="2" />CPF
+		           </label>
+			
+				<label class="radio inline" style="margin-right: 15px">
+		               <input class="radio" type="radio" name="rdoIdentificador" id="radioCovenente" value="3" />Convenente
+		           </label>
+			
+				<label class="radio inline" style="margin-right: 15px">
+		               <input class="radio" type="radio" name="rdoIdentificador" id="radioConvenio" value="4" />Conv&ecirc;nio
+		           </label>
+			
+				<label class="radio inline" style="margin-right: 15px">
+		               <input class="radio" type="radio" name="rdoIdentificador" id="radioUsuario" value="5" />Usu&aacute;rio
+		           </label>
+		           
+				<label class="radio inline" style="margin-right: 15px">
+		               <input class="radio" type="radio" name="rdoIdentificador" id="radioTransacao" value="6" />Transa&ccedil;&atilde;o
+		           </label>
+		           
+		           
+			</div>
+		</div>
+		<div class="control-group" id="divContrato">
+			<label class="control-label"><span class="obrigatorio">*</span> Contrato:</label>
+			<div class="controls">
+				<div class="input-append"> 
+					<input type="text" name="contrato" id="contrato" value="" class="input-medium contrato numero" validators="required" maxlength="16" />
+				</div> 
+				<span class="help-inline"></span>
+			</div>
+		</div>
+		<div class="control-group hide" id="divTransacaoPrincipal">
+			<label class="control-label"><span class="obrigatorio">*</span> Transa&ccedil;&atilde;o:</label>
+			<div class="controls">
+				<div class="input-append"> 
+					<select name="transacaoPrincipal" id="select_transacaoPrincipal" validators="required"></select>
+				</div> 
+				<span class="help-inline"></span>
+			</div>
+		</div>
+		<div class="control-group hide" id="divUsuarioPrincipal">
+			<label class="control-label"><span class="obrigatorio">*</span> Usu&aacute;rio:</label>
+			<div class="controls">
+				<div class="input-append"> 
+					<input type="text" name="usuarioPrincipal" id="usuarioPrincipal" value="" class="input-medium usuarioPrincipal" validators="required" maxlength="7" />
+				</div> 
+				<span class="help-inline"></span>
+			</div>
+		</div>
+		<div class="control-group hide" id="divConvenioPrincipal">
+			<label class="control-label"><span class="obrigatorio">*</span> Conv&ecirc;nio:</label>
+			<div class="controls">
+				<div class="input-append"> 
+					<input type="text" name="convenioPrincipal" id="convenioPrincipal" value="" class="input-medium convenioPrincipal numero" validators="required" maxlength="5"/>
+				</div> 
+				<span class="help-inline"></span>
+			</div>
+		</div>
+		<div class="control-group hide" id="divConvenio">
+			<label class="control-label"> Conv&ecirc;nio:</label>
+			<div class="controls">
+				<div class="input-append"> 
+					<input type="text" name="convenio" id="convenio" value="" class="input-medium convenio numero" maxlength="5" />
+				</div> 
+				<span class="help-inline"></span>
+			</div>
+		</div>
+		<div class="control-group hide" id="divCPF">
+			<label class="control-label"><span class="obrigatorio">*</span> CPF:</label>
+			<div class="controls">
+				<div class="input-append"> 
+					<input type="text" name="cpf" id="cpf" value="" class="input-medium cpf" validators="required,cpf" />
+				</div> 
+				<span class="help-inline"></span>
+			</div>
+		</div>
+		<div class="control-group hide" id="divConvenente">
+			<label class="control-label"><span class="obrigatorio">*</span> CNPJ:</label>
+			<div class="controls">
+				<div class="input-append"> 
+					<input type="text" name="cnpj" id="cnpj" value="" class="input-medium cnpj" validators="required,cnpj" />
+				</div> 
+				<span class="help-inline"></span>
+			</div>
+		</div>
+		<div class="control-group hide" id="divUsuario">
+			<label class="control-label"> Usu&aacute;rio:</label>
+			<div class="controls">
+				<div class="input-append"> 
+					<input type="text" name="usuario" id="usuario" value="" class="input-medium usuario" maxlength="7" />
+				</div> 
+				<span class="help-inline"></span>
+			</div>
+		</div>
+		<div class="control-group hide" id="divTransacao">
+			<label class="control-label"> Transa&ccedil;&atilde;o:</label>
+			<div class="controls">
+				<div class="input-append"> 
+					<select name="select_transacao" id="select_transacao"></select>
+				</div> 
+				<span class="help-inline"></span>
+			</div>
+		</div>
+		<div class="control-group hide" id="divPeriodo">
+			<label class="control-label"> Per&iacute;odo:</label>
+			<div class="controls">
+				<div class="input-append data"> 
+					<input type="text" name="dataInicio" id="dataInicio" value="" data-format="dd/MM/yyyy" 
+						   size="16" class="input-small data"  />
+					<span id="spanIconDataVigencia" class="add-on">
+	                	<i id="iIconDataVigencia" data-time-icon="icon-time" data-date-icon="icon-calendar" class="icon-calendar"></i>
+	                </span>
+	            </div>
+	            &nbsp;&agrave;&nbsp;
+	            <div class="input-append data">					
+					<input type="text" name="dataFim" id="dataFim" value="" data-format="dd/MM/yyyy" 
+						   size="16" class="input-small data"  />
+					<span id="spanIconDataVigencia" class="add-on">
+	                	<i id="iIconDataVigencia" data-time-icon="icon-time" data-date-icon="icon-calendar" class="icon-calendar"></i>
+	                </span>
+				</div> 
+				<span class="help-inline"></span>
+			</div>
+		</div>
+		<!-- BOTOES DE ACAO -->
+		<div id="" class="form-actions">
+			<a class="btn btn-primary" id="btnConsultar"><i class="icon icon-search icon-white"></i>&nbsp;Consultar</a>
+			<a class="btn" id="btnLimparForm"><i class="icon"></i>Limpar</a>
+		</div>
+	</form>	
+	</fieldset>
+</div>
+
+<div id="divLista"></div>

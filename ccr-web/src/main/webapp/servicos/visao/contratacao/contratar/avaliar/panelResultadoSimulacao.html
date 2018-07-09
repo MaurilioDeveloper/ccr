@@ -1,0 +1,223 @@
+<div class="panel panel-default">
+	<div class="panel-heading" role="tab" id="headingOne">
+		<h3 class="panel-title">
+			<span class="icon-user"> </span> Resultado Simula&ccedil;&atilde;o Final
+		</h3>
+	</div>
+	<div class="panel-body">
+		<form class="form-horizontal">
+			<table class="table table-striped table-bordered" id="gridResumo">
+				<tbody>
+					<tr>
+						<td width="50%">Resumo
+						</th>
+						<td><%= simularResultado.tipoSeguro == 1 ? 'Com Seguro Prestamista' : 'Sem Seguro Prestamista' %>
+						</th>
+					</tr>
+					<tr>
+						<td>Conv&ecirc;nio</td>
+						<td><%= simularResultado.idConvenio %></td>
+					</tr>
+					<tr>
+						<td>Valor L&iacute;quido</td>
+						<td><%=formatadores.formatarMoeda(simularResultado.simulacao.valorLiquido)
+							%></td>
+					</tr>
+					<tr>
+						<td>Prazo Contrato</td>
+						<td><%= simularResultado.prazo %></td>
+					</tr>
+					<tr>
+						<td>Taxa Juros</td>
+						<td><%=formatadores.formatarTaxa(simularResultado.simulacao.taxaJuros, 2)
+							%> %</td>
+					</tr>
+					<tr>
+						<td>Valor Presta&ccedil;&atilde;o</td>
+						<td><%=formatadores.formatarMoeda(simularResultado.simulacao.prestacao)
+							%></td>
+					</tr>
+					<tr>
+						<td>Margem Consignado Dispon&iacute;vel</td>
+						<td><%= simularResultado.valorMargem %></td>
+					</tr>
+				</tbody>
+				<table class="table table-striped table-bordered" id="gridDetalhe">
+					<thead>
+						<tr>
+							<th colspan="2"><a id="controleDetalheSimulacao"
+								style="cursor: pointer"> Detalhe</a></th>
+						</tr>
+					</thead>
+
+					<tbody id="detalheSimulacao" class="hide">
+						<tr>
+							<td width="50%">Valor Contrato</td>
+							<td><%=formatadores.formatarMoeda(simularResultado.simulacao.valorContrato)
+								%></td>
+						</tr>
+						<tr>
+							<td>Valor Total Contrato</td>
+							<td><%=formatadores.formatarMoeda(simularResultado.simulacao.valorTotalContrato)
+								%></td>
+						</tr>
+						<tr>
+							<td>Data Libera&ccedil;&atilde;o Cr&eacute;dito</td>
+							<td><%= simularResultado.camposComuns.data %></td>
+						</tr>
+						<tr>
+							<td>Data Base C&aacute;lculo 1ª Presta&ccedil;&atilde;o</td>
+							<td><%= simularResultado.camposComuns.basePrimeiraPrestacao
+								%></td>
+						</tr>
+						<tr>
+							<td>Data Vencimento 1ª Presta&ccedil;&atilde;o</td>
+							<td><%=
+								simularResultado.camposComuns.vencimentoPrimeiraPrestacao %></td>
+						</tr>
+						<tr>
+							<td>Data Vencimento Contrato</td>
+							<td><%=simularResultado.simulacao.vencimentoContrato %></td>
+						</tr>
+						<tr>
+							<td>Quantidade Dias Juros Acerto</td>
+							<td><%=simularResultado.camposComuns.quantDiasJurosAcerto %></td>
+						</tr>
+						<tr>
+							<td>Valor Juros Acerto</td>
+							<td><%=formatadores.formatarMoeda(simularResultado.simulacao.juroAcerto)
+								%></td>
+						</tr>
+						<tr>
+							<td>Valor Seguro Prestamista</td>
+							<td><%=formatadores.formatarMoeda(simularResultado.simulacao.valorSeguro)
+								%></td>
+						</tr>
+						<tr>
+							<td>Valor IOF</td>
+							<td><%=formatadores.formatarMoeda(simularResultado.simulacao.iof)%></td>
+						</tr>	
+						<tr class="btn-toggle-popupcet">
+							<td class="btn-toggle-popupcet btn-link ">CET Mensal</a></td>
+							<td class="btn-toggle-popupcet btn-link "><%=
+								formatadores.formatarTaxa(simularResultado.simulacao.cetmensal,
+								2) %>%</td>
+						</tr>
+						<tr class="btn-toggle-popupcet">
+							<td class="btn-toggle-popupcet btn-link ">CET Anual</a></td>
+							<td class="btn-toggle-popupcet btn-link "><%=
+								formatadores.formatarTaxa(simularResultado.simulacao.cetanual,
+								2) %>%</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="form-actions" align="center">
+					<button type="button" class="btn btn-primary btnRecalcularAvaliar" id="btnRecalcular">Recalcular</button>
+				</div>
+				</form>
+				</div>
+				</div>
+				<div id="divModalRecalcularAvaliar" class="modal hide fade"
+					aria-hidden="true" aria-labelledby="myModalLabel"
+					data-backdrop="static" role="dialog" tabindex="-1">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true">&times;</button>
+						<legend>Recalcular</legend>
+						<div class="alert alert-error" id="mensagens-error" style="display: none">	  
+						  <button type="button" class="close" data-dismiss="alert">&times;</button>
+						  <div>Informar um campo para realizar a a&ccedil;&atilde;o</div>	  
+						</div>
+					</div>
+					<div class="modal-body">
+						<div class="control-group">
+							<label class="control-label">Valor:</label>
+							<div class="controls">
+								<label class="radio inline"> <input class="radio"
+									type="radio" name="identificadorValor" id="radioValorLiquido"
+									value="1" checked />Valor L&iacute;quido
+								</label> <label class="radio inline"> <input class="radio"
+									type="radio" name="identificadorValor" id="radioValorPrestacao"
+									value="2" />Valor Presta&ccedil;&atilde;o
+								</label>
+
+							</div>
+						</div>
+						<div id="div_valor_liquido">
+
+							<div class="control-group">
+								<label class="control-label">Valor L&iacute;quido: </label>
+								<div class="controls">
+									<div class="input-prepend input-append">
+										<span class="add-on">R$</span> <input type="text"
+											name="valorLiquidoRecalculo" id="valorLiquidoRecalculoAvaliar" value=""
+											class="input-medium moeda" maxlength="16" />
+									</div>
+									<span class="help-inline"></span>
+								</div>
+							</div>
+						</div>
+						<div id="div_valor_prestacao_avaliar" class="control-group hide">
+
+							<div class="control-group">
+								<label class="control-label">Valor
+									Presta&ccedil;&atilde;o:
+								</label>
+								<div class="controls">
+									<div class="input-prepend input-append">
+										<span class="add-on">R$</span> <input type="text"
+											name="prestacaoRecalculo" id="prestacaoRecalculoAvaliar" value=""
+											class="input-medium moeda" maxlength="16"
+											validators="required" /><br><font size="1" color="blue">&nbsp;&nbsp;Margem
+											dispon&iacute;vel: R$<%= simularResultado.valorMargem %></font>
+									</div>
+									<span class="help-inline"></span>
+								</div>
+							</div>
+						</div>
+						<div class="control-group" id="div_prazoAvaliar">
+							<label class="control-label">Prazo:</label>
+							<div class="controls">
+								<input type="text" class="input-medium numero"
+									name="prazoRecalculo" id="prazoRecalculoAvaliar" maxlength="3"/><b>&nbsp;&nbsp;meses</b>
+							</div>
+						</div>
+						<div class="control-group" id="div_taxaJurosAvaliar">
+							<label class="control-label">Taxa de Juros:</label>
+							<div class="controls">
+								<div class="input-prepend input-append">
+									<input type="text" class="input-medium indice5" name="jurosRecalculo" 
+									id="jurosRecalculoAvaliar"/> <span	class="add-on">%</span>
+								</div>
+							</div>
+						</div>
+								<div class="form-actions" align="center">
+						<button type="button" class="btn btn-primary"
+							id="btnRecalcularModal">Recalcular</button>
+						<button type="button" class="btn" id=btnVoltarRecalcularModal>Voltar</button>
+					</div>
+				</div>
+			</div>
+		</table>		
+</form>
+</div>
+</div>
+
+<div id="divAvaliacaoOperacao" tabindex="-1"></div>
+
+<div id="divModalCET" class="modal2 hide fade"
+	aria-labelledby="myModalLabel" data-backdrop="static" role="dialog"
+	tabindex="-1">
+	<div class="modal-body" id="divModalCETBodyTwo" />
+</div>
+
+<div id="divModalBloqueadaAlcada" class="modal hide fade"
+	aria-labelledby="myModalLabel" data-backdrop="static" role="dialog"
+	tabindex="-1">
+	<div class="modal-body" align="center">
+		<span>Opera&ccedil;&atilde;o Bloqueada por Al&ccedil;ada.</span>
+	</div>
+	<div class="modal-footer" style="text-align: center">
+		<a class="btn btn-primary" id="bloqueadaAlcadaClose">OK</a>
+	</div>
+</div>

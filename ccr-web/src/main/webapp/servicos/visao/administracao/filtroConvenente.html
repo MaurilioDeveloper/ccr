@@ -1,0 +1,71 @@
+<!-- Conteudo -->
+<div id="divIdentificador" class="control-group">
+    <div class="control-group">
+    	<label class="control-label">Identificador:</label>
+		<div class="controls">
+           	<label class="radio inline" style="margin-right: 15px">
+            	<input class="radio" type="radio" name="rdoIdentificador" id="radioConvenio" value="1" />Conv&ecirc;nio
+            </label>
+            <label class="radio inline" style="margin-right: 15px">
+                <input class="radio" type="radio" name="rdoIdentificador" id="radioConvenente" value="2" />Convenente
+            </label>
+            <label class="radio inline" style="margin-right: 15px">
+                <input class="radio" type="radio" name="rdoIdentificador" id="radioUnidade" value="3" />Unidade
+            </label>
+		</div>
+	</div>
+</div>
+
+<div id="divCodigoConvenente" class="control-group">
+  	<label class="control-label">C&oacute;digo:</label>
+    <div class="controls">
+	   	<div class="input-prepend input-append">
+	       	<input type="text" name="id" id="id" value="" class="input-medium numero" maxlength="5" />
+	   	</div>
+		<span class="help-inline"></span>
+	</div>
+</div>
+<div id="divNomeConvenente" class="control-group">
+    <label class="control-label">Nome:</label>
+    <div class="controls">
+      	<div class="input-prepend input-append">
+          	<input name="nome" id="nome" type="text" class="input-xlarge alpha" value="" />
+      	</div>
+		<span class="help-inline"></span>
+	</div>
+</div>
+<div id="divSituacao" class="control-group">
+  	<label class="control-label">Situa&ccedil;&atilde;o:</label>
+    <div class="controls">
+	   	<div class="input-prepend input-append">
+	       	<select name="situacao" id="situacao"></select>
+	   	</div>
+	</div>
+</div>
+<div id="divCNPJConvenente" class="control-group">
+	<label class="control-label">CNPJ:</label>
+	<div class="controls">
+		<div class="input-append"> 
+			<input type="text" name="cnpj" id="cnpj" value="" class="input-medium cnpj" />
+		</div> 
+		<span class="help-inline"></span>
+	</div>
+</div>
+<div id="divSR" class="control-group">
+	<label class="control-label">SR:</label>
+	<div class="controls">
+		<div class="input-append"> 
+			<input type="text" name="sr" id="sr" class="input-medium numero" maxlength="4" value="" />
+		</div> 
+		<span class="help-inline"></span>
+	</div>
+</div>
+<div id="divAgencia" class="control-group">
+	<label class="control-label">Ag&ecirc;ncia:</label>
+	<div class="controls">
+		<div class="input-append"> 
+			<input type="text" name="agencia" id="agencia" class="input-medium numero" maxlength="4" value=""  />
+		</div> 
+		<span class="help-inline"></span>
+	</div>
+</div>

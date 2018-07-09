@@ -1,0 +1,6 @@
+[
+	{"id" : "1", "descricao" : "Inicial"},
+	{"id" : "2", "descricao" : "Processado"},
+	{"id" : "3", "descricao" : "Processamento com erro"},
+	{"id" : "4", "descricao" : "Não processado"}
+]

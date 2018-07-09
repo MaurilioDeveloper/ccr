@@ -1,0 +1,35 @@
+<div class="form-horizontal">
+	<div class="row-fluid">
+			<fieldset id="consultaClientePF">
+				<div class="row-fluid">
+				  <div class="span7"><h1>Simular</h1></div>
+				  <div class="span5" align="right">		
+				  	<ul class="breadcrumb" align="right">
+						<li><span><b>Ag&ecirc;ncia Concessora: </b>  <%= agencia.idUnidade  %> - <%= agencia.nomeUnidade %></span></li><br>
+					</ul>
+				  </div>
+				</div>
+				<div class="row-fluid" id="groupConsulta">
+					<div class="control-group">
+						<label class="control-label" for="margemConsignado"> Margem Consignado: </label>
+						<div class="controls">
+							<input id="margemConsignado" name="margemConsignado" validators="required" class="input-medium moeda" type="text" maxlength="10"> 
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="numeroCPF"> CPF: </label>
+						<div class="controls">
+							<input id="numeroCPF" name="numeroCPF" validators="required,cpf"
+								class="input-medium input-cpf cpf" type="text"> <a class="btn btn-primary btnConsultar"
+								id="btnConsultar" title="Consultar"> <i
+								class="icon-search icon-white"></i> Consultar
+							</a> <span class="help-inline"></span>
+						</div>
+					</div>
+					<br />
+				</div>
+				<div class="row-fluid" id="retornoConsultaDadosCliente"></div> 
+			</fieldset>
+		</div>
+	</div>
+</div>

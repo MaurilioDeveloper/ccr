@@ -1,0 +1,15 @@
+<option value="">(Selecione)</option>
+<% 
+collection.each(function(item) {
+var selected="";
+if ( item.comboValue() != null && selectedValue != null){
+	if (item.comboValue() == selectedValue || selectedValue === item.comboValue())
+	{
+		selected = "selected";
+	}
+} 
+
+document.write("<option value=\"" + item.comboValue() + "\" " + selected + ">" + item.comboLabel() + "</option>");
+
+});
+%>

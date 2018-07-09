@@ -1,0 +1,29 @@
+<div>
+	<form class="form-horizontal" id="formResultadoAvaliacao">
+		<div id="divDadosSICLI">
+			<div class="control-group" >
+				<label class="control-label">N&ordm; Avalia&ccedil;&atilde;o:</label>
+				<div class="controls resultado"><%= avaliacao.codigo %></div>
+			</div>
+			<div class="control-group" >
+				<label class="control-label">Produto:</label>
+				<div class="controls resultado"><%= avaliacao.produto %></div>
+			</div>
+			<div class="control-group" >
+				<label class="control-label">Validade:</label>
+				<div class="controls resultado"><%= formatadores.formatarData(avaliacao.inicioValidade) + ' &agrave; ' + formatadores.formatarData(avaliacao.fimValidade) %></div>
+			</div>
+			<div class="control-group" >
+				<label class="control-label">Prazo:</label>
+				<div class="controls resultado"><%= avaliacao.prazo %> Meses</div>
+			</div>			
+			<div class="control-group" >
+				<label class="control-label">Limite Global:</label>
+				<div class="controls resultado">R$ <%= formatadores.formatarMoeda(avaliacao.limiteGlobal) %></div>
+			</div>
+			<div class="control-group" >
+				<label class="control-label">Limite CPM:</label>
+				<div class="controls resultado">R$ <%= formatadores.formatarMoeda(avaliacao.limiteCPM) %></div>
+			</div>
+	</form>
+</div>

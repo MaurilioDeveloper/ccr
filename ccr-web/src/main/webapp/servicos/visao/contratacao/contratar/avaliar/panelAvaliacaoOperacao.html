@@ -1,0 +1,46 @@
+<div class="form-horizontal">
+	<div class="panel-group" id="divAvaliacaoOperacao">
+			<div class="panel-body" id="avaliacaoBody">
+				<div class="control-group">
+					<label class="control-label">C&oacute;digo:</label>
+					<div class="controls medio resultado"><%=avaliacaoRiscoValida.codigoAvaliacao%></div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Data In&iacute;cio Validade:</label>
+					<div class="controls medio resultado"><%=  formatadores.formatarData(avaliacaoRiscoValida.dataInicioValidade)%></div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Data Fim Validade:</label>
+					<div class="controls medio resultado"><%= formatadores.formatarData(avaliacaoRiscoValida.dataFimValidade)%></td></div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Prazo:</label>
+					<div class="controls medio resultado"><%=avaliacaoRiscoValida.prazo%></div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Rating:</label>
+					<div class="controls medio resultado"><%=avaliacaoRiscoValida.rating%></div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Valor CPM:</label>
+					<div class="controls medio resultado">R$ <%= formatadores.formatarMoeda(avaliacaoRiscoValida.valorLimiteCPM) %></div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Valor Financiamento:</label>
+					<div class="controls medio resultado">R$ <%= formatadores.formatarMoeda(avaliacaoRiscoValida.valorFinanciamento) %></div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Valor Limite Global:</label>
+					<div class="controls medio resultado">R$ <%= formatadores.formatarMoeda(avaliacaoRiscoValida.valorLimiteGlobal) %></div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Resultado Avalia&ccedil;&atilde;o:</label>
+					<div class="controls medio resultado"><%=avaliacaoRiscoValida.situacao%></div>
+				</div>
+				<div class="control-group" id="divBloqueioAlcada" >
+					<label class="control-label">Bloqueada Al&ccedil;ada:</label>
+					<div class="controls medio resultado"><%=avaliacaoRiscoValida.flagBloquadaAlcada%></div>
+				</div>
+			</div>	
+	</div>
+</div>

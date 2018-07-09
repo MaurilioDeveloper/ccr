@@ -1,0 +1,135 @@
+[  
+  {
+    "nome" : "CrÃ©dito Consignado",
+    "descricao" : "Crédito Consignado",
+    "icone" : "fa fa-sitemap",
+    "id" : "menuCCR",
+    "onClick" : "DashboardControleCCR.simularCreditoConsignado();",
+    "roles" : [],
+    "notAllowedRoles" : [],
+    "codigo" : 201,
+    "subitens" : [
+        	
+    	{
+	        "id" : "idSimularCreditoConsignado",
+		    "nome" : "Simular CrÃ©dito Consignado",
+		    "icone" : "fa fa-sitemap",
+		    "onClick" : "$.get('../ccr-web/servicos/initSimularCreditoConsignado.js');",
+		    "descricao" : "Simular Crédito Consignado",
+		    "roles" : [],
+		    "notAllowedRoles" : [],
+		    "codigo" : 201
+    	},
+    	{
+	        "id" : "idAutorizarContrato",
+		    "nome" : "Manter Contrato/Proposta",
+		    "icone" : "fa fa-sitemap",
+		    "onClick" : "$.get('../ccr-web/servicos/initManterContrato.js');",		    
+		    "descricao" : "Autorizar Contrato",
+		    "roles" : [],
+		    "notAllowedRoles" : [],
+		    "codigo" : 202
+    	},
+    	{
+	        "id" : "idGrupoManterTaxa",
+		    "nome" : "Manter Grupo Taxa",
+		    "icone" : "fa fa-sitemap",
+		    "onClick" : "$.get('../ccr-web/servicos/initManterGrupoTaxa.js');",		
+		    "descricao" : "Manter Grupo Taxa",
+		    "roles" : [],
+		    "notAllowedRoles" : [],
+		    "codigo" : 203
+    	},
+    	{
+	        "id" : "idManterTaxaIOF",
+		    "nome" : "Manter IOF",
+		    "icone" : "fa fa-sitemap",
+		    "onClick" : "$.get('../ccr-web/servicos/initManterTaxaIOF.js');",		
+		    "descricao" : "Manter Taxa IOF",
+		    "roles" : [],
+		    "notAllowedRoles" : [],
+		    "codigo" : 204
+    	},
+    	{
+	        "id" : "idManterTaxaJuros",
+		    "nome" : "Manter Taxa Juros",
+		    "icone" : "fa fa-sitemap",
+		    "onClick" : "$.get('../ccr-web/servicos/initManterTaxaJuros.js');",	
+		    "descricao" : "Manter Taxa Juros",
+		    "roles" : [],
+		    "notAllowedRoles" : [],
+		    "codigo" : 205
+    	},
+    	{
+	        "id" : "idManterTaxaSeguro",
+		    "nome" : "Manter Taxa Seguro",
+		    "icone" : "fa fa-sitemap",
+		     "onClick" : "$.get('../ccr-web/servicos/initManterTaxaSeguro.js');",	
+		    "descricao" : "Manter Taxa Seguro",
+		    "roles" : [],
+		    "notAllowedRoles" : [],
+		    "codigo" : 206
+    	},
+    	{
+	        "id" : "idManterConvenente",
+		    "nome" : "Manter Convênio",
+		    "icone" : "fa fa-sitemap",
+		    "onClick" : "$.get('../ccr-web/servicos/initManterConvenente.js');",
+		    "descricao" : "Manter Convenente",
+		    "roles" : [],
+		    "notAllowedRoles" : [],
+		    "codigo" : 207
+    	},
+    	{
+	        "id" : "idConsultarAuditoria",
+		    "nome" : "Consultar Auditoria",
+		    "icone" : "fa fa-sitemap",		    
+		    "onClick" : "$.get('../ccr-web/servicos/initConsultarAuditoria.js');",
+		    "descricao" : "Consultar Auditoria",
+		    "roles" : [],
+		    "notAllowedRoles" : [],
+		    "codigo" : 208
+    	},
+    	{
+	        "id" : "idContratarConsignado",
+		    "nome" : "Contratar CrÃ©dito Consignado",
+		    "icone" : "fa fa-sitemap",
+		    "onClick" : "$.get('../ccr-web/servicos/initContratarConsignado.js');",		
+		    "descricao" : "Contratar Credito Consignado",
+		    "roles" : [],
+		    "notAllowedRoles" : [],
+		    "codigo" : 209
+    	}, 
+    	{
+	        "id" : "idManterDocumento",
+		    "nome" : "Manter Documento",
+		    "icone" : "fa fa-sitemap",
+		    "onClick" : "$.get('../ccr-web/servicos/initManterDocumento.js');",		
+		    "descricao" : "Manter Documento",
+		    "roles" : [],
+		    "notAllowedRoles" : [],
+		    "codigo" : 210
+    	},
+    	{
+    		"id" 				: 	"idConsultarArquivo",
+    		"nome"				: 	"Consultar Arquivo",
+    		"icone"				: 	"fa fa-file-o",
+    		"onClick" 			: 	"$.get('../ccr-web/servicos/initConsultarArquivo.js');",
+    		"descricao" 	  	: 	"Consultar Arquivo",
+    		"roles" 		  	: 	[],
+		    "notAllowedRoles" 	: 	[],
+		    "codigo" 			: 	303
+    	},
+    	{
+    		"id" 				: 	"idGerenciadorProcesso",
+    		"nome"				: 	"Gerenciador de Processo",
+    		"icone"				: 	"fa fa-file-o",
+    		"onClick" 			: 	"$.get('../ccr-web/servicos/initGerenciadorProcesso.js');",
+    		"descricao" 	  	: 	"Gerenciador de Processo",
+    		"roles" 		  	: 	[],
+		    "notAllowedRoles" 	: 	[],
+		    "codigo" 			: 	310
+    	}
+    ]
+  }
+]

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>br.gov.caixa.ccr</groupId>
+		<version>${ccr.version}</version>
+		<artifactId>ccr</artifactId>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+
+	<artifactId>ccr-web</artifactId>
+	<packaging>war</packaging>
+
+	<name>CCR Web module</name>
+
+	<dependencies>
+
+		<!-- Dependency on the EJB module so we can use it's services if needed -->
+		<dependency>
+			<groupId>br.gov.caixa.ccr</groupId>
+			<artifactId>ccr-ejb</artifactId>
+			<type>ejb</type>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>br.gov.caixa.arqref</groupId>
+			<artifactId>arqref-services</artifactId>
+			<version>${arqref-services.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>br.gov.caixa.arqref</groupId>
+			<artifactId>arqref-core</artifactId>
+			<version>${arqref-core.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>br.gov.caixa.arqref</groupId>
+			<artifactId>arqref-web</artifactId>
+			<version>${arqref-web.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		
+
+		<!-- Import the Common Annotations API (JSR-250), we use provided scope 
+			as the API is included in JBoss AS 7 -->
+		<dependency>
+			<groupId>org.jboss.spec.javax.annotation</groupId>
+			<artifactId>jboss-annotations-api_1.1_spec</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Import the JAX-RS API, we use provided scope as the API is included 
+			in JBoss AS 7 -->
+		<dependency>
+			<groupId>org.jboss.spec.javax.ws.rs</groupId>
+			<artifactId>jboss-jaxrs-api_1.1_spec</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Import the CDI API, we use provided scope as the API is included in 
+			JBoss AS 7 -->
+		<dependency>
+			<groupId>javax.enterprise</groupId>
+			<artifactId>cdi-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>${servlet.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		
+	</dependencies>
+
+	<build>
+		<finalName>ccr-web</finalName>
+		<plugins>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${war.plugin.version}</version>
+				<configuration>
+					<!-- Java EE 6 doesn't require web.xml, Maven needs to catch up! -->
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	
+	<distributionManagement>
+		<repository>
+			<id>caixa-libs-dist</id>
+			<name>Caixa Repository</name>
+			<url>http://nexus.sirius.tivit.com.br/nexus/content/repositories/caixa-libs/</url>
+		</repository>
+		<snapshotRepository>
+			<id>caixa-libs-snapshots-dist</id>
+			<name>Central Repository</name>
+			<url>http://nexus.sirius.tivit.com.br/nexus/content/repositories/caixa-libs-snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement> 
+
+	
+
+</project>

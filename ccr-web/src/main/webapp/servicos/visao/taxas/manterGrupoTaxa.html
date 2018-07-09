@@ -1,0 +1,92 @@
+<!-- Conteudo -->
+<link href="/ccr-web/layout/css/jquery-ui-custom.css" rel="stylesheet">
+<div id="cabecalhoManterIOF">
+<ul class="breadcrumb">
+	<li><a href="index.html">In&iacute;cio</a> <span class="divider">&gt;</span></li>
+	<li>Administra&ccedil;&atilde;o <span class="divider">&gt;</span></li>
+	<li class="active">Manter Grupo Taxa</li>
+</ul>
+
+<h1>Manter Grupo Taxa</h1>
+<br />
+</div>
+
+<div id="divFiltroManterIOF">
+	<fieldset>
+		<form class="form-horizontal" id="formFiltroTaxaIOF">
+			<div id="divFiltroManterIOFForm" class="">
+				<div  class="control-group" >
+					<label class="control-label">Código:</label>
+					<div class="controls">
+						<div id="divInputCodigo" class="input-append"> 
+							<input type="text"  id="codigo" value="" validators="required,maiorQueZero"  class="input-mini numero" 
+								    size="16" maxlength="4" min="0"   />
+						</div>
+						<span class="help-inline"></span>
+					</div>
+				</div>
+				<div  class="control-group" >
+					<label class="control-label">Nome:</label>
+					<div class="controls">
+						<div id="divInputNome" class="input-append"> 
+							<input type="text" id="nomeGrupoTaxa" size="50" maxlength="50"  validators="required,maiorQueZero" />
+						</div>
+						<span class="help-inline"></span>
+					</div>
+				</div>			
+			</div>
+			
+			
+			<!-- BOTOES DE ACAO -->
+			<div id="divAcoesFiltroConvenente" class="form-actions">
+				<a class="btn btn-primary" id="btnConsultarGrupoTaxa"><i class="icon-white icon-search"></i> Consultar</a>
+				<a class="btn btn-primary" id="btnNovoGrupoTaxa">Incluir</a>
+				<a class="btn" id="btnLimparForm"> Limpar</a>
+				<a class="btn" id="btnSair">Sair</a>
+			</div>
+		</form>
+	</fieldset>
+</div>
+<legend></legend>
+
+<div id="divListaGrupoTaxaShow" tabindex="-1">
+	<div id="divListaGrupoTaxa" tabindex="-1"></div>
+</div>
+
+<div id="divFormulario" class="modal hide fade" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" data-backdrop="static" tabindex="-1">
+	<fieldset>
+	<legend><div id="divTituloForm">&nbsp;Incluir Grupo Taxa</div></legend>
+	<form class="form-horizontal" id="formCadastroGrupoTaxa">
+		<input type="hidden"  id="tipoOper" value="incluir"/>
+		<div  class="control-group" >		
+					<label class="control-label"><span class="obrigatorio">*</span> Código:</label>
+					<div class="controls">
+						<div  class="input-append"> 
+							<input type="text"  id="divInputNovoCodigo" 
+								   size="16" maxlength="4" min="0" class="input-medium text-right numero" validators="required,maiorQueZero" />
+								   
+						</div>
+						<span class="help-inline"></span>
+					</div>
+				</div>
+				<div  class="control-group" >
+					<label class="control-label"><span class="obrigatorio">*</span> Nome:</label>
+					<div class="controls">
+						<div class="input-append"> 
+							<input type="text"  id="divInputNovoNome"  
+								   size="16" maxlength="40" validators="required"  />
+						</div>
+						<span class="help-inline"></span>
+					</div>
+				</div>
+	</form>
+	
+	<!-- BOTOES DE ACAO -->
+	<div id="divAcoesManterIOF" class="form-actions">
+		<a class="btn btn-primary" id="btnSalvar"><i class="icon"></i>Salvar</a>
+		<a class="btn" id="btnVoltar"><i class="icon"></i>Voltar</a>
+	</div>
+	</fieldset>
+</div>
+
+

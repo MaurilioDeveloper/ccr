@@ -1,0 +1,135 @@
+<div>
+	<form class="form-horizontal" id="formDetalheCliente">
+		<div id="divDadosSICLI">
+			<div class="control-group" >
+				<label class="control-label">CPF:</label>
+				<div class="controls resultado"><%=formatadores.formatarCPF(sicli.cpf.documento.numero + sicli.cpf.documento.digitoVerificador)%></div>
+			</div>
+			<div class="control-group" >
+				<label class="control-label">Matr&iacute;cula:</label>
+				<div class="controls resultado matriculaCliente">-</div>
+			</div>
+			<div class="control-group" >
+				<label class="control-label">Nome:</label>
+				<div class="controls resultado"><%=sicli.nomeCliente.nome%></div>
+			</div>
+			<div class="control-group" >
+				<label class="control-label">Data de Nascimento:</label>
+				<div class="controls resultado"><%= formatadores.formatarData(sicli.dataNascimento.data) %></div>
+			</div>
+			<div class="control-group" >
+				<label class="control-label">Sexo:</label>
+				<div class="controls resultado"><%= (sicli.sexo.sexo == 'M' ? 'Masculino' : 'Feminino') %></div>
+			</div>
+			<div class="control-group" >
+				<label class="control-label">Estado Civil:</label>
+				<div class="controls resultado"><%=gDescEstadoCivil[sicli.estadoCivil.estadoCivil]%></div>
+			</div>
+			<div class="control-group" >
+				<label class="control-label">Conta Cr&eacute;dito:</label>
+				<div class="controls resultado">
+				<% 
+					var conta = "";
+					for (var i=0; i < sicli.produtoCaixa.length; i++) {
+						var produto = sicli.produtoCaixa[i];
+						if (produto.dataFimAtividade == null) {
+							conta = produto.contrato;
+							break;
+						}
+					}	
+					print(formatadores.formatarNumeroContaCompleto(conta));
+				%>
+				</div>			
+			</div>
+			<div class="control-group" >
+				<label class="control-label">Profiss&atilde;o:</label>
+				<div class="controls resultado"><%= sicli.profissaoSiric.descricaoProfissao %></div>
+			</div>
+			<div class="control-group" >
+				<label class="control-label">Nacionalidade:</label>
+				<div class="controls resultado">BRASILEIRO</div>
+			</div>
+			<div class="control-group" >
+				<label class="control-label">RIC:</label>
+				<div class="controls resultado">-</div>
+			</div>
+			<div class="control-group" >
+				<label class="control-label">COCLI:</label>
+				<div class="controls resultado"><%= sicli.cocliAtivo.cocliAtivo %></div>
+			</div>
+			
+			<div class="control-group" >
+				<label class="control-label">Endere&ccedil;o:</label>
+				<div class="controls resultado"><%= sicli.enderecoNacional[0].logradouro %></div>
+			</div>
+			<div class="control-group" >
+				<label class="control-label">Complemento:</label>
+				<div class="controls resultado"><%= sicli.enderecoNacional[0].complemento %></div>
+			</div>
+			<div class="control-group" >
+				<label class="control-label">N&uacute;mero:</label>
+				<div class="controls resultado"><%= sicli.enderecoNacional[0].numero %></div>
+			</div>
+			<div class="control-group" >
+				<label class="control-label">Bairro:</label>
+				<div class="controls resultado"><%= sicli.enderecoNacional[0].bairro %></div>
+			</div>
+			<div class="control-group" >
+				<label class="control-label">Cidade:</label>
+				<div class="controls resultado"><%= sicli.enderecoNacional[0].nomeMunicipio %></div>
+			</div>
+			<div class="control-group" >
+				<label class="control-label">UF:</label>
+				<div class="controls resultado"><%= sicli.enderecoNacional[0].uf %></div>
+			</div>
+			<div class="control-group" >
+				<label class="control-label">CEP:</label>
+				<div class="controls resultado"><%= formatadores.formatarCEP(sicli.enderecoNacional[0].cep) %></div>
+			</div>
+			<div class="control-group" >
+				<label class="control-label">Carteira:</label>
+				<div class="controls resultado">
+					<%= sicli.carteiraCliente[0].carteiraPrincipal + ' - ' +  sicli.carteiraCliente[0].descricaoSegmento%>
+				</div>
+			</div>
+			<div class="control-group" >
+				<label class="control-label">N&ordm; Identidade:</label>
+				<div class="controls resultado"><%= sicli.identidade.documento.numero %></div>
+			</div>
+			<div class="control-group" >
+				<label class="control-label">Org&atilde;o Emissor:</label>
+				<div class="controls resultado"><%= sicli.identidade.siglaOrgaoEmissor %></div>
+			</div>
+			<div class="control-group" >
+				<label class="control-label">UF Emiss&atilde;o:</label>
+				<div class="controls resultado"><%= sicli.identidade.documento.uf %></div>
+			</div>
+			<div class="control-group" >
+				<label class="control-label">Data Emiss&atilde;o:</label>
+				<div class="controls resultado"><%= formatadores.formatarData(sicli.identidade.documento.dataEmissao) %></div>
+			</div>
+			<div class="control-group" >
+				<label class="control-label">Telefone contato:</label>
+				<div class="controls resultado">
+				<% var DDD = '', TEL = '';
+					for (var i=0; i < sicli.meioComunicacao.length; i++) {
+						if (sicli.meioComunicacao[i].meioComunicao == null)
+							continue;
+							
+						if ((sicli.meioComunicacao[i].meioComunicao == '11') || 
+						   (sicli.meioComunicacao[i].meioComunicao == '12') ||
+						   (sicli.meioComunicacao[i].meioComunicao == '13') ||
+						   (sicli.meioComunicacao[i].meioComunicao == '14')) {
+							   DDD = sicli.meioComunicacao[i].prefixoDiscagem;
+							   TEL = sicli.meioComunicacao[i].codigoComunicacao;
+							   break;
+						}
+					}
+					
+					print(formatadores.formatarDDDTelefone(DDD +''+ TEL));						   
+				 %>									
+				</div>
+			</div>
+		</div>
+	</form>
+</div>

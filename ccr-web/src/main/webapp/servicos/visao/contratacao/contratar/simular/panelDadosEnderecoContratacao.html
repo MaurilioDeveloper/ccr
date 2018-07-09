@@ -1,0 +1,71 @@
+<div class="panel panel-default" >
+    <div class="panel-heading" role="tab" id="enderecoContratacaoHeading">			
+     		<h3 class="panel-title">
+			<span class="icon-user"> </span> Endere&ccedil;o
+		</h3>
+	</div>
+   	<div class="panel-body hide" id="enderecoContratacaoBody">
+		<form class="form-horizontal" id="enderecoContratacao">
+			<table class="table table-striped lineSmall" >
+				<tbody>
+				  	<tr>
+					    <td style="padding: 6px 0px; border-top: 0px">
+					    	<label class="control-label">UF:</label>
+					    	<div id="div_enderecoNacional_uf" class="controls resultado"><%= cliente.enderecoNacional[0].uf %></div>
+					    	<input type="text" maxlength="2" class="input-medium" name="enderecoNacional_uf" id="enderecoNacional_uf" style="display: none;margin-left: 2%"
+									value="<%= cliente.enderecoNacional[0] == null ? '' : cliente.enderecoNacional[0].uf %>" validators="required"/>
+					    </td>
+				  	</tr>
+				  	<tr>
+					    <td style="padding: 6px 0px; border-top: 0px">
+					    	<label class="control-label">Munic&iacute;pio:</label>
+					    	<div id="div_enderecoNacional_municipio" class="controls resultado"><%= cliente.enderecoNacional[0].nomeMunicipio %></div>
+					    	<input type="text" class="input-medium" name="enderecoNacional_municipio" id="enderecoNacional_municipio" style="display: none;margin-left: 2%"
+									value="<%= cliente.enderecoNacional[0] == null ? '' : cliente.enderecoNacional[0].nomeMunicipio %>" validators="required"/>
+					    </td>
+				  	</tr>
+				  	<tr>
+					    <td style="padding: 6px 0px; border-top: 0px">
+					    	<label class="control-label">Logradouro:</label>
+					    	<div id="div_enderecoNacional_logradouro" class="controls resultado"><%= cliente.enderecoNacional[0].logradouro %></div>
+					    	<input type="text" class="input-medium" name="enderecoNacional_logradouro" id="enderecoNacional_logradouro" style="display: none;margin-left: 2%"
+									value="<%= cliente.enderecoNacional[0] == null ? '' : cliente.enderecoNacional[0].logradouro %>" validators="required"/>
+					    </td>
+				  	</tr>
+				  	<tr>
+					    <td style="padding: 6px 0px; border-top: 0px">
+					    	<label class="control-label">Complemento:</label>
+					    	<div id="div_enderecoNacional_complemento" class="controls resultado"><%= cliente.enderecoNacional[0].complemento %></div>
+					    	<input type="text" class="input-medium" name="enderecoNacional_complemento" id="enderecoNacional_complemento" style="display: none;margin-left: 2%"
+									value="<%= cliente.enderecoNacional[0] == null ? '' : cliente.enderecoNacional[0].complemento %>" validators="required"/>
+					    </td>
+				  	</tr>
+				  	<tr>
+					    <td style="padding: 6px 0px; border-top: 0px">
+					    	<label class="control-label">Bairro:</label>
+					    	<div id="div_enderecoNacional_bairro" class="controls resultado"><%= cliente.enderecoNacional[0].bairro %></div>
+					    	<input type="text" class="input-medium" name="enderecoNacional_bairro" id="enderecoNacional_bairro" style="display: none;margin-left: 2%"
+									value="<%= cliente.enderecoNacional[0] == null ? '' : cliente.enderecoNacional[0].bairro %>" validators="required"/>
+					    </td>
+				  	</tr>
+				  	<tr>
+					    <td style="padding: 1px; border-top: 0px">
+					    	<label class="control-label">N&uacute;mero:</label>
+					    	<div id="div_enderecoNacional_numero" class="controls resultado"><%= cliente.enderecoNacional[0].numero %></div>
+					    	<input type="text" class="input-medium numero" name="enderecoNacional_numero" id="enderecoNacional_numero" style="display: none;margin-left: 2%"
+									value="<%= cliente.enderecoNacional[0] == null ? '' : cliente.enderecoNacional[0].numero %>" validators="required"/>
+					    </td>
+				  	</tr>
+				  	<tr>
+					    <td style="padding: 6px 0px; border-top: 0px">
+					    	<label class="control-label">CEP:</label>
+					    	<div id="div_enderecoNacional_cep" class="controls resultado"><%= formatadores.formatarCEP(cliente.enderecoNacional[0].cep)%></div>
+					    	<input type="text" class="input-medium cep" name="enderecoNacional_cep" id="enderecoNacional_cep" style="display: none;margin-left: 2%"
+									value="<%= cliente.enderecoNacional[0] == null ? '' : cliente.enderecoNacional[0].cep %>" validators="required"/>
+					    </td>
+				  	</tr>
+				</tbody>
+			</table>
+		</form>
+	</div>
+</div>

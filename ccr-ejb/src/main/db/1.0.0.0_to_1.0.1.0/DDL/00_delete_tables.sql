@@ -1,0 +1,115 @@
+
+alter table CCR.CCRTB038_HISTORICO_SITUACAO
+   drop constraint FK_CCRTB038_REFERENCE_CCRTB014;
+
+alter table CCR.CCRTB038_HISTORICO_SITUACAO
+   drop constraint FK_CCRTB038_REFERENCE_CCRTB013;
+
+alter table CCR.CCRTB038_HISTORICO_SITUACAO
+   drop constraint FK_CCRTB038_REFERENCE_CCRTB014;
+
+drop index CCR.CCR2I038;
+
+drop table CCR.CCRTB038_HISTORICO_SITUACAO cascade constraints;
+
+alter table CCR.CCRTB013_CONTRATO
+   drop constraint FK_CCRTB013_CCRTB039;
+
+drop table CCR.CCRTB039_AVALIACAO_RISCO cascade constraints;
+
+
+
+
+alter table CCR.CCRTB013_CONTRATO
+   drop constraint CCR4F013;
+
+alter table CCR.CCRTB013_CONTRATO
+   drop constraint CCR5F013;
+
+alter table CCR.CCRTB013_CONTRATO
+   drop constraint CCR7F013;
+
+alter table CCR.CCRTB013_CONTRATO
+   drop constraint FK_CCRTB013_REFERENCE_CCRTB014;
+
+alter table CCR.CCRTB013_CONTRATO
+   drop constraint FK_CCRTB013_REFERENCE_CCRTB001;
+
+alter table CCR.CCRTB038_HISTORICO_SITUACAO
+   drop constraint FK_CCRTB038_REFERENCE_CCRTB013;
+
+alter table CCRTB050_AUTORIZACAO_CONTRATO
+   drop constraint FK_CCRTB050_REFERENCE_CCRTB013;
+
+drop index CCR.CCR3I013;
+
+drop index CCR.CCR2I013;
+
+drop table CCR.CCRTB013_CONTRATO cascade constraints;
+
+
+alter table CCR.CCRTB012_SIMULACAO_CONTRATO
+   drop constraint FK_CCRTB012_REFERENCE_CCRTB001;
+
+drop index CCR.CCR2I012;
+
+drop table CCR.CCRTB012_SIMULACAO_CONTRATO cascade constraints;
+
+
+
+alter table CCRTB050_AUTORIZACAO_CONTRATO
+   drop constraint FK_CCRTB050_REFERENCE_CCRTB013;
+
+drop table CCRTB050_AUTORIZACAO_CONTRATO cascade constraints;
+
+
+
+alter table CCRTB071_MODELO_CONTRATO
+   drop constraint FK_CCRTB071_REFERENCE_CCRTB070;
+
+drop table CCRTB070_TIPO_MODELO cascade constraints;
+
+alter table CCRTB071_MODELO_CONTRATO
+   drop constraint FK_CCRTB071_REFERENCE_CCRTB070;
+
+alter table CCRTB073_CAMPO_MODELO_CONTRATO
+   drop constraint FK_CCRTB073_REFERENCE_CCRTB071;
+
+drop table CCRTB071_MODELO_CONTRATO cascade constraints;
+
+alter table CCRTB073_CAMPO_MODELO_CONTRATO
+   drop constraint FK_CCRTB073_REFERENCE_CCRTB072;
+
+drop table CCRTB072_CAMPO cascade constraints;
+
+alter table CCRTB073_CAMPO_MODELO_CONTRATO
+   drop constraint FK_CCRTB073_REFERENCE_CCRTB071;
+
+alter table CCRTB073_CAMPO_MODELO_CONTRATO
+   drop constraint FK_CCRTB073_REFERENCE_CCRTB072;
+
+drop table CCRTB073_CAMPO_MODELO_CONTRATO cascade constraints;
+
+alter table CCRTB049_CONVENIO_CNPJ_VNCDO
+   drop constraint FK_CCRTB049_FK_CCRTB0_CCRTB001;
+
+drop table CCRTB049_CONVENIO_CNPJ_VNCDO cascade constraints;
+
+
+drop index CCR.CCR6I014;
+
+drop index CCR.CCR5I014;
+
+drop index CCR.CCR4I014;
+
+drop index CCR.CCR3I014;
+
+drop index CCR.CCR2I014;
+
+drop table CCR.CCRTBH13_CONTRATO cascade constraints;
+
+ALTER TABLE CCR.CCRTBH13_CONTRATO
+	drop CONSTRAINT CC_CCRTBH13_2;
+ALTER TABLE CCR.CCRTBH13_CONTRATO
+	drop CONSTRAINT CC_CCRTBH13_1;
+DROP TABLE CCR.CCRTBH13_CONTRATO cascade constraints;;

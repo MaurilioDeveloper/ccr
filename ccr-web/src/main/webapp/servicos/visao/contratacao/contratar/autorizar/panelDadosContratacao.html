@@ -1,0 +1,57 @@
+<div id='dadosContratacao'>
+<!-- DADOS CONTRATACAO -->
+	<div class="panel panel-default tabelacentral">
+		<div class="panel-heading">
+			<div class="row">
+				<div class="span9">
+					<h3 class="panel-title">
+						<span class="icon-user"> </span>  Dados Contrata&ccedil;&atilde;o
+					</h3>
+				</div>
+				<div id="divAlterarContratacao">
+					<button type="button" class="btn btn-primary btn-xs pull-right hide">Alterar</button>
+				</div>
+
+			</div>
+		</div>
+		<div class="panel-body">
+			<div id="divDadosContratacao">
+				<div class="control-group">
+					<label class="control-label"> N&uacute;mero contrato :</label>
+					<div class="controls resultado"><%= contrato.nuContrato %></div>
+				</div>	
+				<div class="control-group">
+					<label class="control-label"> Conv&ecirc;nio:</label>
+					<div class="controls resultado"><%= contrato.convenioTO.id %> - <%= contrato.convenioTO.nome %></div>
+				</div>	
+				<div class="control-group">
+					<label class="control-label"> Nome:</label>
+					<div class="controls resultado"><%= contrato.nomeCliente %></div>
+				</div>	
+				<div class="control-group">
+					<label class="control-label"> CPF:</label>
+					<div class="controls resultado"><%=formatadores.formatarCPF(contrato.nuCpf)%></div>
+				</div>
+				<div class="control-group">
+					<label class="control-label"> Matr&iacute;cula:</label>
+					<div class="controls resultado"><%= contrato.coMatriculaCliente %></div>
+				</div>
+				<div class="control-group">
+					<label class="control-label"> Valor Contrato:</label>
+					<div class="controls resultado"><%= formatadores.formatarMoeda(contrato.vrContrato) %></div>
+				</div>
+				<div class="control-group">
+					<label class="control-label"> Conta:</label>
+					<div class="controls resultado"><%=contrato.contaCorrente%></div>
+				</div>								
+			</div>
+		</div>
+	</div>
+<!-- FIM DADOS CONTRATACAO -->
+</div>
+
+<!-- PAINEL DE AUTORIZACAO GERENCIAL --> 
+<div id="divPanelAutorizacaoG"></div>
+
+<!-- PAINEL DE AUTORIZACAO SEGUNDO GERENTE -->
+<div id="divPanelAutorizacaoC"></div>

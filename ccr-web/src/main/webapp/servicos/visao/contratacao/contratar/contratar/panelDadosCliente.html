@@ -1,0 +1,49 @@
+<div class="form-horizontal">
+	<fieldset id="contratarConsignado">
+ 	<div class="row-fluid">
+	  <div class="span7"><h1>Contratar</h1></div>
+	  <div class="span5" align="right">		
+	  	<ul class="breadcrumb" align="right">
+			<li><span><b>Ag&ecirc;ncia Concessora: </b><%= dados.agencia.idUnidade  %> - <%= dados.agencia.nomeUnidade %></span></li><br>
+			<li id="contratoCabecalho" class="hide"><span><b>Contrato: </b><span id="numeroContrato"/></span></li>
+		</ul>
+	  </div>
+	 </div>
+	<div class="panel-group" id="divAvaliacaoCliente">
+		<div class="panel panel-default">
+			<div class="panel-heading" id="avaliacaoHeading">
+				<div class="row">
+					<h3 class="panel-title">
+						<span class="icon-user"> </span> Dados Cliente
+					</h3>
+				</div>
+			</div>
+			<div class="panel-body" id="avaliacaoBody">
+				<div class="control-group">
+					<label class="control-label">Conv&ecirc;nio:</label>
+					<div class="controls medio resultado"><span id="convenio"><%= dados.idConvenio %></span></div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">CPF:</label>
+					<div class="controls medio resultado"><%= dados.cpf %></div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Nome:</label>
+					<div class="controls medio resultado"><%= dados.cliente.attributes.dados.nomeCliente.nome %></td></div>
+				</div>
+				<div class="control-group">
+					<label class="control-label"><span class="obrigatorio">*</span>Matr&iacute;cula:</label>
+					<div class="controls">
+		            	<input maxlength="7" id="matriculaCliente" name="matriculaCliente" type="text" class="input-medium" validators="required"></input>	
+					</div>
+				</div>
+				<div class="control-group hide" id="divBloqueioAlcada">
+					<label class="control-label">Bloqueada Al&ccedil;ada:</label>
+					<div class="controls medio resultado"><%= dados.avaliacao.bloqueadoAlcada %></div>
+				</div>				
+			</div>	
+		</div>
+	</div>
+<div id="divDadosContrato" tabindex="-1"></div>
+</fieldset>
+</div>

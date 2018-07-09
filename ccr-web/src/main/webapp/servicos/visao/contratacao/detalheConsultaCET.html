@@ -1,0 +1,112 @@
+<form class="form-horizontal">
+	<div id="divInfoDetalheCET">
+		<form class="form-horizontal" id="formDetalheCET">
+			<div class="panel-group" id="divDadosCET">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="row">
+							<h3 class="panel-title">
+								<span class="icon-user"></span>&nbsp;&nbsp;Custo Efetivo Total
+							</h3>
+						</div>
+					</div>
+					<div class="panel-body">
+						<div class="control-group">
+							<label class="control-label">Produto:</label>
+							<div class="controls resultado"><%= dadosCET.noProduto == undefined ? dadosCET.dsProdutoContrato :  dadosCET.noProduto %></div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">N&uacute;mero Contrato:</label>
+							<div class="controls resultado"><%= dadosCET.nuContrato == undefined ? dadosCET.numContrato : dadosCET.nuContrato %></div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">Valor Total Contrato:</label>
+							<div class="controls resultado"><%= formatadores.formatarMoeda(dadosCET.vlTotalContrato) %></div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">Taxa Juros:</label>
+							<div class="controls resultado"><%= formatadores.formatarTaxa(dadosCET.txJuros, 2) %>%</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">Prazo Contrato:</label>
+							<div class="controls resultado"><%= dadosCET.prazoContrato %></div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">IOF:</label>
+							<div class="controls resultado"><%= formatadores.formatarMoeda(dadosCET.vlIof) %></div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">Valor L&iacute;quido:</label>
+							<div class="controls resultado"><%= formatadores.formatarMoeda(dadosCET.vlLiquido) %></div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">CET Mensal:</label>
+							<div class="controls resultado"><%= formatadores.formatarTaxa(dadosCET.pctCetMensal, 4) %>%</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">CET Anual:</label>
+							<div class="controls resultado"><%= formatadores.formatarTaxa(dadosCET.pctCetAnual, 4) %>%</div>
+						</div>
+					</div>	
+				</div>
+			</div>
+			<div class="panel-group" id="divDadosComponentes">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="row">
+							<h3 class="panel-title">
+								<span class="icon-user"></span>&nbsp;&nbsp;Componentes
+							</h3>
+						</div>
+					</div>
+					<div class="panel-body">
+						<table class="table table-bordered table-striped responsive-utilities">
+							<thead>
+						      <tr>
+						        <th width="50%">Componentes</th>
+						        <th>Valores</th>
+						        <th>Percentual</th>
+						      </tr>
+						    </thead>
+							<tr>
+								<td><label class="control-label text-left">Valor Total Contrato</label></td>
+								<td class="text-right"><%= formatadores.formatarMoeda(dadosCET.vlTotalContrato) %></div></td>
+								<td class="text-center"></td>
+							</tr>
+							<tr>
+								<td><label class="control-label text-left">Valor L&iacute;quido</label></td>
+								<td class="text-right"><%= formatadores.formatarMoeda(dadosCET.vlLiquido) %></td>
+								<td class="text-right"><%= formatadores.formatarTaxa(dadosCET.pctCetliquido, 5) %></td>
+							</tr>
+							<tr>
+								<td><label class="control-label text-left">Valor IOF</label></td>
+								<td class="text-right"><%= formatadores.formatarMoeda(dadosCET.vlIof) %></td>
+								<td class="text-right"><%= formatadores.formatarTaxa(dadosCET.pctCetiof, 5) %></td>
+							</tr>
+							<tr>
+								<td><label class="control-label text-left">Valor Juros Acerto</label></td>
+								<td class="text-right"><%= formatadores.formatarMoeda(dadosCET.vlJurosAcerto) %></td>
+								<td class="text-right"><%= formatadores.formatarTaxa(dadosCET.pctCetjuroAcerto, 5) %></td>
+							</tr>
+							<tr>
+								<td><label class="control-label text-left">Valor Seguro Prestamista</label></td>
+								<td class="text-right"><%= formatadores.formatarMoeda(dadosCET.vlSeguroPr) %></td>
+								<td class="text-right"><%= formatadores.formatarTaxa(dadosCET.pctCetseguro, 5) %></td>
+							</tr>
+							
+						</table>
+						<div class="well well-xs">
+							<p class="text text-info">
+								Para o c&aacute;lculo do custo efetivo total (CET) da opera&ccedil;&atilde;o de cr&eacute;dito acima simulada e demonstrada, considera-se o valor do cr&eacute;dito &agrave; disposi&ccedil;&atilde;o do cliente.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</form>
+<div class="modal-footer text-center">
+	<a class="btn btn-print-popupcet btn-primary">Imprimir</a>
+    <a class="btn btn-close-popupcet"><i class="icon"></i>Voltar</a>
+</div>

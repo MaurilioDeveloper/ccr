@@ -1,0 +1,138 @@
+<!-- Conteudo -->
+<div id="cabecalhoManterSeguro">
+<ul class="breadcrumb">
+	<li><a href="index.html">In&iacute;cio</a> <span class="divider">&gt;</span></li>
+	<li>Administra&ccedil;&atilde;o <span class="divider">&gt;</span></li>
+	<li class="active">Manter Taxa Seguro</li>
+</ul>
+
+<h1>Manter Taxa Seguro</h1>
+<br />
+</div>
+<!--<fieldset>-->
+<!--<legend>-->
+	<!--Taxas Cadastradas-->
+	<!--<a class="btn btn-primary pull-right unbold" id="btnNovaTaxa"><i class="icon-plus-sign icon-white"></i> Novo</a>-->
+<!--</legend>-->
+
+<div id="divFiltroTaxaSeguro">
+	<fieldset>
+		<form class="form-horizontal" id="formFiltroTaxaSeguro">
+			<div id="divFiltroTaxaSeguroForm" class="">
+				<label class="control-label">Período:</label>
+				<!-- div id="divDataVigenciaFiltro" class="control-group" >
+					
+					<div class="controls">
+						<div id="divInputDataVigencia" class="input-append data">
+							<input type="text" name="inicioVigenciaFiltro" id="inicioVigenciaFiltro" value="" data-format="dd/MM/yyyy"
+								   size="16" class="input-small data" validators="required,data,dataMenorTaxaSeguroIOF" />
+							<span id="spanIconDataVigenciaFiltro" class="add-on">
+			                	<i id="iIconDataVigenciaFiltro" data-time-icon="icon-time" data-date-icon="icon-calendar" class="icon-calendar"></i>
+			                </span>
+						</div>
+						<span class="help-inline"></span>
+					</div>
+				</div-->
+				<div class="controls">
+						<div id="divInputDataVigencia" class="input-append data"> 
+							<input type="text" name="inicioVigenciaFiltro" id="inicioVigenciaFiltro" value="" data-format="dd/MM/yyyy"
+								   size="16" class="input-small data" validators="required,data,dataMenorTaxaSeguroIOF" />
+							<span id="spanIconDataVigenciaFiltro" class="add-on">
+			                	<i id="iIconDataVigenciaFiltro" data-time-icon="icon-time" data-date-icon="icon-calendar" class="icon-calendar"></i>
+			                </span>
+						</div>
+						&nbsp; &nbsp; &nbsp;  
+						<div id="divInputDataFimVigencia" class="input-append data"> 
+							<input type="text" name="finalVigenciaFiltro" id="finalVigenciaFiltro" value="" data-format="dd/MM/yyyy"
+								   size="16" class="input-small data" validators="required,data,dataMenorTaxaSeguroIOF" />
+							<span id="spanIconDataVigencia" class="add-on">
+			                	<i id="iIconDataVigencia" data-time-icon="icon-time" data-date-icon="icon-calendar" class="icon-calendar"></i>
+			                </span>
+						</div> 
+						<span class="help-inline"></span>
+					</div>
+					
+			</div>
+
+
+			<!-- BOTOES DE ACAO -->
+			<div id="divAcoesFiltroTaxaSeguro" class="form-actions">
+				<a class="btn btn-primary" id="bntConsultarTaxaSeguro"><i class="icon-white icon-search"></i> Consultar</a>
+				<a class="btn btn-primary" id="btnNovaTaxa">Incluir</a>
+				<a class="btn" id="btnLimparForm">Limpar</a>
+				<a class="btn" id="bntSair">Sair</a>
+			</div>
+		</form>
+	</fieldset>
+</div>
+
+<div id="divListaTaxaSeguroShow" tabindex="-1">
+	<div id="divListaTaxaSeguro" tabindex="-1"></div>
+</div>
+
+
+
+<div id="divFormulario" class="modal hide fade" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" data-backdrop="static" tabindex="-1">
+	<fieldset>
+	<legend><div id="divTituloForm">&nbsp;Incluir Taxa Seguro</div></legend>
+	<form class="form-horizontal" id="formCadastroSeguro">
+		<div id="divDataVigencia" class="control-group" >
+			<label class="control-label"><span class="obrigatorio">*</span> In&iacute;cio Vig&ecirc;ncia:</label>
+			<div class="controls">
+				<div id="divInputDataVigencia" class="input-append data"> 
+					<input type="text" name="inicioVigencia" id="inicioVigencia" value="" data-format="dd/MM/yyyy"
+						   size="16" class="input-small data" validators="required,data,dataMenorTaxaSeguroIOF" />
+					<span id="spanIconDataVigencia" class="add-on">
+	                	<i id="iIconDataVigencia" data-time-icon="icon-time" data-date-icon="icon-calendar" class="icon-calendar"></i>
+	                </span>
+				</div> 
+				<span class="help-inline"></span>
+			</div>
+		</div>
+		<div id="divPrazo" class="control-group">
+	        <label class="control-label"><span class="obrigatorio">*</span>Faixa Prazo:</label>
+	        <div class="controls">
+	        	<div class="input-prepend input-append">
+	            	<input name="prazoMin" id="prazoMin" type="text" maxlength="3"
+	            		   class="input-mini numero" value="" validators="required" />
+	            	<span class="add-on">&agrave;</span>
+	            	<input name="prazoMax" id="prazoMax" type="text" maxlength="3" 
+	            		   class="input-mini numero" value="" validators="required" />
+	            	<span class="add-on">meses</span>
+				</div>
+			</div>
+	    </div>
+		<div id="divIdade" class="control-group">
+	        <label class="control-label"><span class="obrigatorio">*</span>Faixa Idade:</label>
+	        <div class="controls">
+	        	<div class="input-prepend input-append">
+	            	<input name="idadeMin" id="idadeMin" type="text" maxlength="2"
+	            		   class="input-mini numero" value="" validators="required" />
+	            	<span class="add-on">&agrave;</span>
+	            	<input name="idadeMax" id="idadeMax" type="text" maxlength="2" 
+	            		   class="input-mini numero" value="" validators="required" />
+	            	<span class="add-on">anos</span>
+				</div>
+			</div>
+	    </div>
+		<div id="divTaxa" class="control-group">
+	        <label class="control-label"><span class="obrigatorio">*</span> Taxa Seguro:</label>
+	        <div class="controls">
+	        	<div class="input-prepend input-append">
+	            	<input name="taxa" id="taxa" type="text" maxlength="9"
+	            		   class="input-small indice5" value=""  validators="required" />
+	            	<span class="add-on">%</span>
+	        	</div>
+				<span class="help-inline"></span>
+			</div>
+	    </div>
+	</form>
+	
+	<!-- BOTOES DE ACAO -->
+	<div id="divAcoesManterSeguro" class="form-actions">
+		<a class="btn btn-primary" id="btnSalvar">Salvar</a>
+		<!-- <a class="btn" id="btnLimparForm"><i class="icon"></i>Limpar</a>  -->
+		<a class="btn" id="btnCancelar"><i class="icon"></i>Voltar</a>
+	</div>
+	</fieldset>
+</div>

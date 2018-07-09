@@ -1,0 +1,52 @@
+<!-- Conteudo -->
+<div>
+<ul class="breadcrumb">
+	<li><a href="index.html">In&iacute;cio</a> <span class="divider">&gt;</span></li>
+	<li>Contrato <span class="divider">&gt;</span></li>
+	<li class="active">Contratar Cr&eacute;dito Consignado</li>
+</ul>
+
+<h1>Contratar Cr&eacute;dito Consignado</h1>
+</div>
+<div class="wizardCCR" id="wizardSimulacao" data-initialize="wizardCCR">
+    <ul style="margin-left: 0" class="steps">	    
+	    <li class="active" data-step="1">Simula&ccedil;&atilde;o<span class="chevron"></span></li>
+	    <li class="" data-step="2">Cliente<span class="chevron"></span></li>
+	    <li class="" data-step="3">Contrata&ccedil;&atilde;o<span class="chevron"></span></li>
+  	</ul>
+  <div class="step-content">
+    <div class="step-pane sample-pane active" data-step="1">
+      	<fieldset>
+			<legend>
+				<span>Dados Simula&ccedil;&atilde;o</span>
+				<div class="pull-right nav-list unbold">
+					<a class="btn hide" id="btnNovaSimulacao"><i class="icon-edit"></i> Alterar Valores</a>&nbsp;
+					<a class="btn hide" id="btnReniciarProcesso"><i class="icon-refresh"></i> Reiniciar Processo</a>					
+				</div>
+			</legend>
+			<div id="divSimulacao_DadosSimulacao"></div>
+		</fieldset>
+    </div>
+    <div class="step-pane sample-pane" data-step="2">
+		<fieldset>
+			<legend>Consultar Cliente</legend>
+			<div id="divSimulacao_DadosCliente"></div>
+		</fieldset>
+		<fieldset class="hide">
+			<legend>Avalia&ccedil;&atilde;o</legend>
+			<div id="divSimulacao_DadosAvaliacao"></div>
+		</fieldset>
+		<div class="form-actions hide">
+			<a class="btn btn-primary hide" id="btnContratar"><i class="icon-check icon-white"></i> Confirmar Contrata&ccedil;&atilde;o</a>
+			<a class="btn btn-primary hide" id="btnNovaAvaliacao"><i class="icon-repeat icon-white"></i> Nova Avalia&ccedil;&atilde;o</a>
+			<a class="btn" id="btnConsultarNovo"><i class="icon-search"></i> Nova Consulta</a>
+		</div>
+    </div>
+    <div class="step-pane sample-pane" data-step="3">
+      	<fieldset>
+			<legend>Dados Contrato</legend>
+			<div id="divSimulacao_Contrato"></div>
+		</fieldset>
+    </div>
+  </div>
+</div>

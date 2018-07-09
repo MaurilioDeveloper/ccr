@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="1.0" 
+	xmlns="http://java.sun.com/xml/ns/persistence/orm" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd ">
+	
+	<entity name="CCRTB008_TAXA_IOF" class="br.gov.caixa.ccr.dominio.transicao.TaxaIOFTO">
+		<named-query name="TaxaIOF.listar">
+			<query>
+				SELECT T
+				  FROM br.gov.caixa.ccr.dominio.transicao.TaxaIOFTO T
+				 ORDER BY T.inicioVigencia DESC, T.fimVigencia DESC 
+			</query>			
+		</named-query>
+		<named-query name="TaxaIOF.listarPorInicioVigencia">
+			<query>
+				SELECT T
+				  FROM br.gov.caixa.ccr.dominio.transicao.TaxaIOFTO T
+				  WHERE :pInicioVigencia &lt;= T.inicioVigencia
+				 ORDER BY T.inicioVigencia DESC, T.fimVigencia DESC 
+			</query>			
+		</named-query>
+		<named-query name="TaxaIOF.findVigente" >
+			<query>
+				SELECT T
+				  FROM br.gov.caixa.ccr.dominio.transicao.TaxaIOFTO T
+				 WHERE trunc(SYSDATE) &gt;= DT_INICIO_VIGENCIA
+				   AND COALESCE(DT_FIM_VIGENCIA, SYSDATE) &gt;= trunc(SYSDATE)
+			</query>
+		</named-query>
+		
+		<named-native-query name="TaxaIOF.incluir" result-class="br.gov.caixa.ccr.dominio.transicao.TaxaIOFTO">
+			<query>
+				INSERT INTO CCR.CCRTB008_TAXA_IOF
+					(NU_TAXA_IOF, PC_ALIQUOTA_BASICA, PC_ALIQUOTA_COMPLEMENTAR, DT_INICIO_VIGENCIA, CO_USUARIO_INCLUSAO, TS_INCLUSAO_TAXA)
+				VALUES
+					((SELECT NVL(MAX(NU_TAXA_IOF), 0) + 1 FROM CCR.CCRTB008_TAXA_IOF),
+				 	 :pAliquotaBasica, :pAliquotaComplementar, :pInicioVigencia, :pCoUsuarioInclusao, :pTsInclusao)
+			</query>			
+		</named-native-query>
+		<named-native-query name="TaxaIOF.atualizar" result-class="br.gov.caixa.ccr.dominio.transicao.TaxaIOFTO">
+			<query>
+				UPDATE CCR.CCRTB008_TAXA_IOF
+				   SET PC_ALIQUOTA_BASICA = :pAliquotaBasica,
+					   PC_ALIQUOTA_COMPLEMENTAR = :pAliquotaComplementar,
+					   DT_INICIO_VIGENCIA = :pInicioVigencia
+				 WHERE NU_TAXA_IOF = :pID
+			</query>			
+		</named-native-query>
+		<named-native-query name="TaxaIOF.verificaVigenciaValidaIncSemFim" result-class="br.gov.caixa.ccr.dominio.transicao.TaxaIOFTO">
+            <query>
+                SELECT * FROM (
+                    SELECT 
+	                    NU_TAXA_IOF,
+						PC_ALIQUOTA_BASICA,
+						PC_ALIQUOTA_COMPLEMENTAR,
+						DT_INICIO_VIGENCIA,
+						DT_FIM_VIGENCIA,
+						CO_USUARIO_INCLUSAO,
+						TS_INCLUSAO_TAXA,
+						CO_USUARIO_FINALIZACAO,
+						TS_INCLUSAO_FIM_VIGENCIA_TAXA
+
+                      FROM CCR.CCRTB008_TAXA_IOF                                     
+                     WHERE DT_INICIO_VIGENCIA &gt;= :pInicioVigencia
+                 )
+                 WHERE ROWNUM &lt;= 1
+            </query>
+        </named-native-query>
+		<named-native-query name="TaxaIOF.fecharVigenciaAberta" result-class="br.gov.caixa.ccr.dominio.transicao.TaxaIOFTO">
+			<query>
+				UPDATE CCR.CCRTB008_TAXA_IOF
+				   SET DT_FIM_VIGENCIA = :pFimVigencia,
+				   	   CO_USUARIO_FINALIZACAO = :pCoUsuarioFinalizacao, 
+				   	   TS_INCLUSAO_FIM_VIGENCIA_TAXA = :pTsInclusaoFimVigencia
+				 WHERE NU_TAXA_IOF = (SELECT NU_TAXA_IOF FROM CCR.CCRTB008_TAXA_IOF WHERE DT_FIM_VIGENCIA IS NULL)
+			</query>			
+		</named-native-query>	
+		<named-native-query name="TaxaIOF.atualizarVigenciaFechada" result-class="br.gov.caixa.ccr.dominio.transicao.TaxaIOFTO">
+			<query>
+				UPDATE CCR.CCRTB008_TAXA_IOF
+				   SET DT_FIM_VIGENCIA = NULL,
+				   	   CO_USUARIO_FINALIZACAO = NULL, 
+				   	   TS_INCLUSAO_FIM_VIGENCIA_TAXA = NULL
+				 WHERE NU_TAXA_IOF = (SELECT NU_TAXA_IOF FROM CCR.CCRTB008_TAXA_IOF WHERE DT_FIM_VIGENCIA = :pFimVigenciaAnterior)
+			</query>			
+		</named-native-query>		
+	</entity>
+</entity-mappings>

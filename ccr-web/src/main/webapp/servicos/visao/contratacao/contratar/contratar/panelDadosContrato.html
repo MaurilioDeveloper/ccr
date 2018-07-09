@@ -1,0 +1,121 @@
+<div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">			
+     		<h3 class="panel-title">
+			<span class="icon-user"> </span> Dados Contrato
+		</h3>
+	</div>
+   	<div class="panel-body" >
+		<form class="form-horizontal">
+			<table class="table table-striped table-bordered" id="gridValoresContrato" >
+				<thead>
+					<tr>
+						<th colspan="2">
+					    	<a id="valoresContrato" style="cursor: pointer">Valores</a>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td width="50%">Valor Contrato</td>
+						<td><%= formatadores.formatarMoeda(dados.simulacao.valorContrato) %></td>  
+					</tr>
+					<tr>
+						<td>Valor Total Contrato</td>
+						<td><%= formatadores.formatarMoeda(dados.simulacao.valorTotalContrato) %></td>  
+					</tr>
+					<tr>
+						<td>Valor L&iacute;quido</td>
+						<td><%= formatadores.formatarMoeda(dados.simulacao.valorLiquido) %></td>  
+					</tr>
+					<tr>
+						<td>Valor Presta&ccedil;&atilde;o</td>
+						<td><%= formatadores.formatarMoeda(dados.simulacao.prestacao) %></td>  
+					</tr>
+					<tr>
+						<td>Valor IOF</td>
+						 <td><%= formatadores.formatarMoeda(dados.simulacao.iof) %></td>  
+					</tr>
+					<tr>
+						<td>Valor Juros Acerto</td>
+						<td><%= formatadores.formatarMoeda(dados.simulacao.juroAcerto) %></td>  
+					</tr>
+					<tr>
+						<td>Valor Seguro Prestamista</td>
+						<td><%= dados.tipoSeguro == 1 ? formatadores.formatarMoeda(dados.simulacaoComSeguro.valorSeguro) :  "0,00" %></td>
+					</tr>
+				</tbody>
+			</table>
+			<table class="table table-striped table-bordered" id="gridDatas" >
+				<thead>
+					<tr>
+						<th colspan="2">
+					    	<a id="controleDatasContrato" style="cursor: pointer">Datas e Prazos</a>
+						</th>
+					</tr>
+				</thead>
+				<tbody id="datasContrato" class="hide" >
+					<tr>
+						<!-- TODO VINI REVER DATA LIBERAÇÃO CRÉDITO -->
+						<td width="50%">Data Libera&ccedil;&atilde;o Cr&eacute;dito</td>
+						<td><%= dados.camposComuns.data %></td>
+					</tr>
+					<tr>
+						<td>Data Base C&aacute;clculo 1&ordf; Presta&ccedil;&atilde;o</td>
+						<td><%= dados.camposComuns.basePrimeiraPrestacao %></td>
+					</tr>
+					<tr>
+						<td>Quantidade Dias Juros Acerto</td>
+						<td><%= dados.camposComuns.quantDiasJurosAcerto %></td>
+					</tr>
+					<tr>
+						<td>Data Vencimento Contrato</td>
+						<td><%= dados.simulacao.vencimentoContrato %></td>
+					</tr>
+					<tr>
+						<td>Prazo Contrato</td>
+						<td><%= dados.simulacao.prazo %></td>
+					</tr>
+				</tbody>
+			</table>
+			<table class="table table-striped table-bordered" id="gridTaxasConstrato" >
+				<thead>
+					<tr>
+						<th colspan="2">
+					    	<a id="controleTaxasContrato" style="cursor: pointer">Taxas</a>
+						</th>
+					</tr>
+				</thead>
+				<tbody id="taxasContrato" class="hide" >
+					<tr>
+						<td width="50%">Taxa Juros</td>
+						<td><%= dados.simulacao.taxaJuros %> %</td>
+					</tr>
+					<tr>
+						<td class="btn-toggle-popupcet btn-link">CET Mensal</td>
+						<td class="btn-toggle-popupcet btn-link"><%= formatadores.formatarTaxa(dados.simulacao.cetmensal, 2) %> %</td>
+					</tr>
+					<tr>
+						<td class="btn-toggle-popupcet btn-link">CET Anual</td>
+						<td class="btn-toggle-popupcet btn-link"><%= formatadores.formatarTaxa(dados.simulacao.cetanual, 2) %> %</td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+	</div>
+</div>
+<div id="divDadosConta" tabindex="-1"></div>
+
+<div id="divModalCET" class="modal2 hide fade" aria-labelledby="myModalLabel" data-backdrop="static" role="dialog" tabindex="-1">
+	<div class="modal-body" id="divModalCETBodyThree"/>
+</div>
+
+<div id="confirmContratacao" class="modal hide fade" aria-labelledby="myModalLabel" data-backdrop="static" role="dialog" tabindex="-1">
+	<div class="modal-body" align="center">
+		<span>Confirma opera&ccedil;&atilde;o?</span>
+	</div>
+	<div class="modal-footer" style="text-align: center">
+		<a class="btn btn-primary" id="contratacaoConfirmada">Sim</a> 
+		<a class="btn btn-default" id="contratacaoNegada">N&atilde;o</a>
+	</div>
+</div>
+

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="1.0" 
+	xmlns="http://java.sun.com/xml/ns/persistence/orm" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd ">
+	
+	<entity name="COMBO_GENERICO" class="br.gov.caixa.ccr.dominio.transicao.ComboTO">
+		<named-native-query name="Combo.listaConvenio" result-class="br.gov.caixa.ccr.dominio.transicao.ComboTO">
+			<query>
+				SELECT NU_CONVENIO AS ID, 
+					   NO_CONVENIO AS DESCRICAO,
+					   '' AS CODIGO
+				  FROM CCR.CCRTB001_CONVENIO
+				 ORDER BY NO_CONVENIO
+			</query>			
+		</named-native-query>
+		<named-native-query name="Combo.listaConvenioGrupoAverbacao" result-class="br.gov.caixa.ccr.dominio.transicao.ComboTO">
+			<query>
+				SELECT NU_CONVENIO AS ID, 
+					   NO_CONVENIO AS DESCRICAO,
+					   '' AS CODIGO
+				  FROM CCR.CCRTB001_CONVENIO
+				 WHERE NU_GRUPO_AVERBACAO = :pFiltroNumerico
+				 ORDER BY NO_CONVENIO
+			</query>			
+		</named-native-query>		
+		<named-native-query name="Combo.listaGrupoTaxaCOD" result-class="br.gov.caixa.ccr.dominio.transicao.ComboTO">
+			<query>
+				SELECT  NU_GRUPO_TAXA AS ID, 
+						CO_GRUPO_TAXA AS DESCRICAO,
+					   '' AS CODIGO 
+				  FROM CCR.CCRTB002_GRUPO_TAXA	
+				 ORDER BY NO_GRUPO_TAXA			  
+			</query>			
+		</named-native-query>
+		<named-native-query name="Combo.listaGrupoTaxa" result-class="br.gov.caixa.ccr.dominio.transicao.ComboTO">
+			<query>
+				SELECT NU_GRUPO_TAXA AS ID, 
+					   CO_GRUPO_TAXA AS CODIGO,
+					   NO_GRUPO_TAXA AS DESCRICAO
+				  FROM CCR.CCRTB002_GRUPO_TAXA	
+				 ORDER BY CO_GRUPO_TAXA			  
+			</query>			
+		</named-native-query>
+		<!-- <named-native-query name="Combo.listaRemessaExtrato" result-class="br.gov.caixa.ccr.dominio.transicao.ComboTO">
+			<query>
+				SELECT NU_REMESSA_EXTRATO AS ID, 
+					   NO_REMESSA_EXTRATO AS DESCRICAO
+				  FROM CCR.CCRTB009_REMESSA_EXTRATO	
+				 ORDER BY NO_REMESSA_EXTRATO			  
+			</query>			
+		</named-native-query> -->
+		<named-native-query name="Combo.listaSituacao" result-class="br.gov.caixa.ccr.dominio.transicao.ComboTO">
+			<query>
+				SELECT NU_SITUACAO AS ID, 
+					   DE_SITUACAO AS DESCRICAO,
+					   '' AS CODIGO
+				  FROM CCR.CCRTB014_SITUACAO
+				 WHERE NU_TIPO_SITUACAO = :pFiltroNumerico
+				 ORDER BY DE_SITUACAO			  
+			</query>			
+		</named-native-query>
+		<named-native-query name="Combo.listaCanaisAtendimento" result-class="br.gov.caixa.ccr.dominio.transicao.ComboTO">
+			<query>
+				SELECT NU_CANAL_ATENDIMENTO AS ID, 
+					   NO_CANAL_ATENDIMENTO AS DESCRICAO,
+					   '' AS CODIGO
+				  FROM CCR.CCRTB004_CANAL_ATENDIMENTO
+				 ORDER BY NO_CANAL_ATENDIMENTO 
+			</query>			
+		</named-native-query>
+		<named-native-query name="Combo.listaGrupoAverbacao" result-class="br.gov.caixa.ccr.dominio.transicao.ComboTO">
+			<query>
+				SELECT NU_GRUPO_AVERBACAO AS ID, 
+					   NO_GRUPO_AVERBACAO AS DESCRICAO,
+					   '' AS CODIGO
+				  FROM CCR.CCRTB011_GRUPO_AVERBACAO	
+				 ORDER BY NO_GRUPO_AVERBACAO
+			</query>			
+		</named-native-query>
+	<!-- 	<named-native-query name="Combo.listaTransacaoLog" result-class="br.gov.caixa.ccr.dominio.transicao.ComboTO">
+			<query>
+				SELECT NU_INTERFACE AS ID, 
+					   NO_INTERFACE AS DESCRICAO
+				  FROM CCR.CCRTB015_INTERFACE	
+				 ORDER BY NO_INTERFACE
+			</query>			
+		</named-native-query> -->
+		
+		<named-native-query name="Combo.UnidadeFederativa" result-class="br.gov.caixa.ccr.dominio.transicao.ComboTO">
+			<query>
+				SELECT  SG_UF AS ID,
+					   NO_UF AS DESCRICAO,
+					   '' AS CODIGO
+				  FROM CCR.CCRVW002_UNIDADE_FEDERATIVA
+				 ORDER BY NO_UF
+			</query>			
+		</named-native-query>
+			
+		<named-native-query name="Combo.listaTipoDocumento" result-class="br.gov.caixa.ccr.dominio.transicao.ComboTO">
+			<query> 
+				 SELECT NU_TIPO_MODELO AS ID,
+				 	 	NO_TIPO_MODELO AS DESCRICAO,
+					   '' AS CODIGO 
+				 	FROM CCR.CCRTB070_TIPO_MODELO
+				 ORDER BY NU_TIPO_MODELO ASC
+			</query>			
+		</named-native-query>
+		
+		<named-native-query name="Combo.listaCamposDinamicos" result-class="br.gov.caixa.ccr.dominio.transicao.ComboTO">
+			<query>
+				SELECT NO_CAMPO AS ID, 
+					DE_CAMPO AS DESCRICAO,
+					   '' AS CODIGO 
+				 FROM CCR.CCRTB072_CAMPO
+				  WHERE NU_SISTEMA = 2 
+				ORDER BY DE_CAMPO
+			</query>			
+		</named-native-query>
+		<named-native-query name="Combo.listaSituacaoArquivo" result-class="br.gov.caixa.ccr.dominio.transicao.ComboTO">
+			<query>
+				SELECT NU_SITUACAO AS ID, 
+					   DE_SITUACAO AS DESCRICAO,
+					   '' AS CODIGO
+				  FROM CCR.CCRTB014_SITUACAO
+				 WHERE NU_TIPO_SITUACAO = :pFiltroNumerico
+				 ORDER BY DE_SITUACAO			  
+			</query>			
+		</named-native-query>
+		<named-native-query name="Combo.listaTransacaoAuditada" result-class="br.gov.caixa.ccr.dominio.transicao.ComboTO">
+			<query>
+				SELECT NU_TRANSACAO_AUDITADA AS ID, 
+					   NO_TRANSACAO_AUDITADA AS DESCRICAO,
+					   '' AS CODIGO
+				  FROM CCR.CCRTB101_TRANSACAO_AUDITADA
+				 ORDER BY NU_TRANSACAO_AUDITADA			  
+			</query>			
+		</named-native-query>
+	</entity>
+</entity-mappings>

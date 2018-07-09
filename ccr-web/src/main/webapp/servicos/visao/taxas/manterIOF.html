@@ -1,0 +1,109 @@
+<!-- Conteudo -->
+<div id="cabecalhoManterIOF">
+<ul class="breadcrumb">
+	<li><a href="index.html">In&iacute;cio</a> <span class="divider">&gt;</span></li>
+	<li>Administra&ccedil;&atilde;o <span class="divider">&gt;</span></li>
+	<li class="active">Manter Al&iacute;quota de IOF</li>
+</ul>
+
+<h1>Manter Al&iacute;quota de IOF</h1>
+<br />
+</div>
+
+<div id="divFiltroManterIOF">
+	<fieldset>
+		<form class="form-horizontal" id="formFiltroTaxaIOF">
+			<div id="divFiltroManterIOFForm" class="">
+				<div id="divDataVigencia" class="control-group" >
+					<label class="control-label">Período:</label>
+					<div class="controls">
+						<div id="divInputDataVigencia" class="input-append data"> 
+							<input type="text" name="inicioVigenciaFiltro" id="inicioVigenciaFiltro" value="" data-format="dd/MM/yyyy"
+								   size="16" class="input-small data" validators="required,data,dataMenorTaxaSeguroIOF" />
+							<span id="spanIconDataVigencia" class="add-on">
+			                	<i id="iIconDataVigencia" data-time-icon="icon-time" data-date-icon="icon-calendar" class="icon-calendar"></i>
+			                </span>
+						</div>
+						&nbsp; &nbsp; &nbsp;  
+						<div id="divInputDataFimVigencia" class="input-append data"> 
+							<input type="text" name="finalVigenciaFiltro" id="finalVigenciaFiltro" value="" data-format="dd/MM/yyyy"
+								   size="16" class="input-small data" validators="required,data,dataMenorTaxaSeguroIOF" />
+							<span id="spanIconDataVigencia" class="add-on">
+			                	<i id="iIconDataVigencia" data-time-icon="icon-time" data-date-icon="icon-calendar" class="icon-calendar"></i>
+			                </span>
+						</div> 
+						<span class="help-inline"></span>
+					</div>
+				</div>			
+			</div>
+			
+			
+			<!-- BOTOES DE ACAO -->
+			<div id="divAcoesFiltroConvenente" class="form-actions">
+				<a class="btn btn-primary" id="btnConsultarTaxaIOF"><i class="icon-white icon-search"></i> Consultar</a>
+				<a class="btn btn-primary" id="btnNovaTaxa">Incluir</a>
+				<a class="btn" id="btnLimparForm"> Limpar</a>
+				<a class="btn" id="btnSair">Sair</a>
+			</div>
+		</form>
+	</fieldset>
+</div>
+
+<legend></legend>
+
+<div id="divListaTaxaIOFShow" tabindex="-1">
+	<div id="divListaTaxaIOF" tabindex="-1"></div>
+</div>
+
+
+
+
+<div id="divFormulario" class="modal hide fade" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" data-backdrop="static" tabindex="-1">
+	<fieldset>
+	<legend><div id="divTituloForm">&nbsp;Incluir Al&iacute;quota de IOF</div></legend>
+	<form class="form-horizontal" id="formCadastroIOF" name="formCadastroIOF">
+		<input type="hidden" name="idTaxaIOF" id="idTaxaIOF" value="" />
+		<div id="divDataVigencia" class="control-group" >
+			<label class="control-label"><span class="obrigatorio">*</span>In&iacute;cio Vig&ecirc;ncia:</label>
+			<div class="controls">
+				<div id="divInputDataVigencia" class="input-append data"> 
+					<input type="text" name="inicioVigencia" id="inicioVigencia" value="" data-format="dd/MM/yyyy"
+						   size="16" class="input-small data" validators="required,data,dataMenorTaxaSeguroIOF" />
+					<span id="spanIconDataVigencia" class="add-on">
+	                	<i id="iIconDataVigencia" data-time-icon="icon-time" data-date-icon="icon-calendar" class="icon-calendar"></i>
+	                </span>
+				</div> 
+				<span class="help-inline"></span>
+			</div>
+		</div>
+		<div id="divAliquotaNormal" class="control-group">
+	        <label class="control-label"><span class="obrigatorio">*</span> Al&iacute;quota B&aacute;sica Diária:</label>
+	        <div class="controls">
+	        	<div class="input-prepend input-append">
+	            	<input name="aliquotaBasica" id="aliquotaBasica" type="text" maxlength="9" 
+	            		   class="input-small indice5" value=""  validators="required" />
+	            	<span class="add-on">%</span>
+	        	</div>
+				<span class="help-inline"></span>
+			</div>
+	    </div>
+	    <div id="divAliquotaAdicional" class="control-group">
+	        <label class="control-label"><span class="obrigatorio">*</span> Al&iacute;quota Adicional:</label>
+	        <div class="controls">
+	        	<div class="input-prepend input-append">
+	            	<input name="aliquotaComplementar" id="aliquotaComplementar" type="text" maxlength="9"
+	            		   class="input-small indice5" value=""  validators="required" />
+	            	<span class="add-on">%</span>
+	        	</div>
+				<span class="help-inline"></span>
+			</div>
+	    </div>
+	</form>
+	
+	<!-- BOTOES DE ACAO -->
+	<div id="divAcoesManterIOF" class="form-actions">
+		<a class="btn btn-primary" id="btnSalvar"><i class="icon"></i>Salvar</a>
+		<a class="btn" id="btnVoltar"><i class="icon"></i>Voltar</a>
+	</div>
+	</fieldset>
+</div>

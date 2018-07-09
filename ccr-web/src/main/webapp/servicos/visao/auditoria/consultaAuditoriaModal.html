@@ -1,0 +1,24 @@
+<div class="panel-body">
+	<table class="table table-bordered table-striped responsive-utilities">
+		<thead>
+	      <tr>
+	        <th width="50%" align="center">Anterior</th>
+	        <th width="50%" align="center">Atual</th>
+	      </tr>
+	    </thead>
+		<% $.each(lista, function() { %>
+		<tr>
+			<% if (campo == 18){ %>
+	    		<td align="center"><%= this.anterior == "null" ? "" : formatadores.formatarCNPJ(this.anterior) %></td>
+				<td align="center"><%= this.atual == "null" ? "" : formatadores.formatarCNPJ(this.atual) %></td>
+	    	<% } else { %>
+				<td align="center"><%= this.anterior == "null" ? "" : this.anterior %></td>
+				<td align="center"><%= this.atual == "null" ? "" : this.atual %></td>
+	    	<% } %>
+		</tr>
+		<% }); %>	
+	</table>
+</div>
+<div class="modal-footer text-center">
+    <a class="btn" id="btnVoltarPopup"><i class="icon"></i>Voltar</a>
+</div>

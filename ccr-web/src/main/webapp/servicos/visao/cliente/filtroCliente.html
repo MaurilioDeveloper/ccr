@@ -1,0 +1,44 @@
+<div id="divFiltroConsultaCliente" tabindex="-1">
+	<form class="form-horizontal" id="formConsultaCliente">
+		<!-- Conteudo -->
+		<div class="control-group">
+		  	<label class="control-label">
+		  		<span class="obrigatorio">*</span> CPF:
+	  		</label>
+		    <div class="controls">
+			   	<div class="input-prepend input-append">
+			       	<input type="text" name="txtCPF" id="txtCPF" value="" class="input-medium cpf" validators="required,cpf" />
+			   	</div>
+				<span class="help-inline"></span>
+			</div>
+		</div>
+		<div class="control-group">
+		  	<label class="control-label">
+		  		<span class="obrigatorio">*</span> Matr&iacute;cula Cliente:
+	  		</label>
+		    <div class="controls">
+			   	<div class="input-prepend input-append">
+			       	<input type="text" name="txtMatriculaCliente" id="txtMatriculaCliente" value="" class="input-medium usuarioCaixa" validators="required" />
+			   	</div>
+				<span class="help-inline"></span>
+			</div>
+		</div>
+		<!-- div class="control-group">
+		  	<label class="control-label">
+		  		<span class="obrigatorio"></span> N&ordm; Benef&iacute;cio:
+	  		</label>
+		    <div class="controls">
+			   	<div class="input-prepend input-append">
+			       	<input type="text" name="txtNuBeneficio" id="txtNuBeneficio" value="" class="input-medium beneficio" validators="" />
+			   	</div>
+				<span class="help-inline"></span>
+			</div>
+		</div-->
+		<!-- BOTOES DE ACAO -->
+		<div class="form-actions">
+			<a class="btn btn-primary" id="btnConsultar"><i class="icon-white icon-search"></i> Consultar</a>
+			<a class="btn" id="btnLimpar"><i class="icon"></i>Limpar</a>
+		</div>
+	</form>
+</div>
+<div id="divResultadoConsCliente" class="hide" tabindex="-1"></div>

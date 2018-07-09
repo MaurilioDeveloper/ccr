@@ -1,0 +1,16 @@
+<div class="alert alert-error">
+	<button type="button" class="close" data-dismiss="alert">&times;</button>
+	<div class="btn-group">
+	  <button class="btn">Left</button>
+	  <button class="btn">Middle</button>
+	  <button class="btn">Right</button>
+	</div>
+	<h4>Ops!</h4>
+	<div>Ocorreu um erro <string>fatal</string> para esta requisição, segue abaixo detalhes:</div>
+	<ul>
+		<% if (code != null) { %>
+		<li><strong>Código: </strong><%= code %></li>
+		<% } %>
+		<li><strong>Mensagem: </strong><%= text %></li>
+	</ul>
+</div>

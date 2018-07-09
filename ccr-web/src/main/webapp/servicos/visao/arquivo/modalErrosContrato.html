@@ -1,0 +1,35 @@
+<div id="divModalContratoErros" class="modal hide fade"
+	aria-hidden="true" aria-labelledby="myModalLabel"
+	data-backdrop="static" role="dialog" tabindex="-1">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal"
+			aria-hidden="true">&times;</button>
+		<legend>Contratos</legend>
+	</div>
+	<div class="modal-body">
+		<fieldset>
+			<table class="table table-striped table-bordered"
+				id="listaContratoComErros">
+				<thead>
+					<tr>
+						<th>Contrato SICCR</th>
+						<th>C&oacute;digo Erro</th>
+						<th>Descri&ccedil;&atilde;o Erro</th>
+					</tr>
+				</thead>
+				<tbody id="">
+					<% $.each(contratoErros, function() { %>
+					<tr style="color: red">
+						<td><%= this.nuContrato %></td>
+						<td><%= this.codErro %></td>
+						<td><%= this.descErro %></td>
+					</tr>
+					<% }); %>
+				</tbody>
+			</table>
+		</fieldset>
+	</div>
+	<div class="form-actions" align="center">
+		<a type="button" class="btn" id="btnVoltaModalContrato">Voltar</a>
+	</div>
+</div>

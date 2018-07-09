@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<avaliacao_risco_credito:SERVICO_ENTRADA
+	xmlns:avaliacao_risco_credito="http://caixa.gov.br/sibar/avaliacao_risco_credito"
+	xmlns:nsddor="http://caixa.gov.br/sibar/avaliacao_risco_credito"
+	xmlns:sibar_base="http://caixa.gov.br/sibar">
+
+	<sibar_base:HEADER>
+
+		<VERSAO>1.0</VERSAO>
+
+		<AUTENTICACAO>MA==</AUTENTICACAO>
+
+		<USUARIO_SERVICO>SFECEMPD</USUARIO_SERVICO>
+
+		<USUARIO />
+
+		<OPERACAO>AVALIACAO_RISCO_CREDITO</OPERACAO>
+
+		<INDICE>0</INDICE>
+
+		<SISTEMA_ORIGEM>SICCR</SISTEMA_ORIGEM>
+
+		<UNIDADE>0</UNIDADE>
+
+		<DATA_HORA>20180424</DATA_HORA>
+
+		<ID_PROCESSO>AVALIACAO_RISCO_CREDITO</ID_PROCESSO>
+
+	</sibar_base:HEADER>
+
+	<DADOS>
+		<AVALIACAO_COM_ATUALIZACAO_VIA_SICLI>
+			<TP_PESSOA>1</TP_PESSOA>
+			<CPF>00534963960</CPF>
+			<MODELO_VALIDACAO>0</MODELO_VALIDACAO>
+			<MODELO_AVALIACAO>0</MODELO_AVALIACAO>
+		</AVALIACAO_COM_ATUALIZACAO_VIA_SICLI>	
+	</DADOS>
+
+</avaliacao_risco_credito:SERVICO_ENTRADA>

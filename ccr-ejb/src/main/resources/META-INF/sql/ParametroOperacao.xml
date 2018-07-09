@@ -1,0 +1,16 @@
+<!-- <?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="1.0" 
+	xmlns="http://java.sun.com/xml/ns/persistence/orm" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd ">
+	
+	<entity name="CCRTB010_PARAMETRO_OPERACAO" class="br.gov.caixa.ccr.dominio.transicao.ParametroOperacaoTO">
+		<named-query name="ParametroOperacao.buscar">
+			<query>
+				SELECT T
+				  FROM br.gov.caixa.ccr.dominio.transicao.ParametroOperacaoTO T
+				 WHERE T.numero = :pNumeroOperacao
+			</query>			
+		</named-query>
+	</entity>
+</entity-mappings> -->

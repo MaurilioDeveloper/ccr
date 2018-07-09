@@ -1,0 +1,47 @@
+<!-- Conteudo -->
+
+<div id="divListaTaxaJuros" tabindex="-1" style="margin-bottom: 60px">
+	<table class="table table-striped table-bordered" id="gridListaTaxaJuros">
+		<thead>
+			<tr>
+				<th>In&iacute;cio Vig&ecirc;ncia</th>
+				<th>Fim Vig&ecirc;ncia</th>
+				<th>Utilizar Em</th>
+				<th>Prazo</th>
+				<th>Faixa A</th>
+				<th>Faixa B</th>
+				<th>Faixa C</th>
+				<th>Usu&aacute;rio</th>
+				<th>Data</th>
+				<th>A&ccedil;&otilde;es</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% $.each(TaxaJuro, function () { %>
+			<tr>
+				<td><span class="hidden"><%=this.dtInicioVigencia%></span><%= this.inicioVigencia %></td>
+				<td><span class="hidden"><%=this.dtFimVigencia%></span><%= this.fimVigencia == null || this.fimVigencia == '' ? ' - ' : this.fimVigencia %></td>
+				<td><%= this.utilizarEm %></td>
+				<td><%= this.prazoMin == this.prazoMax ? this.prazoMax : this.prazoMin + " &agrave; " + this.prazoMax %></td>
+				<td><%= formatadores.formatarTaxa(this.pcMinimo, 5) %> %</td>
+				<td><%= formatadores.formatarTaxa(this.pcMedio, 5) %> %</td>
+				<td><%= formatadores.formatarTaxa(this.pcMaximo, 5) %> %</td>
+				<td><%= this.usuarioInclusao %></td>
+				<td><%= this.dataInclusaoTaxa %></td>
+				<td>
+					<div class="btn-group">
+						<a class="btn btn-mini <%= (!this.updatable ? 'disabled' : '') %>" data-toggle="tooltip" data-placement="top" id="btnAlterarTaxa" data-idtaxa="<%= this.id %>" 
+						   data-original-title="Alterar" title="Alterar"><i class="icon-pencil"></i> 
+					    </a>
+					</div>
+					<div class="btn-group">
+						<a class="btn btn-mini <%= (!this.excludable ? 'disabled' : '') %>" data-toggle="tooltip" data-placement="top" id="btnRemoverTaxa" data-idtaxa="<%= this.id %>" 
+						   data-original-title="Excluir" title="Excluir"><i class="icon-trash"></i> 
+					    </a>
+					</div>
+				</td>
+			</tr>
+			<% }); %>
+		</tbody>
+	</table>
+</div>

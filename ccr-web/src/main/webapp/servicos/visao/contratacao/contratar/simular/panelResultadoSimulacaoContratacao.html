@@ -1,0 +1,163 @@
+<div class="panel panel-default">
+	<div class="panel-heading" role="tab" id="simulacaoContratacaoHeading">
+		<h3 class="panel-title">
+			<span class="icon-user"> </span> Resultado Simula&ccedil;&atilde;o
+		</h3>
+	</div>
+	<div class="panel-body" id="simulacaoContratacaoBody">
+		<form class="form-horizontal">
+			<table class="table table-striped table-bordered" id="gridResumo">
+				<thead>
+					<tr>
+						<th width="20%">Resumo</th>
+						<th width="40%" class="comSeguro"><label class="radio inline">
+								<b>Com Seguro Prestamista</b> <input class="radio radio inline"
+								type="radio" name="identificadorSeguro" id="comSeguro" value="1"
+							 	style="margin-right: 12px" />
+						</label></th>
+						<th><label class="radio inline"> <b>Sem Seguro
+									Prestamista</b> <input class="radio" type="radio"
+								name="identificadorSeguro" id="semSeguro" value="2"
+								style="margin-right: 12px" /> <input class="hide" id="aposentadoPorInvalidez" />
+						</label></th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr>
+						<td>Conv&ecirc;nio</td>
+						<td class="comSeguro"><%= simulacao.idConvenio %></td>
+						<td><%= simulacao.idConvenio %></td>
+					</tr>
+					<tr>
+						<td>Valor L&iacute;quido</td>
+						<td class="comSeguro"><%=
+							formatadores.formatarMoeda(result.simulacaoComSeguro.valorLiquido)
+							%></td>
+						<td><%=
+							formatadores.formatarMoeda(result.simulacaoSemSeguro.valorLiquido)
+							%></td>
+					</tr>
+					<tr>
+						<td>Prazo Contrato</td>
+						<td class="comSeguro"><%= result.simulacaoComSeguro.prazo %></td>
+						<td><%= result.simulacaoSemSeguro.prazo %></td>
+					</tr>
+					<tr>
+						<td>Taxa Juros</td>
+						<td class="comSeguro"><%=
+							formatadores.formatarTaxa(result.simulacaoComSeguro.taxaJuros, 2)
+							%> %</td>
+						<td><%=
+							formatadores.formatarTaxa(result.simulacaoSemSeguro.taxaJuros, 2)
+							%> %</td>
+					</tr>
+					<tr>
+						<td>Valor Presta&ccedil;&atilde;o</td>
+						<td class="comSeguro"><%=
+							formatadores.formatarMoeda(formatadores.formatarMoedaParaFloat(result.simulacaoComSeguro.prestacao))
+							%></td>
+						<td><%=
+							formatadores.formatarMoeda(formatadores.formatarMoedaParaFloat(result.simulacaoSemSeguro.prestacao))
+							%></td>
+					</tr>
+				</tbody>
+				<table class="table table-striped table-bordered" id="gridDetalhe">
+					<thead>
+						<tr>
+							<th colspan="3"><a id="controleDetalheSimulacao"
+								style="cursor: pointer"> Detalhe</a></th>
+						</tr>
+					</thead>
+
+					<tbody id="detalheSimulacao" class="hide">
+						<tr>
+							<td width="20%">Valor Contrato</td>
+							<td width="40%" class="comSeguro"><%=
+								formatadores.formatarMoeda(result.simulacaoComSeguro.valorContrato)
+								%></td>
+							<td><%=
+								formatadores.formatarMoeda(result.simulacaoSemSeguro.valorContrato)
+								%></td>
+						</tr>
+						<tr>
+							<td>Valor Total Contrato</td>
+							<td class="comSeguro"><%=formatadores.formatarMoeda(result.simulacaoComSeguro.valorTotalContrato)
+								%></td>
+							<td><%=formatadores.formatarMoeda(result.simulacaoSemSeguro.valorTotalContrato)
+								%></td>
+						</tr>
+						<tr>
+							<td>Data Libera&ccedil;&atilde;o Cr&eacute;dito</td>
+							<td class="comSeguro"><%= simulacao.dataContratacao %></td>
+							<td><%= simulacao.dataContratacao %></td>
+						</tr>
+						<tr>
+							<td>Data Base C&aacute;lculo 1ª Presta&ccedil;&atilde;o</td>
+							<td class="comSeguro"><%=
+								result.camposComuns.basePrimeiraPrestacao %></td>
+							<td><%= result.camposComuns.basePrimeiraPrestacao %></td>
+						</tr>
+						<tr>
+							<td>Data Vencimento 1ª Presta&ccedil;&atilde;o</td>
+							<td class="comSeguro"><%=
+								result.camposComuns.vencimentoPrimeiraPrestacao %></td>
+							<td><%= result.camposComuns.vencimentoPrimeiraPrestacao %></td>
+						</tr>
+						<tr>
+							<td>Data Vencimento Contrato</td>
+							<td class="comSeguro"><%=
+								result.simulacaoComSeguro.vencimentoContrato %></td>
+							<td><%= result.simulacaoSemSeguro.vencimentoContrato %></td>
+						</tr>
+						<tr>
+							<td>Quantidade Dias Juros Acerto</td>
+							<td class="comSeguro"><%=
+								result.camposComuns.quantDiasJurosAcerto %></td>
+							<td><%= result.camposComuns.quantDiasJurosAcerto %></td>
+						</tr>
+						<tr>
+							<td>Valor Juros Acerto</td>
+							<td class="comSeguro"><%=
+								formatadores.formatarMoeda(result.simulacaoComSeguro.juroAcerto, 2)%></td>
+							<td><%=
+								formatadores.formatarMoeda(result.simulacaoSemSeguro.juroAcerto, 2)%></td>
+						</tr>
+						<tr>
+							<td>Valor Seguro Prestamista</td>
+							<td class="comSeguro"><%=
+								formatadores.formatarMoeda(result.simulacaoComSeguro.valorSeguro)
+								%></td>
+							<td>0,00</td>
+						</tr>
+						<tr>
+							<td>Valor IOF</td>
+							<td class="comSeguro"><%=
+								formatadores.formatarMoeda(result.simulacaoComSeguro.iof) %></td>
+							<td><%=
+								formatadores.formatarMoeda(result.simulacaoSemSeguro.iof) %></td>
+						</tr>
+						<tr>
+							<td>CET Mensal</td>
+							<td class="btn-toggle-popupcet btn-link comSeguro" id="tdCETComSeguro"><%=
+								formatadores.formatarTaxa(result.simulacaoComSeguro.cetmensal,
+								2) %> %</td>
+							<td class="btn-toggle-popupcet btn-link " id="tdCETSemSeguro"><%=
+								formatadores.formatarTaxa(result.simulacaoSemSeguro.cetmensal,
+								2) %> %</td>
+						</tr>
+						<tr>
+							<td>CET Anual</td>
+							<td class="btn-toggle-popupcet btn-link comSeguro" id="tdCETComSeguro"><%=
+								formatadores.formatarTaxa(result.simulacaoComSeguro.cetanual, 2)
+								%> %</td>
+							<td class="btn-toggle-popupcet btn-link " id="tdCETSemSeguro"><%=
+								formatadores.formatarTaxa(result.simulacaoSemSeguro.cetanual, 2)
+								%> %</td>
+						</tr>
+					</tbody>
+				</table>
+		</form>
+	</div>
+</div>
+

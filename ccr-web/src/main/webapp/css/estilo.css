@@ -1,0 +1,46 @@
+.thumbnail.semImagem {
+	margin-bottom: 0px
+}
+
+.thumbnail.semImagem .caption {
+	padding: 0px; 
+	padding-left: 5px;
+}
+
+.thumbnail.semImagem.evidenciar {
+	box-shadow: 3px 4px 7px rgba(0, 0, 0, 0.110);
+	background-color: #fcfcfc;
+}
+
+.form-horizontal .control-label.medio {
+    width: 250px !important;
+}
+
+.form-horizontal .controls.medio {
+    margin-left: 265px;
+}
+
+#loadCCR {
+    background-clip: padding-box;
+    background-color: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    left: 50%;
+    margin-left: -65px;
+    outline: medium none;
+    padding: 10px;
+    position: fixed;
+    text-align: center !important;
+    top: 40%;
+    width: auto;
+    z-index: 1050;
+}
+
+#loadCCR img {
+    padding: 10px;
+}
+
+.unbold {
+	font-weight: 200;
+}

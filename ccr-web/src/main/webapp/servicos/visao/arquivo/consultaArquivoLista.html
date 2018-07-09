@@ -1,0 +1,40 @@
+<!-- Conteudo -->
+<div id="divListaArquivos" style="margin-bottom: 40px">
+	<fieldset>
+		<table class="table table-striped table-bordered"
+			id="gridListaArquivos">
+			<thead>
+				<tr>
+					<th>Sequencial</th>
+					<th>Identificador</th>
+					<th>Data Remessa</th>
+					<th>Quantidade Remessa</th>
+					<th>Data Retorno</th>
+					<th>Quantidade Retorno</th>
+					<th>Erros Retorno</th>
+					<th>Situa&ccedil;&atilde;o Retorno</th>
+				</tr>
+			</thead>
+			<tbody id="">
+				<% $.each(lista, function() { %>
+				<tr>
+					<td><%= this.sequencial %></td>
+					<td><%= this.identificador %></td>
+					<td><%= formatTimeStamp(this.dtRemessa, 'dd/MM/yyyy HH:mm:ss')%></td>
+					<td><%= this.quantidadeRemessa %></td>
+					<td><%= formatTimeStamp(this.dtRetorno, 'dd/MM/yyyy HH:mm:ss')%></td>
+					<td><%= this.quantidadeRetorno %></td> 
+					<% if(Number(this.errosRetorno) > 0) { %>
+						<td class="btn-link modalErros" ordem="<%= this.sequencial %>"><%= this.errosRetorno %></td>
+					<% } else { %>
+						<td><%= this.errosRetorno %></td> 
+					<% } %>
+					<td><%= this.situacaoRetorno %></td>
+				</tr>
+				<% }); %>
+			</tbody>
+		</table>
+	</fieldset>
+</div>
+
+<div id="divContratoErros" />

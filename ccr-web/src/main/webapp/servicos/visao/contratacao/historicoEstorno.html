@@ -1,0 +1,81 @@
+<!-- Conteudo -->
+<div id="cabecalhoManterIOF">
+	<ul class="breadcrumb">
+		<li><a href="index.html">In&iacute;cio</a> <span class="divider">&gt;</span></li>
+		<li>Contrato <span class="divider">&gt;</span></li>
+		<li class="active">Hist&oacute;rico Estorno</li>
+	</ul>
+	
+	<h1>Hist&oacute;rico Estorno Contrato</h1>
+</div>
+<div id="divFiltroContrato" class="">
+	<fieldset>
+	<legend>&nbsp;Filtro</legend>
+	<form class="form-horizontal" id="formFiltroEstorno">
+		<div class="control-group" >
+			<label class="control-label"><span class="obrigatorio"></span> CPF cliente:</label>
+			<div class="controls">
+				<div class="input-append"> 
+					<input type="text" name="cpf" id="cpf" value=""
+						   class="input-medium cpf" validators="" />
+				</div> 
+				<span class="help-inline"></span>
+			</div>
+		</div>
+		<div class="control-group" >
+			<label class="control-label"><span class="obrigatorio"></span> N&ordm; Contrato:</label>
+			<div class="controls">
+				<div class="input-append"> 
+					<input type="text" name="contrato" id="contrato" value=""
+						   class="input-medium contrato" validators="" />
+				</div> 
+				<span class="help-inline"></span>
+			</div>
+		</div>
+		<!-- BOTOES DE ACAO -->
+		<div id="" class="form-actions">
+			<a class="btn btn-primary" id="btnConsultar"><i class="icon icon-search icon-white"></i>&nbsp;Consultar</a>
+			<a class="btn" id="btnLimparForm"><i class="icon"></i>Limpar</a>
+		</div>
+	</form>	
+	</fieldset>
+</div>
+
+<div id="divListaContratos" class="hide">
+	<fieldset>
+	<legend>Contrato</legend>
+	<table class="table table-striped table-bordered" id="gridListaContratos">
+		<thead>
+			<tr>
+				<th>N&ordm; Contrato</th>
+				<th>Situa&ccedil;&atilde;o</th>
+				<th>Data Estorno</th>
+			</tr>
+		</thead>
+		<!-- tbody id="">		
+			< % $.each(listaContratos, function() { % >
+				<tr>
+					<td class="text-center">
+						<input type="radio" name="rdoContrato" id="rdoContrato_<%=this.contrato%>" data-nuContrato="<%=this.contrato%>" />
+					</td>
+					<td>< %= this.contrato % ></td>
+					<td>< %= this.nomeCliente % ></td>			
+					<td>< %= this.dataLiberacao % ></td>
+					<td>< %= this.valor % ></td>					
+				</tr>
+			< % }); % >	
+		</tbody-->
+		<tbody>		
+			<tr>
+				<td>02.0002.183-0000001/12</td>
+				<td>ESTORNADO</td>			
+				<td>10/01/2015</td>					
+			</tr>
+		</tbody>
+	</table>
+	</fieldset>
+	<!-- BOTOES DE ACAO -->
+	<div id="" class="form-actions">
+		<a class="btn" id="btnCancelar"><i class="icon"></i>Voltar</a>
+	</div>
+</div>

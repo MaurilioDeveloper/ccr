@@ -1,0 +1,52 @@
+<div id="divDocumentoListar" tabindex="-1" style="margin-bottom: 60px">
+	<table class="table table-striped table-bordered"
+		id="gridDocumentoListar">
+		<thead>
+			<tr>
+				<th>Início Vigência</th>
+				<th>Fim Vigência</th>
+				<th>Tipo Documento</th>
+				<th>CCB</th>
+				<th>Nome Modelo Documento</th>
+				<th>Usuário</th>
+				<th>Data</th>
+				<th>Ação</th>
+			</tr>
+		</thead>
+		<tbody id="listaGrupoTaxa">
+		<% $.each(documento, function(index) { %>
+			<tr>
+				<td><span class="hidden"><%=this.dtInicioVigencia%></span><%= this.inicioVigencia %></td>
+				<td><span class="hidden"><%=this.dtFimVigencia%></span><%= this.fimVigencia  %></td>
+				<td><%= this.tipoDocumento %></td>
+				<td><%= this.icModeloTestemunha %></td>
+				<td><%= this.nomeModeloDocumento %></td>
+				<td><%= this.nomeUsuario %></td>
+				<td><span class="hidden"><%=this.dtInclusao%></span><%= this.data %></td>		
+				<td>
+					<div class="btn-group">
+						<a class="btn btn-mini" data-toggle="tooltip" data-placement="top"
+							id="btnDetalhesDocumento" data-original-title="Detalhar"
+							data-index="<%= index %>" 
+							title="Detalhar"><i class="icon-search"></i> </a>
+					</div>
+					<div class="btn-group">
+						<a class="btn btn-mini <%= (!this.updatable ? 'disabled' : '') %>" data-toggle="tooltip" data-placement="top"
+							id="btnAlterarDocumento" data-original-title="Alterar"
+							data-index="<%= index %>" 
+							title="Alterar"><i class="icon-pencil"></i> </a>
+					</div>
+					<div class="btn-group">
+						<a class="btn btn-mini <%= (!this.deletable ? 'disabled' : '') %>" data-toggle="tooltip"
+							data-placement="top" id="btnRemoverDocumento"
+							data-index="<%= index %>" 
+							data-original-title="Excluir" title="Excluir"><i
+							class="icon-trash"></i> </a>
+					</div>
+				</td>
+			</tr>
+		<% }); %>	
+		</tbody>
+	</table>
+	<!--</fieldset>-->
+</div>

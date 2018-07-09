@@ -1,0 +1,31 @@
+<div id="divListaGrupoTaxa" tabindex="-1" style="margin-bottom: 60px">
+	<table class="table table-striped table-bordered" id="gridListaGrupoTaxa">
+		<thead>
+			<tr>
+				<th>C&oacute;digo</th>
+				<th>Nome</th>
+				<th>Usu&aacute;rio</th>
+				<th>Data</th>
+				<th>A&ccedil;&atilde;o</th>
+			</tr>
+		</thead>
+		<tbody id="listaGrupoTaxa">
+			<% $.each(grupoTaxa, function() { %>
+				<tr>
+					<td><%= this.codigo %></td>
+					<td><%= this.nome %></td>
+					<td><%= this.usuario %></td>
+					<td><%= formatTimeStamp(this.data, 'dd/MM/yyyy HH:mm:ss') %></td>
+					<td>
+						<div class="btn-group">
+							<a class="btn btn-mini" data-toggle="tooltip" data-placement="top" id="btnAlterarGrupoTaxa" data-id="<%= this.id %>" data-codigo="<%= this.codigo %>" data-nome="<%= this.nome %>"  
+							   data-original-title="Alterar" title="Alterar"><i class="icon-pencil"></i> 
+						    </a>
+						</div>						
+					</td>
+				</tr>
+			<% }); %>	
+		</tbody>
+	</table>
+<!--</fieldset>-->
+</div>

@@ -1,0 +1,93 @@
+<div class="center-block">
+    <div class="container">
+		 <div class="row text-left">
+		 	<img src="layout/img/logocaixa.jpg" class="img-responsive">
+		 </div>
+    	 <div class="row">
+    	 	<h5 class="text-left">Planilha de C&aacute;lculo Custo Efetivo Total</h5>
+    	 </div>
+         <form class="form-horizontal">
+			  <div class="form-group row">
+			  	<table width="100%">
+					<tr>
+						<td width="40%"><label class="control-label text-left">Produto:</label></td>
+						<td><label class="control-label text-left"><%= dadosCET.dsProdutoContrato %></label></td>
+					</tr>
+					<tr>
+						<td><label class="control-label text-left">N&uacute;mero Contrato:</label></td>
+						<td><label class="control-label text-left"><%= dadosCET.numContrato %></label></td>
+					</tr>		
+					<tr>
+						<td><label class="control-label text-left">Valor Total Contrato:</label></td>
+						<td><label class="control-label text-left"><%= formatadores.formatarMoeda(dadosCET.vlTotalContrato) %></label></td>
+					</tr>		
+					<tr>
+						<td><label class="control-label text-left">Taxa Juros:</label></td>
+						<td><label class="control-label text-left"><%= mascararTaxa(dadosCET.txJuros, 2) %>%</label></td>
+					</tr>		
+					<tr>
+						<td><label class="control-label text-left">Prazo Contrato:</label></td>
+						<td><label class="control-label text-left"><%= dadosCET.prazoContrato %></label></td>
+					</tr>		
+					<tr>
+						<td><label class="control-label text-left">IOF:</label></td>
+						<td><label class="control-label text-left"><%= formatadores.formatarMoeda(dadosCET.vlIof) %></label></td>
+					</tr>		
+					<tr>
+						<td><label class="control-label text-left">Valor L&iacute;quido:</label></td>
+						<td><label class="control-label text-left"><%= formatadores.formatarMoeda(dadosCET.vlLiquido) %></label></td>
+					</tr>
+					<tr>
+						<td><label class="control-label text-left">CET Mensal:</label></td>
+						<td><label class="control-label text-left"><%= mascararTaxa(dadosCET.pctCetMensal, 4) %>%</label></td>
+					</tr>
+					<tr>
+						<td><label class="control-label text-left">CET Anual:</label></td>
+						<td><label class="control-label text-left"><%= mascararTaxa(dadosCET.pctCetAnual, 4) %>%</label></td>
+					</tr>
+			  	</table>
+				<table border="1" width="100%">
+				    <tr>
+				        <td width="40%"><label class="control-label text-center">COMPONENTE</label></td>
+				        <td><label class="control-label text-center">R$</label> </td>
+				        <td><label class="control-label text-center">PERCENTUAL</label></td>
+				    </tr>
+					<tr>
+						<td><label class="control-label text-left">Valor Total Contrato</label></td>
+						<td><label class="control-label text-right"><%= formatadores.formatarMoeda(dadosCET.vlTotalContrato) %></label></td>
+						<td><label class="control-label text-center">-</label></td>
+					</tr>
+					<tr>
+						<td><label class="control-label text-left">Valor L&iacute;quido</label></td>
+						<td><label class="control-label text-right"><%= formatadores.formatarMoeda(dadosCET.vlLiquido) %></label></td>
+						<td><label class="control-label text-center"><%= mascararTaxa(dadosCET.pctCetliquido, 5) %></label></td>
+					</tr>
+					<tr>
+						<td><label class="control-label text-left">Valor IOF</label></td>
+						<td><label class="control-label text-right"><%= formatadores.formatarMoeda(dadosCET.vlIof) %></label></td>
+						<td><label class="control-label text-center"><%= mascararTaxa(dadosCET.pctCetiof, 5) %></label></td>
+					</tr>
+					<tr>
+						<td><label class="control-label text-left">Valor Juros Acerto</label></td>
+						<td><label class="control-label text-right"><%= formatadores.formatarMoeda(dadosCET.vlJurosAcerto) %></label></td>
+						<td><label class="control-label text-center"><%= mascararTaxa(dadosCET.pctCetjuroAcerto, 5) %></label></td>
+					</tr>
+					<tr>
+						<td><label class="control-label text-left">Valor Seguro Prestamista</label></td>
+						<td><label class="control-label text-right"><%= formatadores.formatarMoeda(dadosCET.vlSeguroPr) %></label></td>
+						<td><label class="control-label text-center"><%= mascararTaxa(dadosCET.pctCetseguro, 5) %></label></td>
+					</tr>
+				</table>
+			</div>
+			<br/><br/>
+			<div class="form-group row text-center">
+				<p class="col-sm-10">
+					<strong>Para o c&aacute;lculo do custo efetivo total (CET) da opera&ccedil;&atilde;o de cr&eacute;dito acima simulada e demonstrada, considera-se o valor do cr&eacute;dito &agrave; disposi&ccedil;&atilde;o do cliente.</strong>
+				</p>
+			</div>
+		</form>
+	</div>
+</div>
+				
+	
+

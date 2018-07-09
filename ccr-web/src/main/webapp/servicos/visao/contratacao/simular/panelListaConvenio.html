@@ -1,0 +1,30 @@
+<div class="panel panel-default">
+    <div class="panel-heading" >			
+      		<label>Convênio</label>
+   	</div>
+
+   	<div class="panel-body" >
+		<form class="form-horizontal">
+			<table class="table table-striped table-bordered" id="gridListaConvenio" >
+				<tbody id="listaConvenio">
+				<% 
+				$.each(convenios, function() { 
+				%>
+					<tr>
+					    <td>
+					    	<% if (this.situacao.descricao == 'ATIVO'){ %>
+					    		<input class="radio" type="radio" name="convenio" id="radioConvenio" value="<%= this.id%>" />&nbsp;<%= this.id %> - <%= this.nome %>
+				    		<% } else { %>
+				    			<input class="radio" type="radio" name="convenio" id="radioConvenio" value="<%= this.id%>" disabled />&nbsp;<%= this.id %> - <%= this.nome %>
+				    		<% } %>
+				    	</td>
+					    <td><%= this.situacao.descricao %></td>
+					</tr>
+				<% 
+				});
+				%>								
+				</tbody>
+			</table>
+		</form>
+	</div>
+</div>

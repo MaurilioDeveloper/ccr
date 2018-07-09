@@ -1,0 +1,61 @@
+<div id='dadosAutorizacaoGerencial'>
+	<!-- DADOS CONTRATACAO -->
+	<div class="panel panel-default tabelacentral">
+		<div class="panel-heading" id="headPanelG">
+			<div class="row">
+				<div class="span9">
+					<h3 class="panel-title">
+						<span class="icon-user"> </span> Autoriza&ccedil;&atilde;o de contrata&ccedil;&atilde;o
+					</h3>
+				</div>
+				<div id="divAlterarAutorizacaoG">
+					<button type="button"
+						class="btn btn-primary btn-xs pull-right hide">Alterar</button>
+				</div>
+
+			</div>
+		</div>
+		<div class="panel-body" id="panelG">
+			<div id="divAutorizacaoGerencial">
+				<table class="table table-striped table-bordered" id="gridAutorizacoes">
+					<thead>
+						<tr>
+							<th style="width: 20%">Data</th>
+							<th style="width: 20%">Usu&aacute;rio</th>
+							<th style="width: 20%">Situa&ccedil;&atilde;o</th>
+						</tr>
+					</thead>
+						<tbody id="autorizacoesGerencial">
+						<% $.each(autorizacoes, function() { %>
+							<tr>
+								<td><%= formatTimeStamp(this.dtSituacao, 'dd/MM/yyyy HH:mm')%></td>		
+								<td><%=  this.usuario  %></td>
+								<% if (this.codigoSituacao == 'N') { %>
+									<td id="contratoNegadoGerencial" sc="<%= this.nuSituacaoContrato %>"  class="btn-link this.nuSituacaoContrato"><%= this.descSituacao %></td>
+								<% } else { %>
+									<td><%= this.descSituacao %></td>
+								<% } %>
+							</tr>
+						<% }); %>	
+						</tbody>
+				</table>
+				<div class="panel tabelacentral" id="semAutorizacaoGerencial">
+					<div class="panel-heading" style="border: 1px solid #f4f4f4;border-radius: 7px;">
+						<div class="row">
+							<div class="span12">
+								<h3 class="panel-title" align="center" style="font-weight: 500;font-size: 18px;">
+									<span> Aguardando Autoriza&ccedil;&otilde;es </span> 
+								</h3>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="" align="center" id="autorizacoesPrimeiroG">
+					<button type="button" class="btn btn-primary btnAutorizar ">Autorizar</button>
+					<button type="button" class="btn btn-primary btnNegar ">Negar</button>
+				</div>				
+			</div>
+		</div>
+	</div>
+	<!-- FIM AUTORIZACAO GERENCIAL-->
+</div>

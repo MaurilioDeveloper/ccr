@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="1.0" 
+	xmlns="http://java.sun.com/xml/ns/persistence/orm" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd ">
+	
+	<entity name="CCRTB003_CONVENIO_CANAL" class="br.gov.caixa.ccr.dominio.transicao.ConvenioCanalTO">
+		<named-query name="ConvenioCanal.consultAll">
+			<query>
+				SELECT T
+				  FROM br.gov.caixa.ccr.dominio.transicao.ConvenioCanalTO T
+			</query>
+		</named-query>
+			
+		<named-query name="ConvenioCanalTO.consultarById">
+			<query>
+				SELECT T
+				  FROM br.gov.caixa.ccr.dominio.transicao.ConvenioCanalTO T
+				 WHERE T.id.idConvenio = :pConvenio
+			</query>
+		</named-query>
+
+		<named-query name="ConvenioCanal.consultarByConvenioAndCanais">
+			<query>
+				SELECT T
+				  FROM br.gov.caixa.ccr.dominio.transicao.ConvenioCanalTO T
+				 WHERE T.id.idConvenio = :pNuConvenio
+				 AND   T.id.idCanalAtendimento in (:pCanais)
+			</query>
+		</named-query>
+			
+	</entity>
+</entity-mappings>

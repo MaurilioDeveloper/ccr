@@ -1,0 +1,14 @@
+[
+	{"id" : "1", "nome" : "Não Alfabetizado"},
+	{"id" : "2", "nome" : "Até 4ª série Incompl. do Ens. Fund."},
+	{"id" : "3", "nome" : "Com 4ª série Compl. do Ens. Fund."},
+	{"id" : "4", "nome" : "Da 5ª a 8ª Série Incompl. do Ens. Fund."},
+	{"id" : "5", "nome" : "Ensino Fundamental Completo"},
+	{"id" : "6", "nome" : "Ensino Médio Incompleto"},
+	{"id" : "7", "nome" : "Ensino Médio Completo"},
+	{"id" : "8", "nome" : "Superior Incompleto"},
+	{"id" : "9", "nome" : "Superior Completo"},
+	{"id" : "10", "nome" : "Especialização/Pós-Graduação"},
+	{"id" : "11", "nome" : "Mestrado"},
+	{"id" : "12", "nome" : "Doutorado"}
+]

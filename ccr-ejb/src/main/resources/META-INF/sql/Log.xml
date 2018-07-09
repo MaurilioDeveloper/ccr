@@ -1,0 +1,18 @@
+<!-- <?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="1.0" 
+	xmlns="http://java.sun.com/xml/ns/persistence/orm" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd ">
+	
+	<entity name="CCRTB016_OCORRENCIA_INTERFACE" class="br.gov.caixa.ccr.dominio.transicao.LogTO">
+		<named-query name="Log.listar">
+			<query>
+				SELECT t
+				  FROM br.gov.caixa.ccr.dominio.transicao.LogTO t
+				 WHERE t.transacao = :pTransacao
+				   and t.data between :pDataInicio and :pDataFim
+				 ORDER BY t.data 
+			</query>			
+		</named-query>
+	</entity>
+</entity-mappings> -->

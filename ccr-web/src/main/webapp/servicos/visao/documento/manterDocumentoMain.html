@@ -1,0 +1,123 @@
+<!-- Conteudo -->
+<link href="/ccr-web/layout/css/jquery-ui-custom.css" rel="stylesheet">
+<ul class="breadcrumb">
+	<li><a href="index.html">In&iacute;cio</a> <span class="divider">&gt;</span></li>
+	<li>Administra&ccedil;&atilde;o <span class="divider">&gt;</span></li>
+	<li class="active" id="liTituloDoc">Manter Documento</li>
+</ul>
+<h1 id="tituloPagDoc">Manter Modelo Documento</h1>
+<br />
+<div id="divFiltroDocumento">
+	<fieldset>
+		<form class="form-horizontal" id="formFiltroDocumento">
+			<div id="divFiltroDocumentoForm">
+				<div class="control-group">
+					<label class="control-label">Tipo Documento:</label>
+					<div class="controls">
+						<div id="divSelectTipoDocumento" class="input-append">
+							<select name="selectTipoDocumento" id="selectTipoDocumento">
+								<option value="">Selecione</option>
+							</select>
+						</div>
+						<span class="help-inline"></span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Nome Modelo Documento:</label>
+					<div class="controls">
+						<div id="divInputNomeModeloDocumento" class="input-append">
+							<input type="text" id="inputNomeModeloDocumento" size="50" maxlength="50"  />
+						</div>
+						<span class="help-inline"></span>
+					</div>
+				</div>
+
+				<div id="divDataVigencia" class="control-group">
+					<label class="control-label">Período:</label>
+					<div class="controls">
+						<div id="divInputDataVigencia" class="input-append data">
+							<input type="text" name="inicioVigenciaFiltro"
+								id="inicioVigenciaFiltro" value="" data-format="dd/MM/yyyy"
+								size="16" class="input-small data" /> <span
+								id="spanIconDataVigencia" class="add-on"> <i
+								id="iIconDataVigencia" data-time-icon="icon-time"
+								data-date-icon="icon-calendar" class="icon-calendar"></i>
+							</span>
+						</div>
+						&nbsp; &nbsp; &nbsp;
+						<div id="divInputDataFimVigencia" class="input-append data">
+							<input type="text" name="finalVigenciaFiltro"
+								id="finalVigenciaFiltro" value="" data-format="dd/MM/yyyy"
+								size="16" class="input-small data" /> <span
+								id="spanIconDataVigencia" class="add-on"> <i
+								id="iIconDataVigencia" data-time-icon="icon-time"
+								data-date-icon="icon-calendar" class="icon-calendar"></i>
+							</span>
+						</div>
+						<span class="help-inline"></span>
+					</div>
+				</div>
+			</div>
+			<!-- BOTOES DE ACAO -->
+			<div id="divAcoesFiltroDocumento" class="form-actions">
+				<a class="btn btn-primary" id="btnConsultarDocumento"><i class="icon-white icon-search"></i> Consultar</a> 
+				<a class="btn btn-primary" id="btnNovoDocumento">Incluir</a> 
+				<a class="btn" id="btnLimparForm"> Limpar</a> 
+				<a class="btn" id="btnSair">Sair</a>
+			</div>
+		</form>
+	</fieldset>
+	<div id="divListaDocumento" tabindex="-1"></div>
+</div>
+
+
+<div id="divIncAltDocumentoForm" class="hide form-horizontal" >
+
+	<div id="divIncAltDocumento" tabindex="-1"></div>
+	<div id="divDetailDocumento" tabindex="-1"></div>
+
+	<div id="divEditorHtml">
+		<textarea id="editorHtml" name="editorHtml" rows="50" cols="80" validators="required" ></textarea>
+	</div>
+	
+	<div id="divAcoesIncAltDocumento" class="form-actions">
+		<a class="btn btn-primary" id="btnVisualizaDocumento">Visualizar</a> 
+		<a class="btn btn-primary" id="btnSalvaDocumento">Salvar</a> 
+		<a class="btn" id="btnVoltarDocumento"> Voltar</a> 
+	</div>
+
+</div>
+
+<div id="divModalVisualizarDoc" class="modal hide fade" aria-hidden="true" 
+	aria-labelledby="myModalLabel" role="dialog" data-backdrop="static" tabindex="-1">
+	<legend></legend>
+	<fieldset>
+	
+	<form class="form-horizontal" id="formVisualizaContrato">
+		
+		<div  class="control-group" >
+			<label class="control-label">Número Contrato:</label>
+			<div class="controls">
+				<div  class="input-append"> 
+					<input type="text"  id="inputVisualizaNumeroContrato" size="16"  maxlength="16"  validators="required"  class="numero"/>
+				</div>
+				<span class="help-inline"></span>
+			</div>
+		</div>
+	
+		<!-- BOTOES DE ACAO -->
+		<div id="divAcoesVisualizaContato" class="form-actions">
+			<a class="btn btn-primary" id="btnImprimirVisualizaContato"><i class="icon"></i>Imprimir</a>
+			<a class="btn" id="btnVoltarVisualizaContato"><i class="icon"></i>Voltar</a>
+		</div>
+	</form>
+	</fieldset>
+</div>
+<div id="impressaoTeste" class="modal hide fade" aria-hidden="true" 
+	aria-labelledby="myModalLabel" role="dialog" data-backdrop="static" tabindex="-1">
+</div>
+
+<script type="text/javascript">
+CKEDITOR.replace('editorHtml');
+</script>
+

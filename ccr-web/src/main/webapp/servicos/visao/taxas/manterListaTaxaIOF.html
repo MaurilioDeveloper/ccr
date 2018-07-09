@@ -1,0 +1,51 @@
+<div id="divListaTaxaIOF" tabindex="-1" style="margin-bottom: 60px">
+	<table class="table table-striped table-bordered" id="gridListaTaxaIOF">
+		<thead>
+			<tr>
+				<th>In&iacute;cio Vig&ecirc;ncia</th>
+				<th>Fim Vig&ecirc;ncia</th>
+				<th>Al&iacute;quota B&aacute;sica Diária</th>
+				<th>Al&iacute;quota Adicional</th>
+<!-- 				<th>Usu&aacute;rio Inclus&atilde;o</th> -->
+<!-- 				<th>Data Inclus&atilde;o</th> -->
+				<th>Usu&aacute;rio</th>
+				<th>Data </th>
+<!-- 				<th>Data1 </th> -->
+<!-- 				<th>Data2 </th> -->
+				<th>A&ccedil;&atilde;o</th>
+			</tr>
+		</thead>
+		<tbody id="listaTaxasIOF">
+			<% $.each(TaxaIOF, function() { %>
+				<tr>
+<!-- 					<td><%= formatadores.formatarData(this.inicioVigencia) %></td> -->
+<!-- 					<td><%= (this.fimVigencia != null ? formatadores.formatarData(this.fimVigencia) : "-") %></td>			 -->
+					<td><span class="hidden"><%=this.dtInicioVigencia%></span><%= formatTimeStamp2(this.dtInicioVigencia, 'dd/MM/yyyy')%></td>
+					<td><span class="hidden"><%=this.dtFinalVigencia%></span><%= formatTimeStamp2(this.dtFinalVigencia, 'dd/MM/yyyy')%></td>
+					
+					<td><%= formatadores.formatarTaxa(this.aliquotaBasica, 5) %> %</td>
+					<td><%= formatadores.formatarTaxa(this.aliquotaComplementar, 5) %> %</td>
+					<td><%= this.usuarioInclusao %></td> 
+ 					<td><%= this.dataInclusaoTaxa %></td> 
+					<!-- <td><%= this.usuarioFinalizacao == null || this.usuarioFinalizacao == '' ? ' - ' : this.usuarioFinalizacao %></td>-->
+					<!--<td><%= this.dataInclusaoFimVigencia == null || this.dataInclusaoFimVigencia == '' ? ' - ' : this.dataInclusaoFimVigencia %></td>-->
+					
+					
+					<td>
+						<div class="btn-group">
+							<a class="btn btn-mini <%= (!this.updatable ? 'disabled' : '') %>" data-toggle="tooltip" data-placement="top" id="btnAlterarTaxa<%= (!this.updatable ? 'disabled' : '') %>" data-codigo="<%= this.id %>" 
+							   data-original-title="Alterar" title="Alterar"><i class="icon-pencil"></i> 
+						    </a>
+						</div>
+						<div class="btn-group">
+							<a class="btn btn-mini <%= (!this.excludable ? 'disabled' : '') %>" data-toggle="tooltip" data-placement="top" id="btnRemoverTaxa<%= (!this.excludable ? 'disabled' : '') %>" data-codigo="<%= this.id %>"
+							   data-original-title="Excluir" title="Excluir"><i class="icon-trash"></i> 
+						    </a>
+						</div>
+					</td>
+				</tr>
+			<% }); %>	
+		</tbody>
+	</table>
+<!--</fieldset>-->
+</div>

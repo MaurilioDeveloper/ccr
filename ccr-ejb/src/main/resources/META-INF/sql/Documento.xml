@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="1.0" 
+	xmlns="http://java.sun.com/xml/ns/persistence/orm" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd ">
+	
+	<entity name="CCRTB071_MODELO_CONTRATO" class="br.gov.caixa.ccr.dominio.transicao.DocumentoTO">
+		<named-query name="Documento.consultarDocumento" >
+			<query>
+				SELECT T
+				  FROM br.gov.caixa.ccr.dominio.transicao.DocumentoTO T
+				  WHERE T.tipoDocumento.idTipoDocumento = :tipoDocumento
+				  AND T.dtFimVigencia is null
+			</query>
+		</named-query>	
+		
+		<named-native-query name="Documento.inativarDocumento" result-class="br.gov.caixa.ccr.dominio.transicao.DocumentoTO">
+			<query>	
+				UPDATE br.gov.caixa.ccr.dominio.transicao.DocumentoTO T SET
+ 					T.dtFimVigencia= :dtFimVirgencia
+				WHERE T.idDocumento = :idDocumento	
+			</query>			
+		</named-native-query>
+		
+		<named-native-query name="Documento.consultarDocumentoPrint" result-class="br.gov.caixa.ccr.dominio.transicao.DocumentoTO">
+			<query>	
+				SELECT * FROM CCR.CCRTB071_MODELO_CONTRATO T
+				WHERE ( T.DT_INICIO_VIGENCIA &lt;= TO_DATE(SYSDATE) AND T.NU_TIPO_MODELO in (:nrTipoDocumento))
+				AND (T.DT_FIM_VIGENCIA IS NULL OR T.DT_FIM_VIGENCIA &gt;= TO_DATE(SYSDATE))
+			</query>			
+		</named-native-query>
+		
+		<named-native-query name="Documento.consultarDocumentoRetorno" result-class="br.gov.caixa.ccr.dominio.transicao.DocumentoTO">
+			<query>
+				SELECT * FROM CCR.CCRTB071_MODELO_CONTRATO T
+				  WHERE T.NU_TIPO_MODELO = :tipoDocumento 
+			</query>
+		</named-native-query>
+		
+		<named-native-query name="Documento.consultarQntDocumentoVigente" result-class="br.gov.caixa.ccr.dominio.transicao.DocumentoTO">
+			<query>
+				SELECT * FROM CCR.CCRTB071_MODELO_CONTRATO 
+					WHERE CCRTB071_MODELO_CONTRATO.NU_TIPO_MODELO = :nrTipoDocumento
+					AND CCRTB071_MODELO_CONTRATO.DT_INICIO_VIGENCIA >= :dtInicioVirgencia 
+					AND CCRTB071_MODELO_CONTRATO.DT_FIM_VIGENCIA IS NULL
+			</query>
+		</named-native-query>
+		
+		<named-native-query name="Documento.atualizaUltimoVigente" result-class="br.gov.caixa.ccr.dominio.transicao.DocumentoTO">
+			<query>
+				UPDATE CCR.CCRTB071_MODELO_CONTRATO SET DT_FIM_VIGENCIA = NULL 
+	 				WHERE  NU_TIPO_MODELO= :nrTipoDocumento
+					AND DT_FIM_VIGENCIA =  :dtFimVigencia
+			</query>
+		</named-native-query>
+		
+		
+	</entity>
+</entity-mappings>

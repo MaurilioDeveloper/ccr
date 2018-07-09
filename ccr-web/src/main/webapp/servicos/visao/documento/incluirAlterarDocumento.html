@@ -1,0 +1,60 @@
+<form class="form-horizontal" id="formIncAltDocumento">
+	<div>
+		<div class="control-group">
+			<label class="control-label"><span class="obrigatorio">*</span>Tipo
+				Documento:</label>
+			<div class="controls" id="divSelectTipoDocumentoIncAlt">
+				<div id="divSelectTipoDocumentoIncAlt" class="input-append">	
+					<select name="selectTipoDocumentoIncAlt" id="selectTipoDocumentoIncAlt" validators="required"></select>  	
+				</div>
+				<span class="help-inline"></span>
+				<input type="checkbox" name="checkCCBIncAlt" id="checkCCBIncAlt" 
+					style="margin-top: 0px" <%= documento.icModeloTestemunha=='Sim'? 'checked="checked"' : '' %> />			
+				
+				<span style="font-weight: bold;font-size: 12px;width: 200px !important;">CCB</span> 
+				<span class="help-inline"></span>
+			</div>
+			
+		</div>
+		<div class="control-group">
+			<label class="control-label"><span class="obrigatorio">*</span>Nome
+				Modelo Documento:</label>
+			<div class="controls">
+				<div id="divInputNomeModeloDocumentoIncAlt" class="input-append">
+					<input type="text" id="inputNomeModeloDocumentoIncAlt" size="50"  maxlength="50"
+						validators="required" value="<%= documento.nomeModeloDocumento%>"/>
+				</div>
+				<span class="help-inline"></span>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label">Campos Dinâmicos:</label>
+			<div class="controls">
+				<div id="divSelectCamposDinamDocumento" class="input-append">
+					<select name="selectCamposDinamDocumento" id="selectCamposDinamDocumento" ></select>
+				</div>
+				<span class="help-inline"></span>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label"><span class="obrigatorio">*</span>Início
+				Vigência:</label>
+			<div class="controls" id="divInputInicioVigenciaIncAlt">
+				<div id="divInputDataIncAltVigencia" class="input-append data">	
+					<input type="text" name="inputInicioVigenciaIncAlt" validators="required,data,dataMenorTaxaSeguroIOF"
+								id="inputInicioVigenciaIncAlt" value="" data-format="dd/MM/yyyy"
+								size="16" class="input-small data" /> <span
+								id="spanIconDataVigencia" class="add-on"> <i
+								id="iIconDataVigencia" data-time-icon="icon-time"
+								data-date-icon="icon-calendar" class="icon-calendar"></i>
+							</span>	
+				</div>	
+			</div>
+			<div class="controls resultado"><%=formatadores.formatarData(documento.inicioVigencia)%></div>
+		</div>
+	</div>
+</form>
+
+<div></div>

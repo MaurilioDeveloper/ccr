@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="1.0" 
+	xmlns="http://java.sun.com/xml/ns/persistence/orm" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd ">
+	
+	<entity name="CCRTB002_GRUPO_TAXA" class="br.gov.caixa.ccr.dominio.transicao.GrupoTaxaTO">
+		<named-query name="GrupoTaxa.listar">
+			<query>
+				SELECT T
+				  FROM br.gov.caixa.ccr.dominio.transicao.GrupoTaxaTO T
+				 ORDER BY T.id 
+			</query>			
+		</named-query>
+		<named-query name="GrupoTaxa.consultarPorCodigo">
+			<query>
+				SELECT T
+				  FROM br.gov.caixa.ccr.dominio.transicao.GrupoTaxaTO T
+				  where codigo = :pcodigo
+			</query>			
+		</named-query>
+		<named-native-query name="GrupoTaxa.listarGrupoTaxaNomeAutocomplete" result-class="br.gov.caixa.ccr.dominio.transicao.GrupoTaxaTO">
+			<query>
+				SELECT * FROM CCR.CCRTB002_GRUPO_TAXA WHERE UPPER(NO_GRUPO_TAXA) like UPPER(:nomeGrupoTaxa) 
+			</query>			
+		</named-native-query>
+		<named-native-query name="GrupoTaxa.incluir" result-class="br.gov.caixa.ccr.dominio.transicao.GrupoTaxaTO">
+			<query>
+				INSERT INTO CCR.CCRTB002_GRUPO_TAXA
+					(NU_GRUPO_TAXA, NO_GRUPO_TAXA, CO_GRUPO_TAXA, CO_USUARIO_ALTERACAO, TS_ALTERACAO)
+				VALUES
+					((SELECT NVL(MAX(NU_GRUPO_TAXA), 0) + 1 FROM CCR.CCRTB002_GRUPO_TAXA), :pNomeGrupo, :pCodGrupo, :pUsuario, :pTsAlteracao)
+			</query>			
+		</named-native-query>
+		<named-native-query name="GrupoTaxa.alterar" result-class="br.gov.caixa.ccr.dominio.transicao.GrupoTaxaTO">
+			<query>
+				UPDATE CCR.CCRTB002_GRUPO_TAXA 
+					SET  NO_GRUPO_TAXA= :pNomeGrupo, CO_GRUPO_TAXA = :pCodGrupo
+					where NU_GRUPO_TAXA = :pId
+
+			</query>			
+		</named-native-query>
+	</entity>
+</entity-mappings>

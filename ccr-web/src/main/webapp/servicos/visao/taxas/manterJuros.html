@@ -1,0 +1,211 @@
+<!-- Conteudo -->
+<div id="cabecalhoFiltroTaxa">
+<ul class="breadcrumb">
+	<li><a href="index.html">In&iacute;cio</a> <span class="divider">&gt;</span></li>
+	<li>Administra&ccedil;&atilde;o <span class="divider">&gt;</span></li>
+	<li class="active">Manter Taxa Juros</li>
+</ul>
+
+<h1>Manter Taxa Juros</h1>
+<br />
+</div>
+<form class="form-horizontal" id="formFiltroTaxa">
+
+	<div class="control-group">
+		<label class="control-label"></span>Identificador:</label>
+		<div class="controls">
+		<label class="radio inline">
+		<input type="radio" value="GRUPO" name="identificador" id="radioGrupoTaxa" class="radio" checked="checked" />Grupo Taxa</label>
+		
+		<label class="radio inline">
+		<input  type="radio"value="CONVENIO" name="identificador"  id="radioConvenio" class="radio" />Conv&ecirc;nio </label>
+		</div>
+	</div>
+
+	<div id="divGrupoTaxa" class="control-group">
+	    <label class="control-label">Grupo Taxa:</label>
+	    <div class="controls">
+	       	<select id="idGrupo" name="idGrupo" validators="required"></select>
+	       	
+			<span class="help-inline"></span>
+		</div>
+	</div>
+	
+	<div class="control-group">
+		<label class="control-label"></span>Utilizar em:</label>
+		<div class="controls">
+		<label class="radio inline">
+		<input type="radio" value="contratacao" name="utilizar" id="radioContracao" class="radio" checked="checked" />Contratação</label> 
+		<label class="radio inline"><input type="radio" value="renovacao" name="utilizar" id="convenio" class="radio" />Renovação</label>
+		</div>
+	</div>
+	<div id="divDataVigencia" class="control-group" >
+					<label class="control-label">Período:</label>
+					<div class="controls">
+						<div id="divInputDataVigencia" class="input-append data"> 
+							<input type="text" name="inicioVigenciaFiltro" id="inicioVigenciaFiltro" value="" data-format="dd/MM/yyyy"
+								   size="16" class="input-small data"  />
+							<span id="spanIconDataVigencia" class="add-on">
+			                	<i id="iIconDataVigencia" data-time-icon="icon-time" data-date-icon="icon-calendar" class="icon-calendar"></i>
+			                </span>
+						</div>
+						&nbsp; &nbsp; &nbsp;  
+						<div id="divInputDataFimVigencia" class="input-append data"> 
+							<input type="text" name="finalVigenciaFiltro" id="finalVigenciaFiltro" value="" data-format="dd/MM/yyyy"
+								   size="16" class="input-small data"  />
+							<span id="spanIconDataVigencia" class="add-on">
+			                	<i id="iIconDataVigencia" data-time-icon="icon-time" data-date-icon="icon-calendar" class="icon-calendar"></i>
+			                </span>
+						</div> 
+						<span class="help-inline"></span>
+					</div>
+				</div>	
+			
+				
+	<div id="codigoConvenioShow" class="control-group" hidden="true"  >
+		<label class="control-label" for="codigoConvenio" ><span class="obrigatorio">*</span> Conv&ecirc;nio: </label>
+		<div class="control-group">
+			<div class="controls resultado">
+				<input type="text" name="codigoConvenio" id="codigoConvenio" value="" class="input-medium numero" validators="required" />
+			</div>
+		</div>
+	</div>
+	
+	<!-- BOTOES DE ACAO -->
+	<div id="divAcoesFiltroTaxaSeguro" class="form-actions">
+		<a class="btn btn-primary" id="btnConsultarTaxaJuros"><i class="icon-white icon-search"></i> Consultar</a>
+		<a class="btn btn-primary" id="btnNovaTaxa">Incluir</a>
+		<a class="btn" id="btnLimparForm">Limpar</a>
+		<a class="btn" id="bntSair">Sair</a>
+	</div>
+</form>
+
+<div id="divListaTaxaJurosShow" tabindex="-1">
+	<div id="divListaTaxaJuros" tabindex="-1"></div>
+</div>
+
+
+<!-- <div id="" class="form-actions">
+	<a class="btn" id="btnVoltar"><i class="icon"></i>Voltar</a>
+</div> -->
+</fieldset>
+
+<div id="divFormulario" class="modal hide fade" aria-hidden="true" aria-labelledby="myModalLabel" data-backdrop="static" role="dialog" tabindex="-1">
+	<fieldset>
+	<legend><div id="divTituloForm">&nbsp;Incluir Taxa Juros</div></legend>
+	<form class="form-horizontal" id="formCadastroJuros">
+		
+		
+		<div id="idGrupoShowIncluir" class="control-group">
+		    <label class="control-label"><span class="obrigatorio">*</span>Grupo Taxa:</label>
+		    <div class="controls">
+		       	<select id="idGrupoIncluir" name="idGrupoIncluir" validators="required"></select>
+				<span class="help-inline"></span>
+			</div>
+		</div>		
+		<div id="codigoConvenioShowIncluir" class="control-group">
+			<label class="control-label"> Conv&ecirc;nio:</label>
+			<div class="control-group">
+				<div class="controls resultado">
+					<input type="text" name="codigoTaxa" id="codigoTaxa" value="" class="input-medium numero" validators="" />
+					<a class="btn btn-primary" id="btnConsultarCovenio"><i class="icon icon-search icon-white"></i>&nbsp;Consultar</a>
+				<label class="obrigatorio hide"  id="convenioMessage">* Convênio não encontrado.</label><!-- //MA0067 -->
+				</div>
+			</div>	
+			
+			
+		</div>
+		
+		<div id="codigoConvenioShowIncluir" class="control-group">
+			<label class="control-label"> Nome Conv&ecirc;nio:</label>
+			<div class="control-group">
+				<div class="controls resultado">
+					<input type="text" name="nomeConvenio" id="nomeConvenio" value="" class="input-medium numero" validators="" disabled="disabled"/>
+				</div>
+			</div>	
+			
+			
+		</div>
+	    
+
+		<div class="control-group">
+			<label class="control-label"></span>Utilizar em:</label>
+			<div class="controls">
+				<label class="radio inline"><input type="radio"
+					value="contratacao" name="utilizarEmIncluir"
+					id="radioContracaoIncluir" class="radio" checked="checked" />Contratação</label>
+				<label class="radio inline"><input type="radio"
+					value="renovacao" name="utilizarEmIncluir"
+					id="radioRenovacaoIncluir" class="radio" />Renovação</label>
+			</div>
+		</div>
+
+
+
+		<div id="divDataVigencia" class="control-group" >
+			<label class="control-label"><span class="obrigatorio">*</span>In&iacute;cio da Vig&ecirc;ncia:</label>
+			<div class="controls">
+				<div class="input-append data"> 
+					<input type="text" name="inicioVigencia" id="inicioVigencia" value="" data-format="dd/MM/yyyy" 
+						   size="16" class="input-small data" validators="required,data,dataMenorTaxaSeguroIOF" />
+					<span id="spanIconDataVigencia" class="add-on">
+	                	<i id="iIconDataVigencia" data-time-icon="icon-time" data-date-icon="icon-calendar" class="icon-calendar"></i>
+	                </span>
+				</div> 
+				<span class="help-inline"></span>
+			</div>
+		</div>
+		<div id="divPrazo" class="control-group">
+	        <label class="control-label"><span class="obrigatorio">*</span> Prazo:</label>
+	        <div class="controls">
+	        	<div class="input-prepend input-append">
+	            	<input name="prazoMin" id="prazoMin" type="text" maxlength="3"
+	            		   class="input-mini numero" value="" validators="required" />
+	            	<span class="add-on">&agrave;</span>
+	            	<input name="prazoMax" id="prazoMax" type="text" maxlength="3" 
+	            		   class="input-mini numero" value="" validators="required" />
+	            	<span class="add-on">meses</span>
+				</div>
+			</div>
+	    </div>
+	    <div id="divFaixaA" class="control-group">
+	        <label class="control-label"><span class="obrigatorio">*</span> Faixa A:</label>
+	        <div class="controls">
+	        	<div class="input-prepend input-append">
+	            	<input name="pcMinimo" id="pcMinimo" type="text" maxlength="9"
+	            		   class="input-small indice5" value=""  validators="required" />
+	            	<span class="add-on">%</span>
+	        	</div>
+			</div>
+	    </div>
+	    <div id="divFaixaB" class="control-group">
+	        <label class="control-label"><span class="obrigatorio">*</span> Faixa B:</label>
+	        <div class="controls">
+	        	<div class="input-prepend input-append">
+	            	<input name="pcMedio" id="pcMedio" type="text" maxlength="9"
+	            		   class="input-small indice5" value=""  validators="required" />
+	            	<span class="add-on">%</span>
+	        	</div>
+			</div>
+	    </div>
+	    <div id="divFaixaC" class="control-group">
+	        <label class="control-label"><span class="obrigatorio">*</span> Faixa C:</label>
+	        <div class="controls">
+	        	<div class="input-prepend input-append">
+	            	<input name="pcMaximo" id="pcMaximo" type="text" maxlength="9"
+	            		   class="input-small indice5" value=""  validators="required" />
+	            	<span class="add-on">%</span>
+	        	</div>
+			</div>
+	    </div>
+	</form>
+		
+	</fieldset>
+	
+	<!-- BOTOES DE ACAO -->
+	<div id="divAcoesManterJuros" class="form-actions">
+		<a class="btn btn-primary" id="btnSalvar"><i class="icon"></i>Salvar</a>
+		<a class="btn" id="btnCancelar"><i class="icon"></i>Voltar</a>
+	</div>
+	</fieldset>
+</div>

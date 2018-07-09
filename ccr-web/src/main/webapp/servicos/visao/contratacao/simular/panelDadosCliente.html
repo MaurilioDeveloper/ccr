@@ -1,0 +1,26 @@
+<div class="panel panel-default" >
+    <div class="panel-heading" role="tab" id="headingOne">			
+      		<label>Dados Cliente</label>
+   	</div>
+
+   	<div class="panel-body" >
+		<form class="form-horizontal">
+			<table class="table table-striped lineSmall" >
+				<tbody>
+				  	<tr>
+					    <td style="padding: 1px; border-top: 0px">
+					    	<label class="control-label">Nome Cliente:</label>
+					    	<div class="controls resultado"><%= cliente.nomeCliente.nome %></div>
+					    </td>
+				  	</tr>
+				  	<tr>
+					    <td style="padding: 1px; border-top: 0px">
+					    	<label class="control-label">Data Nascimento:</label>
+					    	<div class="controls resultado"><%= formatadores.formatarData(cliente.dataNascimento.data) %></div>
+					    </td>
+				  	</tr>
+				</tbody>
+			</table>
+		</form>
+	</div>
+</div>

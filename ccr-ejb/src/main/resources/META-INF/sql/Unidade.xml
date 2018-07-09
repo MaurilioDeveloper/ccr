@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="1.0" 
+	xmlns="http://java.sun.com/xml/ns/persistence/orm" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd ">
+	
+	<entity name="CCRVW001_UNIDADE" class="br.gov.caixa.ccr.dominio.transicao.UnidadeTO">
+		<named-query name="Unidade.consultarUnidade">
+			<query>
+				SELECT T
+				  FROM br.gov.caixa.ccr.dominio.transicao.UnidadeTO T
+			</query>
+		</named-query>
+		
+		<named-query name="Unidade.consultarUnidadePorID">
+			<query>
+				SELECT T
+				  FROM br.gov.caixa.ccr.dominio.transicao.UnidadeTO T
+				  WHERE T.numeroUnidade LIKE :pNumUnidade 
+			</query>
+		</named-query>
+					
+	</entity>
+</entity-mappings>

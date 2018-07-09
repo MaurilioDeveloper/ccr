@@ -1,0 +1,117 @@
+<!-- Conteudo -->
+<div id="divConvenioTpl">
+	<div id="cabecalhoManterConvenente">
+	<ul class="breadcrumb">
+		<li><a href="index.html">In&iacute;cio</a> <span class="divider">&gt;</span></li>
+		<li>Administra&ccedil;&atilde;o <span class="divider">&gt;</span></li>
+		<li class="active">Manter Contrato</li>
+	</ul>
+	<div class="row-fluid">
+	  <div class="span7"><h1>Contrato / Proposta</h1></div>
+	  <div class="span5" align="right">		
+	  	<ul class="breadcrumb" align="right">
+			<li><span><b>Ag&ecirc;ncia Concessora: </b><span id="agencia"/></span></li>
+		</ul>
+	  </div>
+	</div>
+	<br />
+	</div>
+	<div id="divFiltroConvenente">
+	<fieldset>
+		<form class="form-horizontal" id="formFiltroContrato">
+			<div id="divFiltroContratoForm" class=""></div>
+			<!-- BOTOES DE ACAO -->
+			<div id="divAcoesFiltroConvenente" class="form-actions">
+				<a class="btn btn-primary" id="bntConsultarContrato"><i class="icon-white icon-search"></i> Consultar</a>
+				<a class="btn btn-primary" id="bntNovoContrato">Incluir</a>
+				<a class="btn" id="bntLimpar">Limpar</a>
+				<a class="btn" id="btnSair"><i class="icon"></i>Sair</a>				
+			</div>
+		</form>
+	</fieldset>
+	</div>
+	<div id="divDetalhesConvenente" class="hide" tabindex="-1"></div>
+	<!-- <div id="divAlterarConvenente" class="hide" tabindex="-1"></div> -->
+<!-- 	<div id="divListaConvenio" tabindex="-1"></div> -->
+
+
+<div id="divListaContratos"/>
+
+<div id="divImprimir" class="modal hide fade" aria-hidden="true" aria-labelledby="myModalLabel" data-backdrop="static" role="dialog" tabindex="-1">
+	<div class="modal-header">
+	    <h3>Imprimir</h3>
+	</div>
+	<div class="modal-body">
+		<form class="form-horizontal" id="impressao">
+			<div class="control-group">
+				<label class="control-label">N&uacute;mero Contrato:</label>
+				<div class="controls medio resultado"><label id="numContrato"/></div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Data:</label>
+				<div class="controls medio resultado"><label id="dataLiberacao"/></div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">CPF:</label>
+				<div class="controls medio resultado"><label id="cpfCliente"/></div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Nome:</label>
+				<div class="controls resultado"><label id="nomeCliente"/></div>
+			</div>
+			<div class="control-group">
+				<label class="control-label"><span class="obrigatorio">*</span>Local:</label>
+				<div class="controls">
+					<input class="input-xlarge" id="inputImprimiLocal" validators="required" maxlength="35"/>
+				</div>	
+			</div>
+			<div class="control-group">
+				<label class="control-label"><span id="spanImprimiGerenteResp" class="obrigatorio"></span>Gerente Respons&aacute;vel:</label>
+				<div class="controls">
+					<input class="input-xlarge" id="inputImprimiGerenteResp" maxlength="70"/>
+				</div>	
+			</div>
+			<div class="control-group">
+			<label class="control-label"><span id="spanImprimiCPFGerenteResp" class="obrigatorio"></span>CPF Gerente Respons&aacute;vel:</label>
+				<div class="controls">
+					<input class="input-xlarge cpf" id="inputImprimiCPFGerenteResp"  maxlength="70"/>
+				</div>	
+			</div>
+			<div class="control-group">
+				<label class="control-label"><span id="spanImprimiTestemunha1" class="obrigatorio"></span>Testemunha 1:</label>
+				<div class="controls">
+					<input class="input-xlarge" id="inputImprimiTestemunha1" maxlength="70"/>
+				</div>	
+			</div>
+			<div class="control-group">
+				<label class="control-label"><span id="spanImprimiCPFTestemunha1" class="obrigatorio"></span>CPF Testemunha 1:</label>
+				<div class="controls">
+					<input class="input-xlarge cpf" id="inputImprimiCPFTestemunha1"/>
+				</div>	
+			</div>
+			<div class="control-group">
+				<label class="control-label"><span id="spanImprimiTestemunha2" class="obrigatorio"></span>Testemunha 2:</label>
+				<div class="controls">
+					<input class="input-xlarge" id="inputImprimiTestemunha2" maxlength="70"/>
+				</div>	
+			</div>
+			<div class="control-group">
+				<label class="control-label"><span id="spanImprimiCPFTestemunha2" class="obrigatorio"></span>CPF Testemunha 2:</label>
+				<div class="controls">
+					<input  class="input-xlarge cpf" id="inputImprimiCPFTestemunha2" />
+				</div>	
+			</div>
+		</form>
+		<div   class="form-actions" id="divAcoesImpressao">
+				<div align="center" >		
+					<a class="btn btn-primary" id="btnImprimir"><i class="icon"></i>Imprimir</a>
+				    <a class="btn" id="btnFecharImpressao">Fechar</a>
+				</div>
+  			</div>
+	</div>
+	
+</div>
+
+
+	
+</div>

@@ -1,0 +1,73 @@
+<div id="divDadosContrato">
+	<form class="form-horizontal" id="">
+	   	<div class="control-group" >
+			<label class="control-label medio">Cliente:</label>
+			<div class="controls medio resultado"><%= formatadores.formatarCPF(formatadores.right('00000000000' + contrato.cpf, 11)) %> - <%=contrato.nome%></div>
+		</div>
+	   	<div class="control-group" >
+			<label class="control-label medio">N&ordm; Contrato CCR:</label>
+			<div class="controls medio resultado"><%= contrato.numero %></div>
+		</div>
+	   	<div class="control-group" >
+			<label class="control-label medio">Valor Contrato:</label>
+			<div class="controls medio resultado">R$ <%= formatadores.formatarMoeda(contrato.valor) %></div>
+		</div>
+	   	<div class="control-group" >
+			<label class="control-label medio">Valor L&iacute;quido:</label>
+			<div class="controls medio resultado">R$ <%= formatadores.formatarMoeda(contrato.valorLiquido) %></div>
+		</div>
+		<div class="control-group" >
+			<label class="control-label medio">Valor Presta&ccedil;&atilde;o:</label>
+			<div class="controls medio resultado">R$ <%= formatadores.formatarMoeda(contrato.valorPrestacao) %></div>
+		</div>
+		<div class="control-group" >
+			<label class="control-label medio">Taxa:</label>
+			<div class="controls medio resultado"><%= mascararTaxa(contrato.taxaJuro, 5) %>%</div>
+		</div>
+		<div class="control-group" >
+			<label class="control-label medio">Prazo:</label>
+			<div class="controls medio resultado"><%= contrato.prazo %> Mes(es)</div>			
+		</div>
+		<div class="control-group">
+			<label class="control-label medio">Data de Vencimento da 1&ordf; presta&ccedil;&atilde;o:</label>
+			<div class="controls medio resultado"><%= formatadores.formatarData(contrato.vencimentoPrimeiraPrestacao) %></div>			
+		</div>
+		<div class="control-group" >
+			<label class="control-label medio">Data Libera&ccedil;&atilde;o do Cr&eacute;dito:</label>
+			<div class="controls medio resultado"><%= formatadores.formatarData(contrato.dataLiberacao) %></div>
+		</div>
+		<div class="control-group" >
+			<label class="control-label medio">Valor do IOF:</label>
+			<div class="controls medio resultado">R$ <%= formatadores.formatarMoeda(contrato.valorIOF) %></div>			
+		</div>
+		<div class="control-group" >
+			<label class="control-label medio">CET Mensal:</label>
+			<div class="controls medio resultado"><%=mascararTaxa(contrato.cetMensal, 2)%>%</div>
+		</div>
+	   	<div class="control-group" >
+			<label class="control-label medio">CET Anual:</label>
+			<div class="controls medio resultado"><%=mascararTaxa(contrato.cetAnual, 2)%>%</div>
+		</div>
+		<div class="control-group" >
+			<label class="control-label medio">Data Base de C&aacute;lculo da 1&ordf; presta&ccedil;&atilde;o:</label>
+			<div class="controls medio resultado"><%= formatadores.formatarData(contrato.dataBase) %></div>
+		</div>					
+		<div class="control-group" >
+			<label class="control-label medio">Quantidade de dias para Juros de Acerto:</label>
+			<div class="controls medio resultado"><%= contrato.quantidadeDiasAcerto %> Dia(s)</div>
+		</div>
+		<div class="control-group" >
+			<label class="control-label medio">Valor Juros de Acerto (PR&Oacute;-RATA dia):</label>
+			<div class="controls medio resultado">R$ <%= formatadores.formatarMoeda(contrato.valorJuroAcerto) %></div>
+		</div>		
+		<div class="control-group <%= (contrato.comSeguro == 'S' ? '' : 'hide') %>">
+			<label class="control-label medio">Valor Seguro Prestamista:</label>
+			<div class="controls medio resultado">R$ <%= formatadores.formatarMoeda(contrato.valorSeguro) %></div>
+		</div>
+	</form>
+	<!-- BOTOES DE ACAO -->
+	<div class="form-actions">
+		<a class="btn btn-primary" id="btnImprimirContrato"><i class="icon"></i>Imprimir Contrato</a>
+		<a class="btn" id="btnNovaSimulacao"><i class="icon"></i>Nova Simula&ccedil;&atilde;o</a>
+	</div>
+</div>

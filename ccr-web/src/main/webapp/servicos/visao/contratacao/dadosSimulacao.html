@@ -1,0 +1,371 @@
+<div id="divLayoutSimulacao">
+	<div id="divSimulacao">
+		<form class="form-horizontal" id="formSimular">
+			<!-- Conteudo -->
+			<div class="control-group">
+			  	<label class="control-label">
+			  		<span class="obrigatorio">*</span> Valor Parcela:
+		  		</label>
+			    <div class="controls">
+				   	<div class="input-prepend input-append">
+				       	<span class="add-on">R$</span>
+				       	<input type="text" name="valorPrestacao" id="valorPrestacao" value="" class="input-medium moedaSemCentavo text-right" validators="required,maiorQueZero" />		       	
+				   	</div>
+					<span class="help-inline"></span>
+				</div>
+			</div>
+			<div class="control-group">
+			  	<label class="control-label">
+			  		<span class="obrigatorio">*</span> Data de Nascimento:
+		  		</label>
+			    <div class="controls">
+				   	<div id="divInputDataNascimento" class="input-append data"> 
+						<input type="text" name="dataNascimento" id="dataNascimento" value="" data-format="dd/MM/yyyy"
+					  		 size="16" class="input-small data" validators="required,data" />
+						<span id="spanIconDataVigencia" class="add-on">
+		                	<i id="iIconDataVigencia" data-time-icon="icon-time" data-date-icon="icon-calendar" class="icon-calendar"></i>
+		                </span>
+					</div> 
+					<span class="help-inline"></span>
+				</div>
+			</div>
+			<div class="control-group">
+			  	<label class="control-label">
+			  		<span class="obrigatorio">*</span> Data de Contrata&ccedil;&atilde;o:
+		  		</label>
+			    <div class="controls">
+				   	<div id="divInputDataContratacao" class="input-append data"> 
+						<input type="text" name="dataContratacao" id="dataContratacao" value="" data-format="dd/MM/yyyy"
+							   size="16" class="input-small data" validators="required,data,dataMenor" />
+						<span id="spanIconDataVigencia" class="add-on">
+		                	<i id="iIconDataVigencia" data-time-icon="icon-time" data-date-icon="icon-calendar" class="icon-calendar"></i>
+		                </span>
+						<span class="help-inline"></span>
+					</div>
+				</div>
+			</div>
+			<div class="control-group">
+			  	<label class="control-label">
+			  		<span class="obrigatorio"></span> Prazo (Meses):
+		  		</label>
+			    <div class="controls">
+				   	<div class="input-prepend input-append">
+				       	<input type="text" name="prazo" id="prazo" value="" class="input-small numero" maxlength="3" validators="" />		       	
+				   	</div>
+					<span class="help-inline"></span>
+				</div>
+			</div>
+			<div class="control-group">
+			  	<label class="control-label">
+			  		<span class="obrigatorio"></span> Valor Contrato:
+		  		</label>
+			    <div class="controls">
+				   	<div class="input-prepend input-append">
+				       	<span class="add-on">R$</span>
+				       	<input type="text" name="valorLiquido" id="valorLiquido" value="" class="input-medium moedaSemCentavo text-right" validators="" />		       	
+				   	</div>
+					<span class="help-inline"></span>
+				</div>
+			</div>			
+			<div class="control-group hide">
+			  	<label class="control-label">
+			  		<span class="obrigatorio"></span> Taxa
+			  		<a id="aDetalheTaxa" role="button" data-toggle="popover" data-placement="top" tabindex="-1">
+		                <i id="iHelpDetalheTaxa" class="icon-question-sign"></i>
+	                </a>:
+		  		</label>
+			    <div class="controls">
+				   	<div class="input-prepend input-append">			       	
+				       	<input type="text" name="taxaJuros" id="taxaJuros" value="" class="input-small taxaJuro" validators="" />
+				       	<span class="add-on">%</span>		       	
+				   	</div>
+					<span class="help-inline"></span>
+				</div>
+			</div>
+			<!-- BOTOES DE ACAO -->
+			<div class="form-actions">
+				<a class="btn btn-primary" id="btnSimular" data-nova-simulacao="N"><i class="icon"></i> Calcular</a>
+				<a class="btn" id="btnLimpar"><i class="icon"></i>Limpar</a>
+			</div>
+		</form>
+	</div>
+</div>
+<div id="divLayoutNovaSimulacao">
+	<div id="divNovaSimulacao" class="modal fade" aria-labelledby="myModalLabel" role="dialog">
+		<fieldset><legend>&nbsp;Dados Simula&ccedil;&atilde;o</legend></fieldset>
+		<form class="form-horizontal" id="formNovaSimulacao">
+			<!-- Conteudo -->
+			<div class="control-group">
+			  	<label class="control-label">
+			  		<span class="obrigatorio">*</span> Valor Parcela:
+		  		</label>
+			    <div class="controls">
+				   	<div class="input-prepend input-append">
+				       	<span class="add-on">R$</span>
+				       	<input type="text" name="valorPrestacao" id="valorPrestacao" value="" class="input-medium moedaSemCentavo text-right" validators="required,maiorQueZero" />		       	
+				   	</div>
+					<span class="help-inline"></span>
+				</div>
+			</div>
+			<div class="control-group">
+			  	<label class="control-label">
+			  		<span class="obrigatorio">*</span> Data de Nascimento:
+		  		</label>
+			    <div class="controls">
+				   	<div id="divInputDataNascimento" class="input-append data"> 
+						<input type="text" name="dataNascimento" id="dataNascimento" value="" data-format="dd/MM/yyyy"
+					  		 size="16" class="input-small data" validators="required,data" />
+						<span id="spanIconDataVigencia" class="add-on">
+		                	<i id="iIconDataVigencia" data-time-icon="icon-time" data-date-icon="icon-calendar" class="icon-calendar"></i>
+		                </span>
+					</div> 
+					<span class="help-inline"></span>
+				</div>
+			</div>
+			<div class="control-group">
+			  	<label class="control-label">
+			  		<span class="obrigatorio">*</span> Data de Contrata&ccedil;&atilde;o:
+		  		</label>
+			    <div class="controls">
+				   	<div id="divInputDataContratacao" class="input-append data"> 
+						<input type="text" name="dataContratacao" id="dataContratacao" value="" data-format="dd/MM/yyyy"
+							   size="16" class="input-small data" validators="required,data,dataMenor" />
+						<span id="spanIconDataVigencia" class="add-on">
+		                	<i id="iIconDataVigencia" data-time-icon="icon-time" data-date-icon="icon-calendar" class="icon-calendar"></i>
+		                </span>
+						<span class="help-inline"></span>
+					</div>
+				</div>
+			</div>
+			<div class="control-group">
+			  	<label class="control-label">
+			  		<span class="obrigatorio">*</span> Prazo (Meses):
+		  		</label>
+			    <div class="controls">
+				   	<div class="input-prepend input-append">
+				       	<input type="text" name="prazo" id="prazo" value="" class="input-small numero" maxlength="3" validators="required,maiorQueZero" />		       	
+				   	</div>
+					<span class="help-inline"></span>
+				</div>
+			</div>
+			<div class="control-group">
+			  	<label class="control-label">
+			  		<span class="obrigatorio"></span> Valor Contrato:
+		  		</label>
+			    <div class="controls">
+				   	<div class="input-prepend input-append">
+				       	<span class="add-on">R$</span>
+				       	<input type="text" name="valorLiquido" id="valorLiquido" value="" class="input-medium moedaSemCentavo text-right" validators="" />		       	
+				   	</div>
+					<span class="help-inline"></span>
+				</div>
+			</div>			
+			<div class="control-group">
+			  	<label class="control-label">
+			  		<span class="obrigatorio">*</span> Taxa
+			  		<a id="aDetalheTaxa" role="button" data-toggle="popover" data-placement="top" tabindex="-1">
+		                <i id="iHelpDetalheTaxa" class="icon-question-sign"></i>
+	                </a>:
+		  		</label>
+			    <div class="controls">
+				   	<div class="input-prepend input-append">			       	
+				       	<input type="text" name="taxaJuros" id="taxaJuros" value="" class="input-small indice5" validators="required,maiorQueZero" />
+				       	<span class="add-on">%</span>		       	
+				   	</div>
+					<span class="help-inline"></span>
+				</div>
+			</div>
+			<!-- BOTOES DE ACAO -->
+			<div class="form-actions">
+				<a class="btn btn-primary" id="btnRecalcular" data-nova-simulacao="S"><i class="icon"></i> Calcular</a>
+				<a class="btn" id="btnCancelar"><i class="icon"></i>Cancelar</a>
+			</div>
+		</form>
+	</div>
+</div>
+<div id="divLayoutResultado">
+	<div id="divResultadoSimulacao">
+	    <div class="row-fluid">
+	      <div class="span1">&nbsp;</div>      
+	      <div class="span5">
+	        <div class="panel panel-primary">
+			  <div class="panel-heading" id="divComSeguroPrest" data-resultado="1" data-selecionado="true">
+			  	<b>COM</b> Seguro Prestamista
+		  	  </div>
+			  <div class="panel-body">
+			    <form class="form-horizontal" id="formComSeguroPrest">
+			    	<!-- div class="control-group" >
+						<label class="control-label medio">Valor Margem:</label>
+						<div class="controls medio resultado">R$ <%= modelo.get('valorMargem') %></div>
+					</div-->
+			    	<div class="control-group" >
+						<label class="control-label medio">Valor L&iacute;quido:</label>
+						<div class="controls medio resultado">R$ <%= formatadores.formatarMoeda(resultado.simulacaoComSeguro.valorLiquido) %></div>
+					</div>
+					<div class="control-group" >
+						<label class="control-label medio">Valor Presta&ccedil;&atilde;o:</label>
+						<div class="controls medio resultado">R$ <%= formatadores.formatarMoeda(resultado.simulacaoComSeguro.prestacao) %></div>
+					</div>
+					<div class="control-group" >
+						<label class="control-label medio">Taxa:</label>
+						<div class="controls medio resultado"><%= formatadores.formatarTaxa(resultado.simulacaoComSeguro.taxaJuros) %> %</div>
+					</div>
+					<div class="control-group" >
+						<label class="control-label medio">Prazo:</label>
+						<div class="controls medio resultado"><%= resultado.simulacaoComSeguro.prazo %> Mes(es)</div>			
+					</div>
+					<div class="control-group">
+						<label class="control-label medio">Data de Vencimento da 1&ordf; presta&ccedil;&atilde;o:</label>
+						<div class="controls medio resultado"><%= formatadores.formatarData(resultado.camposComuns.vencimentoPrimeiraPrestacao) %></div>			
+					</div>
+					<div class="resultado text-center">
+						<a class="btn btn-primary" id="btnContratarComSeg" data-idSimulacao="<%=resultado.simulacaoComSeguro.id%>" data-com-seguro="S">
+							<i class="icon"></i> Contratar <b>COM</b> Seguro
+						</a>
+					</div>
+			    </form>
+				<div class="thumbnail semImagem">
+					<div class="caption" id="divDetalharResultComSeg" data-resultado="1">
+						<h5><i id="iIconDetalheComSeg" class="icon"></i> Detalhes</h5>
+					</div>
+					<div class="hide" id="divDetalheResultComSeg">
+					   <form class="form-horizontal" id="">
+					   	<div class="control-group" >
+							<label class="control-label medio">Valor do Contrato:</label>
+							<div class="controls medio resultado">R$ <%= formatadores.formatarMoeda(resultado.simulacaoComSeguro.valorContrato) %></div>
+						</div>
+						<div class="control-group" >
+							<label class="control-label medio">Data Libera&ccedil;&atilde;o do Cr&eacute;dito:</label>
+							<div class="controls medio resultado"><%= formatadores.formatarData(new Date()) %></div>
+						</div>
+						<div class="control-group" >
+							<label class="control-label medio">Data Vencimento Contrato:</label>
+							<div class="controls medio resultado"><%= formatadores.formatarData(resultado.simulacaoComSeguro.vencimentoContrato) %></div>
+						</div>
+						<div class="control-group" >
+							<label class="control-label medio">Valor do IOF:</label>
+							<div class="controls medio resultado">R$ <%= formatadores.formatarMoeda(resultado.simulacaoComSeguro.iof) %></div>			
+						</div>
+						<div class="control-group" >
+							<label class="control-label medio">CET Mensal:</label>
+							<div class="controls medio resultado"><%= formatadores.formatarTaxa(resultado.simulacaoComSeguro.cetmensal) %> %</div>
+						</div>
+					   	<div class="control-group" >
+							<label class="control-label medio">CET Anual:</label>
+							<div class="controls medio resultado"><%= formatadores.formatarTaxa(resultado.simulacaoComSeguro.cetanual) %> %</div>
+						</div>
+						<div class="control-group" >
+							<label class="control-label medio">Data Base de C&aacute;lculo da 1&ordf; presta&ccedil;&atilde;o:</label>
+							<div class="controls medio resultado"><%= formatadores.formatarData(resultado.camposComuns.basePrimeiraPrestacao) %></div>
+						</div>					
+						<div class="control-group" >
+							<label class="control-label medio">Quantidade de dias para Juros de Acerto:</label>
+							<div class="controls medio resultado"><%= resultado.camposComuns.quantDiasJurosAcerto %> Dia(s)</div>
+						</div>
+						<div class="control-group" >
+							<label class="control-label medio">Valor Juros de Acerto (PR&Oacute;-RATA dia):</label>
+							<div class="controls medio resultado">R$ <%= formatadores.formatarMoeda(resultado.simulacaoComSeguro.juroAcerto) %></div>
+						</div>
+						<div class="control-group" >
+							<label class="control-label medio">Valor Seguro Prestamista:</label>
+							<div class="controls medio resultado">R$ <%= formatadores.formatarMoeda(resultado.simulacaoComSeguro.valorSeguro) %></div>
+						</div>	
+					   </form>
+					</div>
+				</div>
+			  </div>
+			</div>
+	      </div>
+	      <div class="span5">
+	        <div class="panel panel-default">
+			  <div class="panel-heading" id="divSemSeguroPrest" data-resultado="2" data-selecionado="false">
+			  	<b>SEM</b> Seguro Prestamista
+		  	  </div>
+			  <div class="panel-body">
+			    <form class="form-horizontal" id="formSemSeguroPrest">
+			    	<!-- div class="control-group" >
+						<label class="control-label medio">Valor Margem:</label>
+						<div class="controls medio resultado">R$ <%= modelo.get('valorMargem') %></div>
+					</div-->
+			    	<div class="control-group" >
+						<label class="control-label medio">Valor L&iacute;quido:</label>
+						<div class="controls medio resultado">R$ <%= formatadores.formatarMoeda(resultado.simulacaoSemSeguro.valorLiquido) %></div>
+					</div>
+					<div class="control-group" >
+						<label class="control-label medio">Valor Presta&ccedil;&atilde;o:</label>
+						<div class="controls medio resultado">R$ <%= formatadores.formatarMoeda(resultado.simulacaoSemSeguro.prestacao) %></div>
+					</div>
+					<div class="control-group" >
+						<label class="control-label medio">Taxa:</label>
+						<div class="controls medio resultado"><%= formatadores.formatarTaxa(resultado.simulacaoSemSeguro.taxaJuros) %> %</div>
+					</div>
+					<div class="control-group" >
+						<label class="control-label medio">Prazo:</label>
+						<div class="controls medio resultado"><%= resultado.simulacaoSemSeguro.prazo %> Mes(es)</div>			
+					</div>
+					<div class="control-group">
+						<label class="control-label medio">Data de Vencimento da 1&ordf; presta&ccedil;&atilde;o:</label>
+						<div class="controls medio resultado"><%= formatadores.formatarData(resultado.camposComuns.vencimentoPrimeiraPrestacao) %></div>			
+					</div>
+					<div class="resultado text-center">
+						<a class="btn btn-primary" id="btnContratarSemSeg" data-idSimulacao="<%=resultado.simulacaoSemSeguro.id%>" data-com-seguro="N">
+							<i class="icon"></i> Contratar <b>SEM</b> Seguro
+						</a>
+					</div>
+			    </form>
+			    <div class="thumbnail semImagem">
+					<div class="caption" id="divDetalharResultSemSeg" data-resultado="2">
+						<h5><i id="iIconDetalheSemSeg" class="icon"></i> Detalhes</h5>
+					</div>
+					<div class="hide" id="divDetalheResultSemSeg">
+					   <form class="form-horizontal">
+					   	<div class="control-group" >
+							<label class="control-label medio">Valor do Contrato:</label>
+							<div class="controls medio resultado">R$ <%= formatadores.formatarMoeda(resultado.simulacaoSemSeguro.valorContrato) %></div>
+						</div>
+						<div class="control-group" >
+							<label class="control-label medio">Data Libera&ccedil;&atilde;o do Cr&eacute;dito:</label>
+							<div class="controls medio resultado"><%= formatadores.formatarData(new Date()) %></div>
+						</div>
+						<div class="control-group" >
+							<label class="control-label medio">Data Vencimento Contrato:</label>
+							<div class="controls medio resultado"><%= formatadores.formatarData(resultado.simulacaoSemSeguro.vencimentoContrato) %></div>
+						</div>
+						<div class="control-group" >
+							<label class="control-label medio">Valor do IOF:</label>
+							<div class="controls medio resultado">R$ <%= formatadores.formatarMoeda(resultado.simulacaoSemSeguro.iof) %></div>			
+						</div>
+						<div class="control-group" >
+							<label class="control-label medio">CET Mensal:</label>
+							<div class="controls medio resultado"><%= formatadores.formatarTaxa(resultado.simulacaoSemSeguro.cetmensal) %> %</div>
+						</div>
+					   	<div class="control-group" >
+							<label class="control-label medio">CET Anual:</label>
+							<div class="controls medio resultado"><%= formatadores.formatarTaxa(resultado.simulacaoSemSeguro.cetanual) %> %</div>
+						</div>
+						<div class="control-group" >
+							<label class="control-label medio">Data Base de C&aacute;lculo da 1&ordf; presta&ccedil;&atilde;o:</label>
+							<div class="controls medio resultado"><%= formatadores.formatarData(resultado.camposComuns.basePrimeiraPrestacao) %></div>
+						</div>					
+						<div class="control-group" >
+							<label class="control-label medio">Quantidade de dias para Juros de Acerto:</label>
+							<div class="controls medio resultado"><%= resultado.camposComuns.quantDiasJurosAcerto %> Dia(s)</div>
+						</div>
+						<div class="control-group" >
+							<label class="control-label medio">Valor Juros de Acerto (PR&Oacute;-RATA dia):</label>
+							<div class="controls medio resultado">R$ <%= formatadores.formatarMoeda(resultado.simulacaoSemSeguro.juroAcerto) %></div>
+						</div>
+						<div class="control-group" >
+							<label class="control-label medio">&nbsp;</label>
+							<div class="controls medio resultado">&nbsp;</div>
+						</div>	
+					   </form>
+					</div>
+				</div>
+			  </div>
+			</div>
+	      </div>
+	    </div>
+	    <br /><br />
+	</div>
+</div>

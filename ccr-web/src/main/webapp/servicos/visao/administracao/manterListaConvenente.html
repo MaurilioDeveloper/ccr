@@ -1,0 +1,49 @@
+<div id="divListaConvenio" tabindex="-1" style="margin-bottom: 60px" >
+	<table class="table table-striped table-bordered" id="gridListaConvenio">
+		<thead>
+			<tr>
+				<th>Conv&ecirc;nio</th>
+				<th>Nome Conv&ecirc;nio</th>
+				<th>CNPJ</th>
+				<th>Situa&ccedil;&atilde;o</th>
+				<th>Grupo Averba&ccedil;&atilde;o</th>
+				<th>Grupo Taxa</th>
+				<th>A&ccedil;&atilde;o</th>
+			</tr>
+		</thead>
+		<tbody id="listaConvenio">
+			<% $.each(Convenio, function(index) { %>
+				<tr>
+					<td><%= this.id %></td>
+					<td><%= this.nome %></td>
+					<td><!-- %= this.cnpjConvenente % -->
+					<%= formatadores.formatarCNPJ(this.cnpjConvenente) %></td>			
+					<td><%= this.situacao.descricao %></td>
+					<td><%= this.grupoAverbacao.nome %></td>
+					<td><%= this.grupo.nome %></td>
+					<td>
+						<div class="btn-group">
+
+ 							<a class="btn btn-mini"  
+						    	data-toggle="tooltip" data-placement="top" 
+						    	id="btnDetalhesConvenio" 
+						    	data-index="<%= index %>" 
+						    	data-original-title="Detalhar" 
+							 	title="Detalhar"><i class="icon-search"></i>
+							</a>
+						    
+						    <a class="btn btn-mini"  
+						    	data-toggle="tooltip" data-placement="top" 
+						    	id="bntAlterarConvenente" 
+						    	data-index="<%= index %>" 
+						    	data-original-title="Alterar" 
+							 	title="Alterar"><i class="icon-pencil"></i>
+							</a>
+						   
+					</td>
+				</tr>
+			<% }); %>	
+		</tbody>
+	</table>
+<!--</fieldset>-->
+</div>

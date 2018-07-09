@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="1.0" 
+	xmlns="http://java.sun.com/xml/ns/persistence/orm" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd ">
+	
+	<entity name="CCRTB073_CAMPO_MODELO_CONTRATO" class="br.gov.caixa.ccr.dominio.transicao.CampoUsadoTO">	
+		 <named-native-query name="CampoUsado.excluirPorIdDocumento" result-class="br.gov.caixa.ccr.dominio.transicao.CampoUsadoTO">
+            <query>
+              DELETE FROM CCR.CCRTB073_CAMPO_MODELO_CONTRATO WHERE NU_MODELO =  :idDocumento	
+            </query>
+        </named-native-query>
+	</entity>
+</entity-mappings>

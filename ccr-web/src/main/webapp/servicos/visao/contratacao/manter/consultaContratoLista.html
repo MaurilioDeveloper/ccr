@@ -1,0 +1,66 @@
+<!-- Conteudo -->
+<div id="divListaContratos" style="margin-bottom: 40px">
+	<fieldset>
+	<legend>Contratos para autorizar</legend>
+	<table class="table table-striped table-bordered" id="gridListaContratos">
+		<thead>
+			<tr>
+				<th>Contrato</th>
+				<th>Data</th>
+				<th>CPF</th>
+				<th>Conv&ecirc;nio</th>
+				<th>Prazo</th>
+				<th>Valor</th>
+				<th>Situa&ccedil;&atilde;o</th>
+				<th>Data Situa&ccedil;&atilde;o</th>
+				<th>Contrato SIAPX</th>
+				<th style="width: 200px">A&ccedil;&atilde;o</th>
+			</tr>
+		</thead>
+		<tbody id="">		
+			<% $.each(lista, function() { %>
+				<tr>
+					<td><%= this.nuContrato %></td>	
+					<td><%= formatTimeStamp(this.dtContrato, 'dd/MM/yyyy')%></td>	
+					<td><%= formatadores.formatarCPF(this.nuCpf) %></td>
+					<td><%= this.convenioTO.id %></td>
+					<td><%= this.pzContrato %></td>
+					<td><%= formatadores.formatarMoeda(this.vrContrato) %></td>
+					<td><%= this.descSituacao %></td>
+					<td><%= formatTimeStamp(this.dtSituacaoContrato, 'dd/MM/yyyy')%></td>
+					<td class="btn-link "><%= formatadores.formatarNumeroContrato(this.nuContratoAplicacao) %></td>
+					<td>
+						<div class="btn-group">
+							<a class="btn btn-mini" data-toggle="tooltip" data-placement="top" id="btnDetalharContrato"  
+							   data-original-title="Detalhar" title="Detalhar" data-contrato="<%= this.nuContrato %>"><i class="icon-search"></i> 
+						    </a>
+						</div>
+						
+						<div class="btn-group">
+							<a class="btn btn-mini <%= this.imprimir ? 'disabled' : '' %>" data-toggle="tooltip" data-placement="top" id="<%= this.imprimir ? 'disabled' : 'btnImprimirContrato' %>"  
+							   data-original-title="Imprimir" title="Imprimir" data-contrato="<%= this.nuContrato %>"><i class="icon-print"></i> 
+						    </a>
+						</div>
+						
+							<div class="btn-group">
+								<a class="btn btn-mini <%= !this.avaliarAutorizar ? 'disabled' : '' %>" data-toggle="tooltip" data-placement="top" id="<%= this.avaliarAutorizar ? 'btnAvaliarAutorizarContrato' : '' %>"  
+								   data-original-title="Avaliar/Autorizar" title="Avaliar/Autorizar" data-contrato="<%= this.nuContrato %>"><i class="icon-edit"></i> 
+							    </a>
+							</div>
+							<div class="btn-group">
+								<a class="btn btn-mini <%= !this.avaliarOperacao ? 'disabled' : '' %>" data-toggle="tooltip" data-placement="top" id="<%= this.avaliarOperacao ? 'btnAvaliarOperacaoContrato' : '' %>"  
+								   data-original-title="Continuar" title="Continuar" data-contrato="<%= this.nuContrato %>"><i class="icon-play"></i> 
+							    </a>
+							</div>
+							<div class="btn-group">
+								<a class="btn btn-mini reenviarContrato<%= this.nuContrato %> <%= !this.reenviarContratoSIAPX ? 'disabled' : '' %>" data-toggle="tooltip" data-placement="top" id="<%= this.reenviarContratoSIAPX ? 'btnReenviarContrato' : '' %>"  
+								   data-original-title="Reenviar" title="Reenviar" data-nuContrato="<%= this.nuContrato %>"><i class="icon-forward"></i> 
+							    </a>
+							</div>
+					</td>					
+				</tr>
+			<% }); %>	
+		</tbody>
+	</table>
+	</fieldset>
+</div> 

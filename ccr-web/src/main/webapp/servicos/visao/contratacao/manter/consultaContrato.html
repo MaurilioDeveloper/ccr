@@ -1,0 +1,154 @@
+<!-- Conteudo -->
+<div id="divIdentificador" class="control-group">
+    <div class="control-group">
+    	<label class="control-label">Identificador:</label>
+		<div class="controls">
+		
+			<label class="radio inline" style="margin-right: 15px">
+                <input class="radio" type="radio" name="rdoIdentificador" id="radioCliente" value="1" />Cliente
+            </label>
+            
+			<label class="radio inline" style="margin-right: 15px">
+                <input class="radio" type="radio" name="rdoIdentificador" id="radioContrato" value="2" />Contrato
+            </label>
+		
+			<label class="radio inline" style="margin-right: 15px">
+                <input class="radio" type="radio" name="rdoIdentificador" id="radioSR" value="3" />SR
+            </label>
+		
+			<label class="radio inline" style="margin-right: 15px">
+                <input class="radio" type="radio" name="rdoIdentificador" id="radioAgencia" value="4" />Agência
+            </label>
+		
+			<label class="radio inline" style="margin-right: 15px">
+                <input class="radio" type="radio" name="rdoIdentificador" id="radioData" value="5" />Data
+            </label>
+            
+			<label class="radio inline" style="margin-right: 15px">
+                <input class="radio" type="radio" name="rdoIdentificador" id="radioConvenente" value="6" />Convenente
+            </label>
+            
+           	<label class="radio inline" style="margin-right: 15px">
+            	<input class="radio" type="radio" name="rdoIdentificador" id="radioConvenio" value="7" />Conv&ecirc;nio
+            </label>
+            
+            
+		</div>
+	</div>
+</div>
+
+<!--
+campos novos 
+ -->
+ 
+ <div id="divCampoCPF" class="control-group hide">
+	<label class="control-label"><span class="obrigatorio">*</span>CPF:</label>
+    <div class="controls">
+	   	<div class="input-prepend input-append">
+	       	<input type="text" name="cpf_input" id="cpf_input" value="" class="input-medium cpf" validators="required,cpf" />
+	   	</div>
+		<span class="help-inline"></span>
+	</div>
+</div>
+ 
+ <div id="divCampoSR" class="control-group hide" >
+
+	<label class="control-label"><span class="obrigatorio">*</span>SR:</label>
+    <div class="controls">
+	   	<div class="input-prepend input-append">
+	       	<input type="text" name="sr_input" id=sr_input value="" class="input-medium numero" maxlength="4" validators="required"/>
+	   	</div>
+		<span class="help-inline"></span>
+	</div>
+</div>
+ 
+
+<div id="divCampoAgencia" class="control-group hide">
+
+	<label class="control-label"><span class="obrigatorio">*</span>Agência:</label>
+    <div class="controls">
+	   	<div class="input-prepend input-append">
+	       	<input type="text" name="agencia_input" id="agencia_input" value="" class="input-medium numero" validators="required" maxlength="4" />
+	   	</div>
+		<span class="help-inline"></span>
+	</div>
+</div>
+
+<div id="divCampoCNPJ" class="control-group hide" >
+	<label class="control-label"><span class="obrigatorio">*</span>CNPJ:</label>
+    <div class="controls">
+	   	<div class="input-prepend input-append">
+	       	<input type="text" name="CNPJ_input" id="CNPJ_input" value="" class="input-medium cnpj" validators="required,cnpj" />
+	   	</div>
+		<span class="help-inline"></span>
+	</div>
+	
+</div>
+
+<div id="divCampoConvenio" class="control-group hide">
+
+	<label class="control-label"><span class="obrigatorio">*</span>Convênio:</label>
+    <div class="controls">
+	   	<div class="input-prepend input-append">
+	       	<input type="text" name="convenio_input" id="convenio_input" value="" class="input-medium numero" validators="required" maxlength="5" />
+	   	</div>
+		<span class="help-inline"></span>
+	</div>
+</div>
+
+
+<div id="divCampoSituacao" class="control-group hide">
+	<label class="control-label">Situa&ccedil;&atilde;o:</label>
+    <div class="controls">
+	   	<div class="input-prepend input-append">
+	       	<select name="select_situacao" id="select_situacao"></select>
+	   	</div>&nbsp;
+	   	<div style="display: inline-block;" id="divFiltroErroProcessamento" class="hide">
+		   	<input type="checkbox" name="fitrarErro_input" id="fitrarErro_input" style="margin-top: 0px"/>
+		   	<b>Filtrar Erro Processamento</b>
+	   	</div>
+	</div>
+</div>
+
+<div id="divCampoContrato" class="control-group hide">
+	<label class="control-label"><span class="obrigatorio">*</span>Contrato:</label>
+    <div class="controls">
+	   	<div class="input-prepend input-append">
+	       	<input type="text" name="input_contrato" id="input_contrato" value="" class="input-medium numero" validators="required" maxlength="16" />
+	   	</div>
+		<span class="help-inline"></span>
+	</div>
+</div>
+
+
+<div id="divCampoPeriodo" class="control-group hide" >
+	<label class="control-label"><span class="obrigatorio" id="obrigatorioPeriodo" hidden="true">*</span>Período:</label>
+	<div class="controls">
+				<div id="divInputDataVigencia" class="input-append data">
+							<input type="text" name="inicioVigenciaFiltro"
+								id="inicioVigenciaFiltro" value="" data-format="dd/MM/yyyy"
+								size="16" class="input-small data" /> <span
+								id="spanIconDataVigencia" class="add-on"> <i
+								id="iIconDataVigencia" data-time-icon="icon-time"
+								data-date-icon="icon-calendar" class="icon-calendar"></i>
+						</span>
+				</div>
+				&nbsp; &nbsp; &nbsp;
+				<div id="divInputDataFimVigencia" class="input-append data">
+							<input type="text" name="finalVigenciaFiltro"
+								id="finalVigenciaFiltro" value="" data-format="dd/MM/yyyy"
+								size="16" class="input-small data" /> <span
+								id="spanIconDataVigencia" class="add-on"> <i
+								id="iIconDataVigencia" data-time-icon="icon-time"
+								data-date-icon="icon-calendar" class="icon-calendar"></i>
+					</span>
+				</div>
+			 
+			<span class="help-inline"></span>
+		</div>
+					
+</div>
+
+
+
+ 

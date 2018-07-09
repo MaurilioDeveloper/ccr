@@ -1,0 +1,300 @@
+<div class="panel panel-default" >
+	<div class="panel-heading" id="dadosDIHeading" role="tab" >			
+     		<h3 class="panel-title">
+			<span class="icon-user"> </span> Documento Identifica&ccedil;&atilde;o
+		</h3>
+	</div>
+	<div class="panel-body hide" id="dadosDIBody" >
+	<% if(cliente.identidade != null) { %>
+		<div class="panel-body" id="divDI">
+			<form class="form-horizontal" id="diContratacao">
+				<table class="table table-striped lineSmall" >
+					<tbody>
+					  	<tr>
+						    <td style="padding: 6px 0px; border-top: 0px">
+						    	<label style="margin-right: 1%" class="control-label">Tipo:</label>
+						    	<div class="controls resultado">Carteira de Identidade (RG)</div>
+						    </td>
+					  	</tr>
+					  	<tr>
+						    <td style="padding: 6px 0px; border-top: 0px">
+						    	<label class="control-label">Org&atilde;o Emissor:</label>
+						    	<div id="divDI_identidade_orgaoEmissor" class="controls resultado"><%= cliente.identidade.descricaoOrgaoEmissor %></div>
+						    	<input type="text" maxlength="30" class="input-medium" name="di_identidade_orgaoEmissor" id="di_identidade_orgaoEmissor" style="display: none;margin-left: 2%"
+										value="<%= cliente.identidade.descricaoOrgaoEmissor == null ? '' : cliente.identidade.descricaoOrgaoEmissor %>" validators="required"/>
+						    </td>
+					  	</tr>
+					  	<tr>
+						    <td style="padding: 6px 0px; border-top: 0px">
+						    	<label class="control-label">UF: </label>
+						    	<div id="divDI_identidade_uf" class="controls resultado"><%= cliente.identidade.documento.uf %></div>
+						    	<input type="text" maxlength="2" class="input-medium" name="di_identidade_uf" id="di_identidade_uf" style="display: none;margin-left: 2%"
+										value="<%= cliente.identidade.documento.uf == null ? '' : cliente.identidade.documento.uf %>" validators="required"/>
+										<!-- add combo de UFs -->
+						    </td>
+					  	</tr>
+					  	<tr>
+						    <td style="padding: 6px 0px; border-top: 0px">
+						    	<label class="control-label">N&uacute;mero:</label>
+						    	<div id="divDI_identidade_numero" class="controls resultado"><%= cliente.identidade.documento.numero %></div>
+						    	<input type="text" maxlength="15" class="input-medium numero" name="di_identidade_numero" id="di_identidade_numero" style="display: none;margin-left: 2%"
+										value="<%= cliente.identidade.documento.numero == null ? '' : cliente.identidade.documento.numero %>" validators="required"/>
+						    </td>
+					  	</tr>
+					  	<tr>
+						    <td style="padding: 6px 0px; border-top: 0px">
+						    	<label class="control-label">Emiss&atilde;o: </label>
+						    	<div id="divDI_identidade_dataEmissao" class="controls resultado"><%= formatadores.formatarData(cliente.identidade.documento.dataEmissao) %></div>
+						    	<div class="input-append data" style="display: none;margin-left: 2%" id="di_identidade_dataEmissao">
+							    	<input type="text" class="input-medium data" name="inputdi_identidade_dataEmissao" id="inputdi_identidade_dataEmissao"
+											value="<%= cliente.identidade.documento.dataEmissao == null ? '' : formatadores.formatarData(cliente.identidade.documento.dataEmissao) %>" />
+											<span id="spanIconDataVigencia" class="add-on">
+							                	<i id="iIconDataVigencia" data-time-icon="icon-time" data-date-icon="icon-calendar" class="icon-calendar"></i>
+							                </span>
+								</div>
+						    </td>
+					  	</tr>
+					  	<tr>
+						    <td style="padding: 6px 0px; border-top: 0px">
+						    	<label class="control-label"></label>
+						    	<div class="controls resultado"></div>
+						    </td>
+					  	</tr>
+					</tbody>
+				</table>
+			</form>
+		</div>
+	<% } %>
+	<div class="panel-body" id="divCTPS">
+		<form class="form-horizontal">
+			<table class="table table-striped lineSmall" >
+				<tbody>
+					<tr>
+					    <td style="padding: 1px; border-top: 0px">
+					    	<label style="margin-right: 1%" class="control-label">Tipo:</label>
+					    	<div class="controls resultado">Carteira de Trabalho - CTPS</div>
+					    </td>
+				  	</tr>
+				  	<tr>
+					    <td style="padding: 1px; border-top: 0px">
+					    	<label class="control-label">Org&atilde;o Emissor:</label>
+					    	<div id="divDI_CTPS_orgaoEmissor" class="controls resultado">
+					    		<%= cliente.carteiraTrabalho == null ? '' : cliente.carteiraTrabalho.orgaoEmissor %></div>
+					    	<input type="text" maxlength="50" class="input-medium" name="di_CTPS_orgaoEmissor" id="di_CTPS_orgaoEmissor" style="display: none;"
+									value="<%= cliente.carteiraTrabalho == null ? '' : cliente.carteiraTrabalho.orgaoEmissor %>" validators="required"/>
+					    </td>
+				  	</tr>
+				  	<tr>
+					    <td style="padding: 1px; border-top: 0px">
+					    	<label class="control-label">UF:</label>
+					    	<div id="divDI_CTPS_uf" class="controls resultado">
+					    		<%= cliente.carteiraTrabalho == null ? '' : cliente.carteiraTrabalho.uf %></div>
+					    	<input type="text" maxlength="2" class="input-medium" name="di_CTPS_uf" id="di_CTPS_uf" style="display: none;"
+									value="<%= cliente.carteiraTrabalho == null ? '' : cliente.carteiraTrabalho.uf %>" validators="required"/>
+					    </td>
+				  	</tr>
+				  	<tr>
+					    <td style="padding: 1px; border-top: 0px">
+					    	<label class="control-label">N&uacute;mero:</label>
+					    	<div id="divDI_CTPS_numero" class="controls resultado">
+					    		<%= cliente.carteiraTrabalho == null ? '' : cliente.carteiraTrabalho.subTipoDocumento %></div>
+					    	<input type="text" maxlength="50" class="input-medium numero" name="di_CTPS_numero" id="di_CTPS_numero" style="display: none;"
+									value="<%= cliente.carteiraTrabalho == null ? '' : cliente.carteiraTrabalho.subTipoDocumento %>" validators="required"/>
+					    </td>
+				  	</tr>
+				  	<tr>
+					    <td style="padding: 1px; border-top: 0px">
+					    	<label class="control-label">Data Emiss&atilde;o:</label>
+					    	<div id="divDI_CTPS_dataEmissao" class="controls resultado">
+					    		<%= cliente.carteiraTrabalho == null ? '' : formatadores.formatarData(cliente.carteiraTrabalho.dataEmissao) %></div>
+					    		<div class="input-append data" style="display: none;margin-left: 2%" id="di_CTPS_dataEmissao"  style="display: none;">
+							    	<input type="text" class="input-medium data" name="di_CTPS_dataEmissao" id="CTPS_dataEmissao"
+										value="<%= cliente.carteiraTrabalho == null ? '' : formatadores.formatarData(cliente.carteiraTrabalho.dataEmissao) %>"/>
+										<span id="spanIconDataVigencia" class="add-on">
+						                	<i id="iIconDataVigencia" data-time-icon="icon-time" data-date-icon="icon-calendar" class="icon-calendar"></i>
+						                </span>
+								</div>
+					    </td>
+				  	</tr>
+				  	<tr>
+					    <td style="padding: 1px; border-top: 0px">
+					    	<label class="control-label">Validade:</label>
+					    	<div id="divDI_CTPS_dataValidade" class="controls resultado">
+					    		<%= cliente.carteiraTrabalho == null ? '' : formatadores.formatarData(cliente.carteiraTrabalho.dataValidade) %></div>
+					    		<div class="input-append data" style="display: none;margin-left: 2%" id="di_CTPS_dataValidade"  style="display: none;">
+							    	<input type="text" class="input-medium data" name="di_CTPS_dataEmissao" id="CTPS_dataValidade"
+										value="<%= cliente.carteiraTrabalho == null ? '' : formatadores.formatarData(cliente.carteiraTrabalho.dataValidade) %>"/>
+										<span id="spanIconDataValidade" class="add-on">
+						                	<i id="iIconDataValidade" data-time-icon="icon-time" data-date-icon="icon-calendar" class="icon-calendar"></i>
+						                </span>
+								</div>
+					    </td>
+				  	</tr>
+				</tbody>
+			</table>
+		</form>
+	</div>
+	<div class="panel-body" id="divPASS">
+		<form class="form-horizontal">
+			<table class="table table-striped lineSmall" >
+				<tbody>
+					<tr>
+					    <td style="padding: 1px; border-top: 0px">
+					    	<label style="margin-right: 1%" class="control-label">Tipo:</label>
+					    	<div class="controls resultado">Passaporte</div>
+					    </td>
+				  	</tr>
+				  	<tr>
+					    <td style="padding: 1px; border-top: 0px">
+					    	<label class="control-label">N&uacute;mero:</label>
+					    	<div id="divDI_PASS_numero" class="controls resultado">
+					    		<%= cliente.passaporte == null ? '' : cliente.passaporte.subTipoDocumento %></div>
+					    	<input type="text" maxlength="30" class="input-medium" name="di_PASS_numero" id="di_PASS_numero" style="display: none;"
+									value="<%= cliente.passaporte == null ? '' : cliente.passaporte.subTipoDocumento %>" validators="required"/>				    	
+					    </td>
+				  	</tr>
+				  	<tr>
+					    <td style="padding: 6px 0px; border-top: 0px">
+					    	<label class="control-label">Pais Emiss&atilde;o:</label>
+					    	<div id="divDI_PASS_paisEmissao" class="controls resultado">
+					    		<%= cliente.passaporte == null ? '' : cliente.passaporte.paisEmissao %></div>
+					    	<input type="text" maxlength="50" class="input-medium" name="di_PASS_paisEmissao" id="di_PASS_paisEmissao" style="display: none;"
+									value="<%= cliente.passaporte == null ? '' : cliente.passaporte.paisEmissao %>" validators="required"/>
+					    </td>
+				  	</tr>
+				  	<tr>
+					    <td style="padding: 6px 0px; border-top: 0px">
+					    	<label class="control-label">Org&atilde;o Emissor:</label>
+					    	<div id="divDI_PASS_orgaoEmissor" class="controls resultado">
+					    		<%= cliente.passaporte == null ? '' : cliente.passaporte.descricaoOrgaoEmissor %></div>
+					    	<input type="text" maxlength="50" class="input-medium" name="di_PASS_orgaoEmissor" id="di_PASS_orgaoEmissor" style="display: none;"
+									value="<%= cliente.passaporte == null ? '' : cliente.passaporte.descricaoOrgaoEmissor %>" validators="required"/>
+					    </td>
+				  	</tr>				  	
+				  	<tr>
+					    <td style="padding: 6px 0px; border-top: 0px">
+					    	<label class="control-label">Data Emiss&atilde;o:</label>
+					    	<div id="divDI_PASS_dataEmissao" class="controls resultado">
+					    		<%= cliente.passaporte == null ? '' : formatadores.formatarData(cliente.passaporte.dataEmissao) %></div>
+					    		<div class="input-append data" style="display: none;margin-left: 2%" id="di_PASS_dataEmissao"  style="display: none;">
+							    	<input type="text" class="input-medium data" name="di_PASS_dataEmissao" id="PASS_dataEmissao" 
+											value="<%= cliente.passaporte == null ? '' : formatadores.formatarData(cliente.passaporte.dataEmissao) %>"/>
+										<span id="spanIconDataVigencia" class="add-on">
+						                	<i id="iIconDataVigencia" data-time-icon="icon-time" data-date-icon="icon-calendar" class="icon-calendar"></i>
+						                </span>
+				                </div>
+					    </td>
+				  	</tr>
+				  	<tr>
+					    <td style="padding: 6px 0px; border-top: 0px">
+					    	<label class="control-label">UF:</label>
+					    	<div id="divDI_PASS_uf" class="controls resultado">
+					    		<%= cliente.passaporte == null ? '' : cliente.passaporte.uf %></div>
+					    	<input type="text" maxlength="2" class="input-medium" name="di_PASS_uf" id="di_PASS_uf" style="display: none;"
+									value="<%= cliente.passaporte == null ? '' : cliente.passaporte.uf %>" validators="required"/>
+					    </td>
+				  	</tr>
+				  	<tr>
+					    <td style="padding: 6px 0px; border-top: 0px">
+					    	<label class="control-label">Validade:</label>
+					    	<div id="divDI_PASS_validade" class="controls resultado">
+					    		<%= cliente.passaporte == null ? '' : formatadores.formatarData(cliente.passaporte.validade) %></div>
+				    		<div class="input-append data" style="display: none;margin-left: 2%" id="di_PASS_validade"  style="display: none;">
+						    	<input type="text" class="input-medium data" name="di_PASS_validade" id="PASS_validade"
+										value="<%= cliente.passaporte == null ? '' : formatadores.formatarData(cliente.passaporte.validade) %>" validators="required"/>
+							</div>
+					    </td>
+				  	</tr>
+				  	<tr>
+					    <td style="padding: 6px 0px; border-top: 0px">
+					    	<label class="control-label"></label>
+					    	<div class="controls resultado"></div>
+					    </td>
+				  	</tr>
+				</tbody>
+			</table>
+		</form>
+	</div>
+	<div class="panel-body" id="divCNH">
+		<form class="form-horizontal">
+			<table class="table table-striped lineSmall" >
+				<tbody>
+					<tr>
+					    <td style="padding: 6px 0px; border-top: 0px">
+					    	<label style="margin-right: 1%" class="control-label">Tipo:</label>
+					    	<div class="controls resultado">Carteira Nacional de Habilita&ccedil;&atilde;o - CNH</div>
+					    </td>
+				  	</tr>
+				  	<tr>
+					    <td style="padding: 6px 0px; border-top: 0px">
+					    	<label class="control-label">N&uacute;mero:</label>
+					    	<div id="divDI_CNH_numero" class="controls resultado">
+					    		<%= cliente.cnh == null ? '' : cliente.cnh.numero %></div>
+					    	<input type="text" maxlength="11" class="input-medium numero" name="di_CNH_numero" id="di_CNH_numero" style="display: none;margin-left: 2%"
+									value="<%= cliente.cnh == null ? '' : cliente.cnh.numero %>" validators="required"/>
+					    </td>
+				  	</tr>
+				  	<tr>
+					    <td style="padding: 6px 0px; border-top: 0px">
+					    	<label class="control-label">1&ordf; Habilita&ccedil;&atilde;o:</label>
+					    	<div id="divDI_CNH_1Habilitacao" class="controls resultado">
+					    		<%= cliente.cnh == null ? '' : formatadores.formatarData(cliente.cnh.dataPrimeiraHabilitacao) %></div>
+					    		<div class="input-append data" style="display: none;margin-left: 2%" id="di_CNH_1Habilitacao">
+					    			<input type="text" maxlength="30" class="input-medium data" name="di_CNH_1Habilitacao" id="1Habilitacao"
+										value="<%= cliente.cnh == null ? '' : formatadores.formatarData(cliente.cnh.dataPrimeiraHabilitacao) %>" validators="required"/>
+										<span id="spanIconDataVigencia" class="add-on">
+						                	<i id="iIconDataVigencia" data-time-icon="icon-time" data-date-icon="icon-calendar" class="icon-calendar"></i>
+						                </span>
+								</div>
+					    </td>
+				  	</tr>
+				  	<tr>
+					    <td style="padding: 6px 0px; border-top: 0px">
+					    	<label class="control-label">Org&atilde;o Emissor:</label>
+					    	<div id="divDI_CNH_orgaoEmissor" class="controls resultado">
+					    		<%= cliente.cnh == null ? '' : cliente.cnh.descicaoTipoOrgaoEmissor %></div>
+					    	<input  type="text" maxlength="50" class="input-medium" name="di_CNH_orgaoEmissor" id="di_CNH_orgaoEmissor" style="display: none;margin-left: 2%"
+									value="<%= cliente.cnh == null ? '' : cliente.cnh.descicaoTipoOrgaoEmissor %>" validators="required"/>
+					    </td>
+				  	</tr>
+				  	<tr>
+					    <td style="padding: 6px 0px; border-top: 0px">
+					    	<label class="control-label">Data de Emiss&atilde;o:</label>
+					    	<div id="divDI_CNH_dataEmissao" class="controls resultado">
+					    		<%= cliente.cnh == null ? '' : formatadores.formatarData(cliente.cnh.dataEmissao) %></div>
+					    	<div class="input-append data" id="di_CNH_dataEmissao" style="display: none;margin-left: 2%">
+						    	<input type="text" class="input-medium data" name="di_CNH_dataEmissao" id="CNH_dataEmissao" 
+										value="<%= cliente.cnh == null ? '' : formatadores.formatarData(cliente.cnh.dataEmissao) %>" validators="required"/>
+								<span id="spanIconDataVigencia" class="add-on">
+				                	<i id="iIconDataVigencia" data-time-icon="icon-time" data-date-icon="icon-calendar" class="icon-calendar"></i>
+				                </span>
+										
+							</div>
+					    </td>
+				  	</tr>
+				  	<tr>
+					    <td style="padding: 6px 0px; border-top: 0px">
+					    	<label class="control-label">Validade:</label>
+					    	<div id="divDI_CNH_validade" class="controls resultado">
+					    		<%= cliente.cnh == null ? '' : formatadores.formatarData(cliente.cnh.dataValidade) %></div>
+					    		<div class="input-append data" style="display: none;margin-left: 2%" id="di_CNH_validade">
+							    	<input type="text" class="input-medium data" name="di_CNH_validade" id="CNH_validade"
+											value="<%= cliente.cnh == null ? '' : formatadores.formatarData(cliente.cnh.dataValidade) %>" validators="required"/>
+									<span id="spanIconDataVigencia" class="add-on">
+					                	<i id="iIconDataVigencia" data-time-icon="icon-time" data-date-icon="icon-calendar" class="icon-calendar"></i>
+					                </span>
+								</div>
+					    </td>
+				  	</tr>
+				  	<tr>
+					    <td style="padding: 6px 0px; border-top: 0px">
+					    	<label class="control-label"></label>
+					    	<div class="controls resultado"></div>
+					    </td>
+				  	</tr>
+				</tbody>
+			</table>
+		</form>
+	</div>
+	</div>
+</div>

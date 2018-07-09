@@ -1,0 +1,31 @@
+<div class="panel panel-default">
+    <div class="panel-heading" >			
+      		<label>Prazos</label>
+   	</div>
+
+   	<div class="panel-body" >
+		<form class="form-horizontal">
+			<table class="table table-striped table-bordered" id="gridListaPrazo" >
+				<thead>
+					<tr>
+						<th>Prazo</th>
+						<th>Faixa A</th>
+						<th>Faixa B</th>
+						<th>Faixa C</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<% $.each(taxas, function () { %>
+					<tr>
+						<td><%= this.prazoMin == this.prazoMax ? this.prazoMax : this.prazoMin + " &agrave; " + this.prazoMax %></td>
+						<td><%= formatadores.formatarTaxa(this.pcMinimo, 5) %> %</td>
+						<td><%= formatadores.formatarTaxa(this.pcMedio, 5) %> %</td>
+						<td><%= formatadores.formatarTaxa(this.pcMaximo, 5) %> %</td>
+					</tr>
+					<% }); %>
+				</tbody>
+			</table>
+		</form>
+	</div>
+</div>
