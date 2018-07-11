@@ -141,10 +141,5 @@ public class ArquivoBean implements IArquivoBean {
 				
 	}
 	
-	//public static void teste() {
-	
-	
-	//}
-	
 	
 }
