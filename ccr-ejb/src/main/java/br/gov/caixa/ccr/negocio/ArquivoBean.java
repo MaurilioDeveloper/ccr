@@ -39,7 +39,6 @@ public class ArquivoBean implements IArquivoBean {
 	@PersistenceContext
 	private EntityManager em;	
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<ArquivoContratoResponse> consultar(ArquivoContratoRequest arquivo) throws Exception {		
 		
@@ -141,5 +140,11 @@ public class ArquivoBean implements IArquivoBean {
 		return listaRetorno; 
 				
 	}
+	
+	//public static void teste() {
+	
+	
+	//}
+	
 	
 }
