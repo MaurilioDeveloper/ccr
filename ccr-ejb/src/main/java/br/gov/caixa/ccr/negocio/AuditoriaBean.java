@@ -149,4 +149,8 @@ public class AuditoriaBean implements IAuditoriaBean {
 		
 		return retorno;
 	}
+	
+	//public static void teste() {
+		
+	//}
 }
