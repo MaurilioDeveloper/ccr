@@ -68,7 +68,7 @@
 
 	<properties>
 
-		<ccr.version>1.1.0</ccr.version>
+		<ccr.version>1.1.0-SNAPSHOT</ccr.version>
 		<!-- Explicitly declaring the source encoding eliminates the following 
 			message: -->
 
